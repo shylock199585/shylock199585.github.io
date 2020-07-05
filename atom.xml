@@ -39,4 +39,25 @@
     
   </entry>
   
+  <entry>
+    <title>Hexo搭建过程</title>
+    <link href="http://yoursite.com/2017/06/18/hexo%E6%90%AD%E5%BB%BA/"/>
+    <id>http://yoursite.com/2017/06/18/hexo%E6%90%AD%E5%BB%BA/</id>
+    <published>2017-06-18T14:09:28.000Z</published>
+    <updated>2020-07-05T02:29:21.026Z</updated>
+    
+    <summary type="html">
+    
+      使用Hexo打造个人GitHub Pages的简要过程
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+  </entry>
+  
 </feed>
