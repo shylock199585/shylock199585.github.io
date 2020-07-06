@@ -1169,7 +1169,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #bb3b25;
+  background: #b6ffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2599,7 +2599,7 @@ blockquote {
   padding-bottom: 0px;
 }
 .container .header-inner {
-  width: 100%;
+  width: 240px;
 }
 .site-meta {
   background-image: linear-gradient(to right, #ef4e7b, #aa96da, #facad3);
