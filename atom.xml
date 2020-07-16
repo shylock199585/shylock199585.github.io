@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-16T04:12:17.792Z</updated>
+  <updated>2020-07-16T05:04:08.974Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,20 +21,11 @@
     <link href="http://yoursite.com/2020/07/16/Hexo%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/"/>
     <id>http://yoursite.com/2020/07/16/Hexo%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/</id>
     <published>2020-07-16T04:04:01.000Z</published>
-    <updated>2020-07-16T04:12:17.792Z</updated>
+    <updated>2020-07-16T05:04:08.974Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;打开博客所在文件夹blog，找到&lt;code&gt;_config.yml&lt;/code&gt;文件，修改语句&lt;code&gt;post_asset_folder: true&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;git bash安装插件：&lt;br&gt;&lt;code&gt;npm
-        
-      
+      搭建hexo博客时遇到了图片部署后不显示的问题,这是我成功解决的方法
     
     </summary>
     
