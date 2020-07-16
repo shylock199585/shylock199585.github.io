@@ -348,4 +348,25 @@
         <tag>网络工具</tag>
       </tags>
   </entry>
+  <entry>
+    <title>解决Hexo框架博客图片不显示的问题</title>
+    <url>/2020/07/16/Hexo%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/</url>
+    <content><![CDATA[<ol>
+<li><p>打开博客所在文件夹blog，找到<code>_config.yml</code>文件，修改语句<code>post_asset_folder: true</code></p>
+</li>
+<li><p>git bash安装插件：<br><code>npm install https://github.com/7ym0n/hexo-asset-image --save</code></p>
+</li>
+<li><p>每次执行<code>hexo new &quot;文件名&quot;</code>命令时，文件所在文件夹会自动创建一个同名文件夹用于放置资源。</p>
+</li>
+<li><p>插入图片时用这种方式：<code></code></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
 </search>
