@@ -1,6 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>网络利器工具</title>
+    <url>/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h3 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h3><p>用来快速构建网络链接,常用来调试客户端程序。</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>设置数据包传送的时间间隔</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>以服务器方式运行，默认为客户端运行</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>重复接受并处理某个端口的所有链接</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>以客户端运行时强制使用指定端口</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>将CR和LF两个字符作为结束符</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>使用UDP协议，默认为TCP协议</td>
+</tr>
+<tr>
+<td>-X</td>
+<td>nc客户端余代理服务器通信默认为socks5协议</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>扫描目标机器某个范围内服务是否开启</td>
+</tr>
+</tbody></table>
+<h4 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h4><table>
+<thead>
+<tr>
+<th>执行任务</th>
+<th>执行命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>扫描机器A端口号在30-40的服务</td>
+<td>nc -z A 30-40</td>
+</tr>
+<tr>
+<td>连接服务器A 端口号为5000</td>
+<td>nc -C A 5000</td>
+</tr>
+<tr>
+<td>传送文件</td>
+<td>MachineA: nc -v -n ip portE: \a.exe</td>
+</tr>
+</tbody></table>
+<h3 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h3><p>实现对网路连通性探测。给地方发送数据包，根据返回的信息初步判断目标机器是否存在或者目标机器操作系统。</p>
+<p><img src="image/ping1.png" alt="avatar"><br>在具体实现中其实使用了ICMP协议，它是一种基于IP协议的控制协议，网际控制协议，其报文格式如下：</p>
+<p><img src="image/ping2.png" alt="avatar"></p>
+<h4 id="字段含义："><a href="#字段含义：" class="headerlink" title="字段含义："></a>字段含义：</h4><ul>
+<li>类型：表示ICMP的类型，如果为0表示请求类型，为8表示应答</li>
+<li>代码：用来查找产生错误的原因</li>
+<li>校验和：检查错误的数据</li>
+<li>标识符:使用标识符确认到底是谁发送的控制协议</li>
+<li>序列号：唯一确定的一个报文</li>
+</ul>
+<p>ping命令组装成上述的IP报文进行发送，报文目的地为ping目的地址，原地址为发送ping主机地址，然后按照ICMP的规则填写数据。随后IP报文通过ARP协议，请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址。</p>
+<h4 id="ping的详细参数"><a href="#ping的详细参数" class="headerlink" title="ping的详细参数"></a>ping的详细参数</h4><p><img src="image/ping3.png" alt="avatar"></p>
+<h4 id="常用参数："><a href="#常用参数：" class="headerlink" title="常用参数："></a>常用参数：</h4><ul>
+<li>[-l] :定义所发送数据包的大小，默认为32字节</li>
+<li>[-n] :定义所发数据包的次数，默认为3次</li>
+<li>[-t] :表示不间断向目标IP发送数据包</li>
+</ul>
+<h4 id="TTL"><a href="#TTL" class="headerlink" title="TTL"></a>TTL</h4><p>TTL 是 IP 协议包中的一个值，它告诉网络路由器包在网络中的时间是否太长而应被丢弃。</p>
+<ul>
+<li>TTL设置时间越长，那么缓存时间也就越长，更新也就越不容易生效。增大TTL可以节约域名解析时间从而加快网站的访问。</li>
+<li>减小TTL值，减少更换空间时的不可访问时间。</li>
+</ul>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>Request timed out</li>
+</ul>
+<h4 id="可能出现的情况"><a href="#可能出现的情况" class="headerlink" title="可能出现的情况"></a>可能出现的情况</h4><ul>
+<li>对方已经关机或者根本没有这个地址</li>
+<li>可能不在同一个网段，即使通过路由也无法找到对方从而出现超时</li>
+<li>对方存在但是设置了防火墙过滤</li>
+<li>Destination host Unreachable</li>
+<li>与对方不在同一个网段且没有设置默认路由</li>
+<li>网线出毛病</li>
+<li>Bad IP address</li>
+<li>要么是IP地址不存在，要么是没有正确连接DNS服务器从而无法解析</li>
+</ul>
+<h3 id="ifconfig-ipaddr"><a href="#ifconfig-ipaddr" class="headerlink" title="ifconfig/ipaddr"></a>ifconfig/ipaddr</h3><p>查看服务器网卡，IP等信息</p>
+<p><img src="image/ifconfig1.png" alt="avatar"></p>
+<p>上图中被马赛克的位置假设为10.172.100.3，这样就是一个IP地址，凡是都有规则，IP地址按照小数点分割为四部分，每部分占8字节，所以IP地址为32位，那么这样的IP地址一共有多少呢</p>
+<p>从而出现IPV6，128位</p>
+<p>当时觉得32位很够用了，还将其分为5类，如下图所示</p>
+<p><img src="image/ifconfig2.png" alt="avatar"></p>
+<p>各类地址的主机数量:</p>
+<p><img src="image/ifconfig3.png" alt="avatar"></p>
+<h4 id="无类型域间选路"><a href="#无类型域间选路" class="headerlink" title="无类型域间选路"></a>无类型域间选路</h4><p>CIDR 地址中包含标准的32位IP地址和有关网络前缀位数的信息。比如10.172.100.3/24，IP地址斜杠后面数字24，代表24位是网络号，后面八位为主机号。</p>
+<h4 id="计算网络号"><a href="#计算网络号" class="headerlink" title="计算网络号"></a>计算网络号</h4><p>使用IP地址和子网掩码进行AND计算得到网络号。</p>
+<p><img src="image/ifconfig4.png" alt="avatar"></p>
+<h3 id="tcpdump"><a href="#tcpdump" class="headerlink" title="tcpdump"></a>tcpdump</h3><p>和它类似的工具在windows中是wireshark，其采用底层库winpcap/libpcap实现。采用了bpf过滤机制。</p>
+<p>不同参数的含义:</p>
+<p><img src="image/tcpdump1.png" alt="avatar"></p>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><table>
+<thead>
+<tr>
+<th>执行任务</th>
+<th>执行命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>捕获特定网口数据包</td>
+<td>tcpdump -i eth0</td>
+</tr>
+<tr>
+<td>捕获特定个数(1000)的包</td>
+<td>tcpdump -c 1000 -i eth0</td>
+</tr>
+<tr>
+<td>将捕获的包保存到文件</td>
+<td>tcpdump -w a.pcap -i eth0</td>
+</tr>
+<tr>
+<td>读取pcap格式的包</td>
+<td>tcpdump -r a.pcap</td>
+</tr>
+<tr>
+<td>增加捕获包的时间戳</td>
+<td>tcpdump -n -ttt -i eth0</td>
+</tr>
+<tr>
+<td>指定捕获包的协议类型</td>
+<td>tcpdump -i eth0 arp</td>
+</tr>
+<tr>
+<td>捕获指定端口</td>
+<td>tcpdump -i eth0 post 22</td>
+</tr>
+<tr>
+<td>捕获特定目标ip+port的包</td>
+<td>tcpdump -i eth0 dst address and port 22</td>
+</tr>
+<tr>
+<td>捕获DNS请求和响应</td>
+<td>tcpdump -i eth0 -s0 port 53</td>
+</tr>
+<tr>
+<td>匹配Http请求头</td>
+<td>tcpdump -s 0 -v -n -l</td>
+</tr>
+<tr>
+<td>捕获特定网口数据包</td>
+<td>tcpdump -i eth0</td>
+</tr>
+<tr>
+<td>捕获特定个数(1000)的包</td>
+<td>tcpdump -c 1000 -i eth0</td>
+</tr>
+<tr>
+<td>将捕获的包保存到文件</td>
+<td>tcpdump -w a.pcap -i eth0</td>
+</tr>
+<tr>
+<td>读取pcap格式的包</td>
+<td>tcpdump -r a.pcap</td>
+</tr>
+<tr>
+<td>增加捕获包的时间戳</td>
+<td>tcpdump -n -ttt -i eth0</td>
+</tr>
+<tr>
+<td>指定捕获包的协议类型</td>
+<td>tcpdump -i eth0 arp</td>
+</tr>
+<tr>
+<td>捕获指定端口</td>
+<td>tcpdump -i eth0 post 22</td>
+</tr>
+<tr>
+<td>捕获特定目标ip+port的包</td>
+<td>tcpdump -i eth0 dst address and port 22</td>
+</tr>
+<tr>
+<td>捕获DNS请求和响应</td>
+<td>tcpdump -i eth0 -s0 port 53</td>
+</tr>
+<tr>
+<td>匹配Http请求头</td>
+<td>tcpdump -s 0 -v -n -l | egrep -i “POST /|GET /Host:”</td>
+</tr>
+</tbody></table>
+<h3 id="Isof"><a href="#Isof" class="headerlink" title="Isof"></a>Isof</h3><p>列出当前系统打开的文件描述符工具。可以得知感兴趣的描述符是被哪些进程使用</p>
+<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><p><img src="image/Isof1.png" alt="avatar"></p>
+<h4 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h4><table>
+<thead>
+<tr>
+<th>执行任务</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列出所有的网络链接</td>
+<td>lsof -i</td>
+</tr>
+<tr>
+<td>列出所有udp的网络链接</td>
+<td>lsof -i udp</td>
+</tr>
+<tr>
+<td>列出谁在使用某个端口</td>
+<td>lsof -i :3306</td>
+</tr>
+<tr>
+<td>列出谁在使用特定的tcp端口</td>
+<td>lsof -i tcp:80</td>
+</tr>
+<tr>
+<td>根据文件描述范围列出文件信息</td>
+<td>lsof -d 2-3</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>udp</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列出谁在使用某个端口</td>
+<td>lsof -i :3306</td>
+</tr>
+<tr>
+<td>列出谁在使用特定的tcp端口</td>
+<td>lsof -i tcp:80</td>
+</tr>
+<tr>
+<td>根据文件描述范围列出文件信息</td>
+<td>lsof -d 2-3</td>
+</tr>
+</tbody></table>
+<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><p>netstat是一个网络信息统计工具。它可以得到网卡接口上全部了解，路由表信息，网卡接口信息等。通常在网络编程中我们用它来显示TCP连接以及状态信息。</p>
+<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p><img src="image/netsat1.png" alt="avatar"></p>
+<h4 id="案例-2"><a href="#案例-2" class="headerlink" title="案例"></a>案例</h4><table>
+<thead>
+<tr>
+<th>执行任务</th>
+<th>执行命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列出所有连接</td>
+<td>netstat -a</td>
+</tr>
+<tr>
+<td>只列出TCP或者UDP</td>
+<td>netstat -at/netstat -au</td>
+</tr>
+<tr>
+<td>列出监听中的连接</td>
+<td>netstat -tnl</td>
+</tr>
+<tr>
+<td>获取进程名、进程号以及用户 ID</td>
+<td>nestat  -nlpt</td>
+</tr>
+<tr>
+<td>打印统计信息</td>
+<td>netstat -s</td>
+</tr>
+<tr>
+<td>netstat持续输出</td>
+<td>netstat -ct</td>
+</tr>
+<tr>
+<td>打印active状态的连接</td>
+<td>netstat -atnp</td>
+</tr>
+<tr>
+<td>查看服务是否运行(npt)</td>
+<td>netstat -aple</td>
+</tr>
+</tbody></table>
+<h3 id="dpkt"><a href="#dpkt" class="headerlink" title="dpkt"></a>dpkt</h3><p>dpkt定义包packet类，它定义了网络报文类型的基础类。其中IP，ICMP等继承于dpkt class，每一个子类有一个_ hdr_ 结构，此结构定义了不同报文的头部，方便取出相应的控制字段。示例如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line">import dpkt</span><br><span class="line">import socket</span><br><span class="line">import optparse</span><br><span class="line"></span><br><span class="line">def printPcap(pcap):</span><br><span class="line">    <span class="comment"># 遍历[timestamp, packet]记录的数组</span></span><br><span class="line">    <span class="keyword">for</span> (ts, buf) <span class="keyword">in</span> pcap:</span><br><span class="line">        try:</span><br><span class="line">            <span class="comment"># 获取以太网部分数据</span></span><br><span class="line">            eth = dpkt.ethernet.Ethernet(buf)</span><br><span class="line">            <span class="comment"># 获取IP层数据</span></span><br><span class="line">            ip = eth.data</span><br><span class="line">            <span class="comment"># 把存储在inet_ntoa中的IP地址转换成一个字符串</span></span><br><span class="line">            src = socket.inet_ntoa(ip.src)</span><br><span class="line">            dst = socket.inet_ntoa(ip.dst)</span><br><span class="line">            <span class="built_in">print</span> <span class="string">'[+] 源地址: '</span> + src + <span class="string">' --&gt; 目标地址: '</span> + dst</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    parser = optparse.OptionParser(<span class="string">'[*] Usage : ./pcapTest.py -f &lt;file&gt;'</span>)<span class="comment">#测试包</span></span><br><span class="line">    parser.add_option(<span class="string">'-f'</span>,dest=<span class="string">'fileName'</span>,<span class="built_in">type</span>=<span class="string">'string'</span>,<span class="built_in">help</span>=<span class="string">'specify target filename'</span>)</span><br><span class="line">    (options,args) = parser.parse_args()</span><br><span class="line">    fileName = options.fileName<span class="comment"># 取得包名</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> fileName == None:</span><br><span class="line">        <span class="built_in">print</span> parser.usage</span><br><span class="line">        <span class="built_in">exit</span>(0)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment">#f = open('geotest.pcap')</span></span><br><span class="line">        f = open(fileName)</span><br><span class="line">        pcap = dpkt.pcap.Reader(f)</span><br><span class="line">        printPcap(pcap)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="scapy"><a href="#scapy" class="headerlink" title="scapy"></a>scapy</h3><p>“强大的交互式包操作工具”、“支持大量协议的包解析和包构造”、“轻松取代 hping，85% 的 nmap，arpspoof，tcpdump 等等”。不过归根到底，它说的强大功能，都是基于 Scapy 是一个强大的网络数据包操作工具才能实现得了的。只是大概介绍，具体用法官网非常详细，有助于学习网络协议</p>
+<p><img src="image/scapy.png" alt="avatar"></p>
+]]></content>
+      <categories>
+        <category>网络工具</category>
+      </categories>
+      <tags>
+        <tag>网络工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo搭建简要过程</title>
     <url>/2020/07/05/hexo%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h4><p><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a><br><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></p>

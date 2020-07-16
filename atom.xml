@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-05T07:10:06.124Z</updated>
+  <updated>2020-07-16T03:02:54.733Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网络利器工具</title>
+    <link href="http://yoursite.com/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/</id>
+    <published>2020-07-16T02:06:01.000Z</published>
+    <updated>2020-07-16T03:02:54.733Z</updated>
+    
+    <summary type="html">
+    
+      使用Linux或者Windows中相关网络工具可以更快更准的找到故障
+    
+    </summary>
+    
+    
+      <category term="网络工具" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="网络工具" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo搭建简要过程</title>
