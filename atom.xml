@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-16T05:04:08.974Z</updated>
+  <updated>2020-07-27T12:47:52.067Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python包管理工具：Conda和pip比较</title>
+    <link href="http://yoursite.com/2020/07/27/pipconda/"/>
+    <id>http://yoursite.com/2020/07/27/pipconda/</id>
+    <published>2020-07-27T12:43:01.000Z</published>
+    <updated>2020-07-27T12:47:52.067Z</updated>
+    
+    <summary type="html">
+    
+      python包管理工具：Conda和pip比较
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>解决Hexo框架博客图片不显示的问题</title>
