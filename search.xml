@@ -386,4 +386,657 @@
         <tag>python</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Numpy的基本操作</title>
+    <url>/2020/07/30/Numpy/</url>
+    <content><![CDATA[<h1 id="1-Numpy的基本操作"><a href="#1-Numpy的基本操作" class="headerlink" title="1. Numpy的基本操作"></a>1. Numpy的基本操作</h1><p>导入numpy</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-array数组"><a href="#1-1-array数组" class="headerlink" title="1.1 array数组"></a>1.1 array数组</h3><p>定义数组array = [1,2,3,4,5]</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">array2 = array + <span class="number">1</span></span><br><span class="line">array2</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([2, 3, 4, 5, 6])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array2 +array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ 3,  5,  7,  9, 11])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array2 * array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ 2,  6, 12, 20, 30])</code></pre><h3 id="1-2-数组特性"><a href="#1-2-数组特性" class="headerlink" title="1.2 数组特性"></a>1.2 数组特性</h3><p>查看数组维度信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(5,)</code></pre><p>定义二维数组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">         [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1, 2, 3],
+       [4, 5, 6]])</code></pre><p>列表转为numpy数组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">array1 = np.array(list1)</span><br><span class="line">array1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1, 2, 3, 4, 5])</code></pre><p>列表数据类型不同时，自动向下转换：int→float→str</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="string">'5'</span>]</span><br><span class="line">array1 = np.array(list1)</span><br><span class="line">array1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([&apos;1&apos;, &apos;2&apos;, &apos;3&apos;, &apos;4&apos;, &apos;5&apos;], dtype=&apos;&lt;U11&apos;)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5.0</span>]</span><br><span class="line">array1 = np.array(list1)</span><br><span class="line">array1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1., 2., 3., 4., 5.])</code></pre><h3 id="1-3-数组属性操作"><a href="#1-3-数组属性操作" class="headerlink" title="1.3 数组属性操作"></a>1.3 数组属性操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#打印当前数据格式</span></span><br><span class="line">type(array1)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>numpy.ndarray</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#打印当前数据类型</span></span><br><span class="line">array1.dtype</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>dtype(&apos;float64&apos;)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#打印当前数组元素个数</span></span><br><span class="line">array1.size</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>5</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#打印当前数组维度</span></span><br><span class="line">array1.ndim</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1</code></pre><h2 id="2-索引与切片"><a href="#2-索引与切片" class="headerlink" title="2. 索引与切片"></a>2. 索引与切片</h2><h3 id="2-1-数值索引"><a href="#2-1-数值索引" class="headerlink" title="2.1 数值索引"></a>2.1 数值索引</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array1[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">array1[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([7, 8, 9])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array1 = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">                  [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">                  [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]])</span><br><span class="line">array1[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">10</span></span><br><span class="line">array1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[ 1,  2,  3],
+       [ 4, 10,  6],
+       [ 7,  8,  9]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#取第二行数据</span></span><br><span class="line">array1[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ 4, 10,  6])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#取所有行的第二列</span></span><br><span class="line">array1[:,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ 2, 10,  8])</code></pre><h3 id="2-2-bool索引"><a href="#2-2-bool索引" class="headerlink" title="2.2 bool索引"></a>2.2 bool索引</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array = np.arange(<span class="number">0</span>,<span class="number">100</span>,<span class="number">10</span>)</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ 0, 10, 20, 30, 40, 50, 60, 70, 80, 90])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mask = np.array([<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>],dtype=bool)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#取所有位置为True的元素</span></span><br><span class="line">array[mask]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([30, 40, 50, 80, 90])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#(0,1)区间随机生成10个数</span></span><br><span class="line">random_array = np.random.rand(<span class="number">10</span>)</span><br><span class="line">random_array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([0.14346121, 0.10379705, 0.75719041, 0.3301816 , 0.02267718,
+       0.90297419, 0.51393754, 0.99605731, 0.75787412, 0.90175181])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">mask = random_array &gt; <span class="number">0.5</span></span><br><span class="line">mask</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([False, False,  True, False, False,  True,  True,  True,  True,
+        True])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array = np.array([<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>])</span><br><span class="line"><span class="comment">#找到符合要求的索引位置</span></span><br><span class="line">np.where(array &gt; <span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(array([3, 4], dtype=int64),)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数组对比</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.array([<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line">y = np.array([<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>])</span><br><span class="line">x ==y</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ True,  True,  True, False])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#逻辑判断</span></span><br><span class="line">np.logical_and(x,y)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ True,  True,  True,  True])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.logical_or(x,y)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ True,  True,  True,  True])</code></pre><h2 id="3-数据类型与数值计算"><a href="#3-数据类型与数值计算" class="headerlink" title="3. 数据类型与数值计算"></a>3. 数据类型与数值计算</h2><h3 id="3-1-数据类型"><a href="#3-1-数据类型" class="headerlink" title="3.1 数据类型"></a>3.1 数据类型</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#指定数据类型</span></span><br><span class="line">array = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],dtype=np.float32)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1., 2., 3., 4., 5.], dtype=float32)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.dtype</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>dtype(&apos;float32&apos;)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Numpy中字符串的类型是object，和python不一样</span></span><br><span class="line">array = np.array([<span class="string">'1'</span>,<span class="string">'10'</span>,<span class="string">'3.5'</span>,<span class="string">'str'</span>],dtype=object)</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([&apos;1&apos;, &apos;10&apos;, &apos;3.5&apos;, &apos;str&apos;], dtype=object)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#对创建好的数据进行数据类型转换</span></span><br><span class="line">array = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">array2 = np.asarray(array,dtype=np.float32)</span><br><span class="line">array2</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1., 2., 3., 4., 5.], dtype=float32)</code></pre><h3 id="3-2-复制与赋值"><a href="#3-2-复制与赋值" class="headerlink" title="3.2 复制与赋值"></a>3.2 复制与赋值</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#等号赋值，对其中一个变量修改，另一个也发生变化</span></span><br><span class="line">array2 = array</span><br><span class="line">array2</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1, 2, 3, 4, 5])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array[<span class="number">1</span>] = <span class="number">100</span></span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([  1, 100,   3,   4,   5])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array2</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([  1, 100,   3,   4,   5])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#使用copy赋值</span></span><br><span class="line">array2 = array.copy()</span><br><span class="line">array2[<span class="number">1</span>] = <span class="number">1000</span></span><br><span class="line">array2</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([   1, 1000,    3,    4,    5])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([  1, 100,   3,   4,   5])</code></pre><h3 id="3-3-数值计算"><a href="#3-3-数值计算" class="headerlink" title="3.3 数值计算"></a>3.3 数值计算</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#所有元素求和</span></span><br><span class="line">array = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</span><br><span class="line">np.sum(array)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>21</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#按列求和</span></span><br><span class="line">np.sum(array,axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([5, 7, 9])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#按行求和</span></span><br><span class="line">np.sum(array,axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ 6, 15])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#各个元素累乘</span></span><br><span class="line">array.prod()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>720</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.prod(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ 4, 10, 18])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.prod(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([  6, 120])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#求元素的最小值</span></span><br><span class="line">array.min()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.min(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1, 2, 3])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.min(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1, 4])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#求均值</span></span><br><span class="line">array.mean()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>3.5</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.mean(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([2.5, 3.5, 4.5])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.mean(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([2., 5.])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#求标准差</span></span><br><span class="line">array.std()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.707825127659933</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#求方差</span></span><br><span class="line">array.var()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>2.9166666666666665</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#比2小的全部为2，比4大的全部为4</span></span><br><span class="line">array.clip(<span class="number">2</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[2, 2, 3],
+       [4, 4, 4]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#四舍五入</span></span><br><span class="line">array = np.array([<span class="number">1.2</span>,<span class="number">3.56</span>,<span class="number">6.41</span>])</span><br><span class="line">array.round()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1., 4., 6.])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#指定精度</span></span><br><span class="line">array.round(decimals=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1.2, 3.6, 6.4])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#最小值索引位置</span></span><br><span class="line">array.argmin()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.argmin(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0</code></pre><h3 id="3-4-矩阵乘法"><a href="#3-4-矩阵乘法" class="headerlink" title="3.4 矩阵乘法"></a>3.4 矩阵乘法</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#对应元素相乘</span></span><br><span class="line">x = np.array([<span class="number">2</span>,<span class="number">4</span>])</span><br><span class="line">y = np.array([<span class="number">3</span>,<span class="number">5</span>])</span><br><span class="line">np.multiply(x,y)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ 6, 20])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#矩阵乘法</span></span><br><span class="line">np.dot(x,y)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>26</code></pre><h2 id="4-常用功能模块"><a href="#4-常用功能模块" class="headerlink" title="4. 常用功能模块"></a>4. 常用功能模块</h2><h3 id="4-1-排序操作"><a href="#4-1-排序操作" class="headerlink" title="4.1 排序操作"></a>4.1 排序操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array = np.array([[<span class="number">1.2</span>,<span class="number">5.2</span>,<span class="number">3.4</span>],[<span class="number">5.7</span>,<span class="number">3.1</span>,<span class="number">7.1</span>]])</span><br><span class="line">np.sort(array)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1.2, 3.4, 5.2],
+       [3.1, 5.7, 7.1]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#排序后显示索引位置</span></span><br><span class="line">np.argsort(array)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[0, 2, 1],
+       [1, 0, 2]], dtype=int64)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#在（0,10）之间生成10个随机数</span></span><br><span class="line">array = np.linspace(<span class="number">0</span>,<span class="number">10</span>,<span class="number">10</span>)</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ 0.        ,  1.11111111,  2.22222222,  3.33333333,  4.44444444,
+        5.55555556,  6.66666667,  7.77777778,  8.88888889, 10.        ])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">values = np.array([<span class="number">3.5</span>,<span class="number">2.7</span>,<span class="number">5.8</span>])</span><br><span class="line">np.searchsorted(array,values)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([4, 3, 6], dtype=int64)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">1</span>,<span class="number">0</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">45</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">6</span>,<span class="number">8</span>]])</span><br><span class="line">index = np.lexsort([<span class="number">-1</span>*array[:,<span class="number">0</span>]])</span><br><span class="line">index</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([2, 3, 0, 1], dtype=int64)</code></pre><h3 id="4-2-数组形状"><a href="#4-2-数组形状" class="headerlink" title="4.2 数组形状"></a>4.2 数组形状</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array = np.arange(<span class="number">0</span>,<span class="number">10</span>)</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(10,)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.shape = <span class="number">2</span>,<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[0, 1, 2, 3, 4],
+       [5, 6, 7, 8, 9]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array = np.arange(<span class="number">0</span>,<span class="number">10</span>)</span><br><span class="line">array = array[np.newaxis,:]</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(1, 10)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.squeeze()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(1, 10)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数组转置</span></span><br><span class="line">array = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>],[<span class="number">6</span>,<span class="number">4</span>,<span class="number">1</span>]])</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1, 2, 3],
+       [2, 5, 3],
+       [6, 4, 1]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#为啥不行呢？</span></span><br><span class="line">array.transpose()</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1, 2, 3],
+       [2, 5, 3],
+       [6, 4, 1]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array.T</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1, 2, 6],
+       [2, 5, 4],
+       [3, 3, 1]])</code></pre><h3 id="4-3-数组的拼接"><a href="#4-3-数组的拼接" class="headerlink" title="4.3 数组的拼接"></a>4.3 数组的拼接</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</span><br><span class="line">b = np.array([[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>]])</span><br><span class="line">np.concatenate((a,b))</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[ 1,  2,  3],
+       [ 4,  5,  6],
+       [ 7,  8,  9],
+       [10, 11, 12]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.concatenate((a,b),axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[ 1,  2,  3,  7,  8,  9],
+       [ 4,  5,  6, 10, 11, 12]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#另一种拼接方法,直接增加一个维度</span></span><br><span class="line">np.stack((a,b))</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[[ 1,  2,  3],
+        [ 4,  5,  6]],
+
+       [[ 7,  8,  9],
+        [10, 11, 12]]])</code></pre><h3 id="4-4-创建数组函数"><a href="#4-4-创建数组函数" class="headerlink" title="4.4 创建数组函数"></a>4.4 创建数组函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.arange(<span class="number">0</span>,<span class="number">20</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#快速创建行向量</span></span><br><span class="line">np.r_[<span class="number">0</span>:<span class="number">5</span>:<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([0, 1, 2, 3, 4])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#快速创建列向量</span></span><br><span class="line">np.c_[<span class="number">0</span>:<span class="number">5</span>:<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[0],
+       [1],
+       [2],
+       [3],
+       [4]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建零矩阵</span></span><br><span class="line">np.zeros(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([0., 0., 0.])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.zeros((<span class="number">3</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[0., 0., 0.],
+       [0., 0., 0.],
+       [0., 0., 0.]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.ones((<span class="number">3</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1., 1., 1.],
+       [1., 1., 1.],
+       [1., 1., 1.]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.ones((<span class="number">3</span>,<span class="number">3</span>)) * <span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[8., 8., 8.],
+       [8., 8., 8.],
+       [8., 8., 8.]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = np.empty(<span class="number">6</span>)</span><br><span class="line">a.fill(<span class="number">1</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1., 1., 1., 1., 1., 1.])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.identity(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1., 0., 0., 0., 0.],
+       [0., 1., 0., 0., 0.],
+       [0., 0., 1., 0., 0.],
+       [0., 0., 0., 1., 0.],
+       [0., 0., 0., 0., 1.]])</code></pre><h3 id="4-5-随机模块"><a href="#4-5-随机模块" class="headerlink" title="4.5 随机模块"></a>4.5 随机模块</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.random.rand(<span class="number">3</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[0.58755743, 0.58962059],
+       [0.03991693, 0.00247106],
+       [0.44385432, 0.09460355]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#返回区间（0,10）的随机整数</span></span><br><span class="line">np.random.randint(<span class="number">10</span>,size = (<span class="number">5</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[0, 2, 9, 2],
+       [3, 5, 9, 1],
+       [2, 4, 0, 9],
+       [9, 8, 1, 1],
+       [5, 2, 2, 1]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.random.randint(<span class="number">0</span>,<span class="number">10</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([8, 2, 4])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#指定随机种子，固定随机结果</span></span><br><span class="line">np.random.seed(<span class="number">100</span>)</span><br><span class="line">array = np.random.rand(<span class="number">10</span>)</span><br><span class="line">array</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([0.54340494, 0.27836939, 0.42451759, 0.84477613, 0.00471886,
+       0.12156912, 0.67074908, 0.82585276, 0.13670659, 0.57509333])</code></pre><h3 id="4-6-文件读写"><a href="#4-6-文件读写" class="headerlink" title="4.6 文件读写"></a>4.6 文件读写</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Notebook写文件</span></span><br><span class="line"><span class="comment">#%%writefile array.txt</span></span><br><span class="line"><span class="comment">#貌似要写在代码第一行才行？ 此命令前不能加注释！</span></span><br><span class="line">data =  open (<span class="string">'array.txt'</span>,<span class="string">'w'</span>)</span><br><span class="line">data.write(<span class="string">"4575\n1234"</span>)</span><br><span class="line">data.close()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#python读取数据比较复杂</span></span><br><span class="line">data = []</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'array.txt'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">        fileds = line.split()</span><br><span class="line">        cur_data = [float(x) <span class="keyword">for</span> x <span class="keyword">in</span> fileds]</span><br><span class="line">        data.append(cur_data)</span><br><span class="line">data = np.array(data)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[4575.],
+       [1234.]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Numpy读取数据</span></span><br><span class="line">data = np.loadtxt(<span class="string">"array.txt"</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([4575., 1234.])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">%%writefile array2.txt</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span></span><br><span class="line"><span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>Writing array2.txt</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数据中带有分隔符‘，’，读取数据是指明,否则报错</span></span><br><span class="line">data = np.loadtxt(<span class="string">"array2.txt"</span>,delimiter = <span class="string">','</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1., 2., 3., 4.],
+       [5., 6., 7., 8.]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">%%writefile array2.txt</span><br><span class="line">a,b,c,d,e,f</span><br><span class="line"><span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span></span><br><span class="line"><span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>Overwriting array2.txt</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#可以指定读取数据时去掉前几行元素</span></span><br><span class="line">data = np.loadtxt(<span class="string">"array2.txt"</span>,delimiter = <span class="string">','</span>,skiprows = <span class="number">1</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[ 1.,  2.,  3.,  4.,  5.,  6.],
+       [ 7.,  8.,  9., 10., 11., 12.]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看np.loadtxt的功能</span></span><br><span class="line">print(help(np.loadtxt))</span><br></pre></td></tr></table></figure>
+
+<pre><code>Help on function loadtxt in module numpy:
+
+loadtxt(fname, dtype=&lt;class &apos;float&apos;&gt;, comments=&apos;#&apos;, delimiter=None, converters=None, skiprows=0, usecols=None, unpack=False, ndmin=0, encoding=&apos;bytes&apos;, max_rows=None)
+    Load data from a text file.
+
+    Each row in the text file must have the same number of values.
+
+    Parameters
+    ----------
+    fname : file, str, or pathlib.Path
+        File, filename, or generator to read.  If the filename extension is
+        ``.gz`` or ``.bz2``, the file is first decompressed. Note that
+        generators should return byte strings for Python 3k.
+    dtype : data-type, optional
+        Data-type of the resulting array; default: float.  If this is a
+        structured data-type, the resulting array will be 1-dimensional, and
+        each row will be interpreted as an element of the array.  In this
+        case, the number of columns used must match the number of fields in
+        the data-type.
+    comments : str or sequence of str, optional
+        The characters or list of characters used to indicate the start of a
+        comment. None implies no comments. For backwards compatibility, byte
+        strings will be decoded as &apos;latin1&apos;. The default is &apos;#&apos;.
+    delimiter : str, optional
+        The string used to separate values. For backwards compatibility, byte
+        strings will be decoded as &apos;latin1&apos;. The default is whitespace.
+    converters : dict, optional
+        A dictionary mapping column number to a function that will parse the
+        column string into the desired value.  E.g., if column 0 is a date
+        string: ``converters = {0: datestr2num}``.  Converters can also be
+        used to provide a default value for missing data (but see also
+        `genfromtxt`): ``converters = {3: lambda s: float(s.strip() or 0)}``.
+        Default: None.
+    skiprows : int, optional
+        Skip the first `skiprows` lines; default: 0.
+    usecols : int or sequence, optional
+        Which columns to read, with 0 being the first. For example,
+        ``usecols = (1,4,5)`` will extract the 2nd, 5th and 6th columns.
+        The default, None, results in all columns being read.
+
+        .. versionchanged:: 1.11.0
+            When a single column has to be read it is possible to use
+            an integer instead of a tuple. E.g ``usecols = 3`` reads the
+            fourth column the same way as ``usecols = (3,)`` would.
+    unpack : bool, optional
+        If True, the returned array is transposed, so that arguments may be
+        unpacked using ``x, y, z = loadtxt(...)``.  When used with a structured
+        data-type, arrays are returned for each field.  Default is False.
+    ndmin : int, optional
+        The returned array will have at least `ndmin` dimensions.
+        Otherwise mono-dimensional axes will be squeezed.
+        Legal values: 0 (default), 1 or 2.
+
+        .. versionadded:: 1.6.0
+    encoding : str, optional
+        Encoding used to decode the inputfile. Does not apply to input streams.
+        The special value &apos;bytes&apos; enables backward compatibility workarounds
+        that ensures you receive byte arrays as results if possible and passes
+        &apos;latin1&apos; encoded strings to converters. Override this value to receive
+        unicode arrays and pass strings as input to converters.  If set to None
+        the system default is used. The default value is &apos;bytes&apos;.
+
+        .. versionadded:: 1.14.0
+    max_rows : int, optional
+        Read `max_rows` lines of content after `skiprows` lines. The default
+        is to read all the lines.
+
+        .. versionadded:: 1.16.0
+
+    Returns
+    -------
+    out : ndarray
+        Data read from the text file.
+
+    See Also
+    --------
+    load, fromstring, fromregex
+    genfromtxt : Load data with missing values handled as specified.
+    scipy.io.loadmat : reads MATLAB data files
+
+    Notes
+    -----
+    This function aims to be a fast reader for simply formatted files.  The
+    `genfromtxt` function provides more sophisticated handling of, e.g.,
+    lines with missing values.
+
+    .. versionadded:: 1.10.0
+
+    The strings produced by the Python float.hex method can be used as
+    input for floats.
+
+    Examples
+    --------
+    &gt;&gt;&gt; from io import StringIO   # StringIO behaves like a file object
+    &gt;&gt;&gt; c = StringIO(u&quot;0 1\n2 3&quot;)
+    &gt;&gt;&gt; np.loadtxt(c)
+    array([[ 0.,  1.],
+           [ 2.,  3.]])
+
+    &gt;&gt;&gt; d = StringIO(u&quot;M 21 72\nF 35 58&quot;)
+    &gt;&gt;&gt; np.loadtxt(d, dtype={&apos;names&apos;: (&apos;gender&apos;, &apos;age&apos;, &apos;weight&apos;),
+    ...                      &apos;formats&apos;: (&apos;S1&apos;, &apos;i4&apos;, &apos;f4&apos;)})
+    array([(&apos;M&apos;, 21, 72.0), (&apos;F&apos;, 35, 58.0)],
+          dtype=[(&apos;gender&apos;, &apos;|S1&apos;), (&apos;age&apos;, &apos;&lt;i4&apos;), (&apos;weight&apos;, &apos;&lt;f4&apos;)])
+
+    &gt;&gt;&gt; c = StringIO(u&quot;1,0,2\n3,0,4&quot;)
+    &gt;&gt;&gt; x, y = np.loadtxt(c, delimiter=&apos;,&apos;, usecols=(0, 2), unpack=True)
+    &gt;&gt;&gt; x
+    array([ 1.,  3.])
+    &gt;&gt;&gt; y
+    array([ 2.,  4.])
+
+None</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Numpy写文件操作</span></span><br><span class="line">np.savetxt(<span class="string">"array4.txt"</span>, array, delimiter = <span class="string">','</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将数据文件保存为Numpy数组格式".npy",可以将机器学习训练的模型参数保存为此格式</span></span><br><span class="line">array = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</span><br><span class="line">np.save(<span class="string">"array.npy"</span>, array)</span><br><span class="line">np.load(<span class="string">"array.npy"</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1, 2, 3],
+       [4, 5, 6]])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Numpy</category>
+      </categories>
+      <tags>
+        <tag>Numpy</tag>
+      </tags>
+  </entry>
 </search>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-27T12:47:52.067Z</updated>
+  <updated>2020-07-30T02:03:25.601Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Numpy的基本操作</title>
+    <link href="http://yoursite.com/2020/07/30/Numpy/"/>
+    <id>http://yoursite.com/2020/07/30/Numpy/</id>
+    <published>2020-07-30T02:02:01.000Z</published>
+    <updated>2020-07-30T02:03:25.601Z</updated>
+    
+    <summary type="html">
+    
+      使用Numpy的一些基本操作
+    
+    </summary>
+    
+    
+      <category term="Numpy" scheme="http://yoursite.com/categories/Numpy/"/>
+    
+    
+      <category term="Numpy" scheme="http://yoursite.com/tags/Numpy/"/>
+    
+  </entry>
   
   <entry>
     <title>python包管理工具：Conda和pip比较</title>
