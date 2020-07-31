@@ -1039,4 +1039,3337 @@ None</code></pre><figure class="highlight python"><table><tr><td class="code"><p
         <tag>Numpy</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Pandas的基本操作</title>
+    <url>/2020/07/31/pandas/</url>
+    <content><![CDATA[<h1 id="数据分析库Pandas"><a href="#数据分析库Pandas" class="headerlink" title="数据分析库Pandas"></a>数据分析库Pandas</h1><h2 id="1-数据预处理"><a href="#1-数据预处理" class="headerlink" title="1. 数据预处理"></a>1. 数据预处理</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-1-数据读取"><a href="#1-1-数据读取" class="headerlink" title="1.1 数据读取"></a>1.1 数据读取</h3><p>泰坦尼克号数据<br><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gh8sfplueyj30oy0fkgn6.jpg" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">'./data/titanic.csv'</span>)</span><br><span class="line"><span class="comment">#展示数据，默认前5条</span></span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#默认展示最后5条数据</span></span><br><span class="line">df.tail()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>886</th>
+      <td>887</td>
+      <td>0</td>
+      <td>2</td>
+      <td>Montvila, Rev. Juozas</td>
+      <td>male</td>
+      <td>27.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>211536</td>
+      <td>13.00</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>888</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Graham, Miss. Margaret Edith</td>
+      <td>female</td>
+      <td>19.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>112053</td>
+      <td>30.00</td>
+      <td>B42</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>888</th>
+      <td>889</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Johnston, Miss. Catherine Helen "Carrie"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>2</td>
+      <td>W./C. 6607</td>
+      <td>23.45</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>890</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Behr, Mr. Karl Howell</td>
+      <td>male</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>111369</td>
+      <td>30.00</td>
+      <td>C148</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>890</th>
+      <td>891</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Dooley, Mr. Patrick</td>
+      <td>male</td>
+      <td>32.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>370376</td>
+      <td>7.75</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="1-2-DataFrame结构"><a href="#1-2-DataFrame结构" class="headerlink" title="1.2 DataFrame结构"></a>1.2 DataFrame结构</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#DataFrame是Pandas工具包的基础结构</span></span><br><span class="line"><span class="comment">#info()查看数据基本信息</span></span><br><span class="line">df.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 12 columns):
+PassengerId    891 non-null int64
+Survived       891 non-null int64
+Pclass         891 non-null int64
+Name           891 non-null object
+Sex            891 non-null object
+Age            714 non-null float64
+SibSp          891 non-null int64
+Parch          891 non-null int64
+Ticket         891 non-null object
+Fare           891 non-null float64
+Cabin          204 non-null object
+Embarked       889 non-null object
+dtypes: float64(2), int64(5), object(5)
+memory usage: 83.6+ KB</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#返回索引</span></span><br><span class="line">df.index</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>RangeIndex(start=0, stop=891, step=1)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#列出每一列特征的名字</span></span><br><span class="line">df.columns</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Index([&apos;PassengerId&apos;, &apos;Survived&apos;, &apos;Pclass&apos;, &apos;Name&apos;, &apos;Sex&apos;, &apos;Age&apos;, &apos;SibSp&apos;,
+       &apos;Parch&apos;, &apos;Ticket&apos;, &apos;Fare&apos;, &apos;Cabin&apos;, &apos;Embarked&apos;],
+      dtype=&apos;object&apos;)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#返回每一列特征的类型，object表示字符串</span></span><br><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>PassengerId      int64
+Survived         int64
+Pclass           int64
+Name            object
+Sex             object
+Age            float64
+SibSp            int64
+Parch            int64
+Ticket          object
+Fare           float64
+Cabin           object
+Embarked        object
+dtype: object</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#直接取得数值矩阵</span></span><br><span class="line">df.values</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([[1, 0, 3, ..., 7.25, nan, &apos;S&apos;],
+       [2, 1, 1, ..., 71.2833, &apos;C85&apos;, &apos;C&apos;],
+       [3, 1, 3, ..., 7.925, nan, &apos;S&apos;],
+       ...,
+       [889, 0, 3, ..., 23.45, nan, &apos;S&apos;],
+       [890, 1, 1, ..., 30.0, &apos;C148&apos;, &apos;C&apos;],
+       [891, 0, 3, ..., 7.75, nan, &apos;Q&apos;]], dtype=object)</code></pre><h3 id="1-3-数据索引"><a href="#1-3-数据索引" class="headerlink" title="1.3 数据索引"></a>1.3 数据索引</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">age = df[<span class="string">'Age'</span>]</span><br><span class="line">age[:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    22.0
+1    38.0
+2    26.0
+3    35.0
+4    35.0
+Name: Age, dtype: float64</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">age.values[:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([22., 38., 26., 35., 35.])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Pandas读取数据默认添加数字索引，可以指定索引项</span></span><br><span class="line">data = df.set_index(<span class="string">'Name'</span>)</span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Braund, Mr. Owen Harris</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Cumings, Mrs. John Bradley (Florence Briggs Thayer)</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>Heikkinen, Miss. Laina</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Futrelle, Mrs. Jacques Heath (Lily May Peel)</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Allen, Mr. William Henry</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#通过索引取部分数据</span></span><br><span class="line">df = pd.read_csv(<span class="string">'./data/titanic.csv'</span>)</span><br><span class="line">df[[<span class="string">'Age'</span>,<span class="string">'Fare'</span>]][:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22.0</td>
+      <td>7.2500</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>38.0</td>
+      <td>71.2833</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>26.0</td>
+      <td>7.9250</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>35.0</td>
+      <td>53.1000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>35.0</td>
+      <td>8.0500</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#索引用位置找一行数据.iloc[]</span></span><br><span class="line">df.iloc[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>PassengerId                          1
+Survived                             0
+Pclass                               3
+Name           Braund, Mr. Owen Harris
+Sex                               male
+Age                                 22
+SibSp                                1
+Parch                                0
+Ticket                       A/5 21171
+Fare                              7.25
+Cabin                              NaN
+Embarked                             S
+Name: 0, dtype: object</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#切片部分数据</span></span><br><span class="line">df.iloc[:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#指定部分数据的部分特征</span></span><br><span class="line">df.iloc[:<span class="number">5</span>,<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Survived</th>
+      <th>Pclass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#用标签找数据.loc[]</span></span><br><span class="line">df = df.set_index(<span class="string">'Name'</span>)</span><br><span class="line">df.loc[<span class="string">'Heikkinen, Miss. Laina'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>PassengerId                   3
+Survived                      1
+Pclass                        3
+Sex                      female
+Age                          26
+SibSp                         0
+Parch                         0
+Ticket         STON/O2. 3101282
+Fare                      7.925
+Cabin                       NaN
+Embarked                      S
+Name: Heikkinen, Miss. Laina, dtype: object</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#当前数据某一列数据</span></span><br><span class="line">df.loc[<span class="string">'Heikkinen, Miss. Laina'</span>,<span class="string">'Fare'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>7.925</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#选择多个样本</span></span><br><span class="line">df.loc[<span class="string">'Heikkinen, Miss. Laina'</span>:<span class="string">'Allen, Mr. William Henry'</span>,:]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Heikkinen, Miss. Laina</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.925</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Futrelle, Mrs. Jacques Heath (Lily May Peel)</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.100</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Allen, Mr. William Henry</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.050</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数据赋值</span></span><br><span class="line">df.loc[<span class="string">'Heikkinen, Miss. Laina'</span>,<span class="string">'Fare'</span>] = <span class="number">1000</span></span><br><span class="line">df[:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Braund, Mr. Owen Harris</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Cumings, Mrs. John Bradley (Florence Briggs Thayer)</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>Heikkinen, Miss. Laina</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>1000.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Futrelle, Mrs. Jacques Heath (Lily May Peel)</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Allen, Mr. William Henry</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#bool类型作索引</span></span><br><span class="line">df[<span class="string">'Fare'</span>] &gt; <span class="number">40</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Name
+Braund, Mr. Owen Harris                                      False
+Cumings, Mrs. John Bradley (Florence Briggs Thayer)           True
+Heikkinen, Miss. Laina                                        True
+Futrelle, Mrs. Jacques Heath (Lily May Peel)                  True
+Allen, Mr. William Henry                                     False
+Moran, Mr. James                                             False
+McCarthy, Mr. Timothy J                                       True
+Palsson, Master. Gosta Leonard                               False
+Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)            False
+Nasser, Mrs. Nicholas (Adele Achem)                          False
+Sandstrom, Miss. Marguerite Rut                              False
+Bonnell, Miss. Elizabeth                                     False
+Saundercock, Mr. William Henry                               False
+Andersson, Mr. Anders Johan                                  False
+Vestrom, Miss. Hulda Amanda Adolfina                         False
+Hewlett, Mrs. (Mary D Kingcome)                              False
+Rice, Master. Eugene                                         False
+Williams, Mr. Charles Eugene                                 False
+Vander Planke, Mrs. Julius (Emelia Maria Vandemoortele)      False
+Masselmani, Mrs. Fatima                                      False
+Fynney, Mr. Joseph J                                         False
+Beesley, Mr. Lawrence                                        False
+McGowan, Miss. Anna &quot;Annie&quot;                                  False
+Sloper, Mr. William Thompson                                 False
+Palsson, Miss. Torborg Danira                                False
+Asplund, Mrs. Carl Oscar (Selma Augusta Emilia Johansson)    False
+Emir, Mr. Farred Chehab                                      False
+Fortune, Mr. Charles Alexander                                True
+O&apos;Dwyer, Miss. Ellen &quot;Nellie&quot;                                False
+Todoroff, Mr. Lalio                                          False
+                                                             ...  
+Giles, Mr. Frederick Edward                                  False
+Swift, Mrs. Frederick Joel (Margaret Welles Barron)          False
+Sage, Miss. Dorothy Edith &quot;Dolly&quot;                             True
+Gill, Mr. John William                                       False
+Bystrom, Mrs. (Karolina)                                     False
+Duran y More, Miss. Asuncion                                 False
+Roebling, Mr. Washington Augustus II                          True
+van Melkebeke, Mr. Philemon                                  False
+Johnson, Master. Harold Theodor                              False
+Balkic, Mr. Cerin                                            False
+Beckwith, Mrs. Richard Leonard (Sallie Monypeny)              True
+Carlsson, Mr. Frans Olof                                     False
+Vander Cruyssen, Mr. Victor                                  False
+Abelson, Mrs. Samuel (Hannah Wizosky)                        False
+Najib, Miss. Adele Kiamie &quot;Jane&quot;                             False
+Gustafsson, Mr. Alfred Ossian                                False
+Petroff, Mr. Nedelio                                         False
+Laleff, Mr. Kristo                                           False
+Potter, Mrs. Thomas Jr (Lily Alexenia Wilson)                 True
+Shelley, Mrs. William (Imanita Parrish Hall)                 False
+Markun, Mr. Johann                                           False
+Dahlberg, Miss. Gerda Ulrika                                 False
+Banfield, Mr. Frederick James                                False
+Sutehall, Mr. Henry Jr                                       False
+Rice, Mrs. William (Margaret Norton)                         False
+Montvila, Rev. Juozas                                        False
+Graham, Miss. Margaret Edith                                 False
+Johnston, Miss. Catherine Helen &quot;Carrie&quot;                     False
+Behr, Mr. Karl Howell                                        False
+Dooley, Mr. Patrick                                          False
+Name: Fare, Length: 891, dtype: bool</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#通过bool类型筛选价格大于40的乘客</span></span><br><span class="line">df[df[<span class="string">'Fare'</span>] &gt; <span class="number">40</span>][:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Cumings, Mrs. John Bradley (Florence Briggs Thayer)</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>Heikkinen, Miss. Laina</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>1000.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Futrelle, Mrs. Jacques Heath (Lily May Peel)</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>McCarthy, Mr. Timothy J</th>
+      <td>7</td>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>54.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17463</td>
+      <td>51.8625</td>
+      <td>E46</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Fortune, Mr. Charles Alexander</th>
+      <td>28</td>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>19.0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>19950</td>
+      <td>263.0000</td>
+      <td>C23 C25 C27</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[df[<span class="string">'Sex'</span>] == <span class="string">'male'</span>][:<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Braund, Mr. Owen Harris</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Allen, Mr. William Henry</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Moran, Mr. James</th>
+      <td>6</td>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>330877</td>
+      <td>8.4583</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>McCarthy, Mr. Timothy J</th>
+      <td>7</td>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>54.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17463</td>
+      <td>51.8625</td>
+      <td>E46</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>Palsson, Master. Gosta Leonard</th>
+      <td>8</td>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>349909</td>
+      <td>21.0750</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#计算男性乘客的平均年龄</span></span><br><span class="line">df.loc[df[<span class="string">'Sex'</span>] == <span class="string">'male'</span>, <span class="string">'Age'</span>].mean()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>30.72664459161148</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#计算年龄大于70的人的总数</span></span><br><span class="line">(df[<span class="string">'Age'</span>] &gt; <span class="number">70</span>).sum()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>5</code></pre><h3 id="1-4-创建DataFrame"><a href="#1-4-创建DataFrame" class="headerlink" title="1.4 创建DataFrame"></a>1.4 创建DataFrame</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = &#123;<span class="string">'country'</span>:[<span class="string">'China'</span>,<span class="string">'America'</span>,<span class="string">'India'</span>],</span><br><span class="line">       <span class="string">'population'</span>:[<span class="number">3</span>, <span class="number">14</span>, <span class="number">6</span>]&#125;</span><br><span class="line">data_df = pd.DataFrame(data)</span><br><span class="line">data_df</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>China</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>America</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>India</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="1-5-Series操作"><a href="#1-5-Series操作" class="headerlink" title="1.5 Series操作"></a>1.5 Series操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#DataFrame和Series都可以看作是二维矩阵，单独的一列就是Series，DataFrame由Series组合</span></span><br><span class="line"><span class="comment">#创建Series</span></span><br><span class="line">data = [<span class="number">11</span>,<span class="number">45</span>,<span class="number">21</span>]</span><br><span class="line">index = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>]</span><br><span class="line">s = pd.Series(data = data, index = index)</span><br><span class="line">s</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>a    11
+b    45
+c    21
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#标签查找</span></span><br><span class="line">s.loc[<span class="string">'b'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>45</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#索引查找</span></span><br><span class="line">s.iloc[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>45</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#修改操作</span></span><br><span class="line">s1 = s.copy()</span><br><span class="line">s1.loc[<span class="string">'a'</span>] = <span class="number">100</span></span><br><span class="line">s1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>a    100
+b     45
+c     21
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s1.replace(<span class="number">100</span>,<span class="number">101</span>,inplace = <span class="literal">True</span>)</span><br><span class="line">s1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>a    101
+b     45
+c     21
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#修改索引</span></span><br><span class="line">s1.index</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Index([&apos;a&apos;, &apos;b&apos;, &apos;c&apos;], dtype=&apos;object&apos;)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s1.index = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'z'</span>]</span><br><span class="line">s1.index</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Index([&apos;a&apos;, &apos;b&apos;, &apos;z&apos;], dtype=&apos;object&apos;)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#索引重命名</span></span><br><span class="line">s1.rename(index = &#123;<span class="string">'a'</span>:<span class="string">'A'</span>&#125;,inplace = <span class="literal">True</span>)</span><br><span class="line">s1.index</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Index([&apos;A&apos;, &apos;b&apos;, &apos;z&apos;], dtype=&apos;object&apos;)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = [<span class="number">100</span>,<span class="number">101</span>]</span><br><span class="line">index = [<span class="string">'e'</span>,<span class="string">'f'</span>]</span><br><span class="line">s2 = pd.Series(data,index,)</span><br><span class="line">s3 = s1.append(s2)</span><br><span class="line">s3</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>A    101
+b     45
+z     21
+e    100
+f    101
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s3[<span class="string">'f'</span>] = <span class="number">500</span></span><br><span class="line">s3</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>A    101
+b     45
+z     21
+e    100
+f    500
+dtype: int64</code></pre><h2 id="2-数据分析"><a href="#2-数据分析" class="headerlink" title="2. 数据分析"></a>2. 数据分析</h2><h3 id="2-1-统计分析"><a href="#2-1-统计分析" class="headerlink" title="2.1 统计分析"></a>2.1 统计分析</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建DataFrame</span></span><br><span class="line">df = pd.DataFrame([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]],index = [<span class="string">'a'</span>, <span class="string">'b'</span>], columns = [<span class="string">'A'</span>,<span class="string">'B'</span>, <span class="string">'C'</span>])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.sum()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>A    5
+B    7
+C    9
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.sum(axis = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>a     6
+b    15
+dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#快捷观察样本的情况</span></span><br><span class="line">df.describe()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>891.000000</td>
+      <td>891.000000</td>
+      <td>891.000000</td>
+      <td>714.000000</td>
+      <td>891.000000</td>
+      <td>891.000000</td>
+      <td>891.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>446.000000</td>
+      <td>0.383838</td>
+      <td>2.308642</td>
+      <td>29.699118</td>
+      <td>0.523008</td>
+      <td>0.381594</td>
+      <td>32.204208</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>257.353842</td>
+      <td>0.486592</td>
+      <td>0.836071</td>
+      <td>14.526497</td>
+      <td>1.102743</td>
+      <td>0.806057</td>
+      <td>49.693429</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.420000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>223.500000</td>
+      <td>0.000000</td>
+      <td>2.000000</td>
+      <td>20.125000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>7.910400</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>446.000000</td>
+      <td>0.000000</td>
+      <td>3.000000</td>
+      <td>28.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>14.454200</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>668.500000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>38.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>31.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>891.000000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>80.000000</td>
+      <td>8.000000</td>
+      <td>6.000000</td>
+      <td>512.329200</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#协方差矩阵</span></span><br><span class="line">df.cov()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PassengerId</th>
+      <td>66231.000000</td>
+      <td>-0.626966</td>
+      <td>-7.561798</td>
+      <td>138.696504</td>
+      <td>-16.325843</td>
+      <td>-0.342697</td>
+      <td>161.883369</td>
+    </tr>
+    <tr>
+      <th>Survived</th>
+      <td>-0.626966</td>
+      <td>0.236772</td>
+      <td>-0.137703</td>
+      <td>-0.551296</td>
+      <td>-0.018954</td>
+      <td>0.032017</td>
+      <td>6.221787</td>
+    </tr>
+    <tr>
+      <th>Pclass</th>
+      <td>-7.561798</td>
+      <td>-0.137703</td>
+      <td>0.699015</td>
+      <td>-4.496004</td>
+      <td>0.076599</td>
+      <td>0.012429</td>
+      <td>-22.830196</td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td>138.696504</td>
+      <td>-0.551296</td>
+      <td>-4.496004</td>
+      <td>211.019125</td>
+      <td>-4.163334</td>
+      <td>-2.344191</td>
+      <td>73.849030</td>
+    </tr>
+    <tr>
+      <th>SibSp</th>
+      <td>-16.325843</td>
+      <td>-0.018954</td>
+      <td>0.076599</td>
+      <td>-4.163334</td>
+      <td>1.216043</td>
+      <td>0.368739</td>
+      <td>8.748734</td>
+    </tr>
+    <tr>
+      <th>Parch</th>
+      <td>-0.342697</td>
+      <td>0.032017</td>
+      <td>0.012429</td>
+      <td>-2.344191</td>
+      <td>0.368739</td>
+      <td>0.649728</td>
+      <td>8.661052</td>
+    </tr>
+    <tr>
+      <th>Fare</th>
+      <td>161.883369</td>
+      <td>6.221787</td>
+      <td>-22.830196</td>
+      <td>73.849030</td>
+      <td>8.748734</td>
+      <td>8.661052</td>
+      <td>2469.436846</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#相关系数</span></span><br><span class="line">df.corr()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Fare</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PassengerId</th>
+      <td>1.000000</td>
+      <td>-0.005007</td>
+      <td>-0.035144</td>
+      <td>0.036847</td>
+      <td>-0.057527</td>
+      <td>-0.001652</td>
+      <td>0.012658</td>
+    </tr>
+    <tr>
+      <th>Survived</th>
+      <td>-0.005007</td>
+      <td>1.000000</td>
+      <td>-0.338481</td>
+      <td>-0.077221</td>
+      <td>-0.035322</td>
+      <td>0.081629</td>
+      <td>0.257307</td>
+    </tr>
+    <tr>
+      <th>Pclass</th>
+      <td>-0.035144</td>
+      <td>-0.338481</td>
+      <td>1.000000</td>
+      <td>-0.369226</td>
+      <td>0.083081</td>
+      <td>0.018443</td>
+      <td>-0.549500</td>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <td>0.036847</td>
+      <td>-0.077221</td>
+      <td>-0.369226</td>
+      <td>1.000000</td>
+      <td>-0.308247</td>
+      <td>-0.189119</td>
+      <td>0.096067</td>
+    </tr>
+    <tr>
+      <th>SibSp</th>
+      <td>-0.057527</td>
+      <td>-0.035322</td>
+      <td>0.083081</td>
+      <td>-0.308247</td>
+      <td>1.000000</td>
+      <td>0.414838</td>
+      <td>0.159651</td>
+    </tr>
+    <tr>
+      <th>Parch</th>
+      <td>-0.001652</td>
+      <td>0.081629</td>
+      <td>0.018443</td>
+      <td>-0.189119</td>
+      <td>0.414838</td>
+      <td>1.000000</td>
+      <td>0.216225</td>
+    </tr>
+    <tr>
+      <th>Fare</th>
+      <td>0.012658</td>
+      <td>0.257307</td>
+      <td>-0.549500</td>
+      <td>0.096067</td>
+      <td>0.159651</td>
+      <td>0.216225</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#统计该列所有属性的个数(离散值)</span></span><br><span class="line">df[<span class="string">'Sex'</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>male      577
+female    314
+Name: Sex, dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#对于连续值可以划分区间统计,bins的值代表分为几组</span></span><br><span class="line">df[<span class="string">'Age'</span>].value_counts(ascending = <span class="literal">True</span>, bins = <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(64.084, 80.0]       11
+(48.168, 64.084]     69
+(0.339, 16.336]     100
+(32.252, 48.168]    188
+(16.336, 32.252]    346
+Name: Age, dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#分箱操作</span></span><br><span class="line">ages = [<span class="number">15</span>,<span class="number">18</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span>,<span class="number">34</span>,<span class="number">41</span>,<span class="number">52</span>,<span class="number">63</span>,<span class="number">79</span>]</span><br><span class="line">bins = [<span class="number">10</span>,<span class="number">40</span>,<span class="number">80</span>]</span><br><span class="line">bins_res = pd.cut(ages,bins)</span><br><span class="line">bins_res</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[(10, 40], (10, 40], (10, 40], (10, 40], (10, 40], (10, 40], (40, 80], (40, 80], (40, 80], (40, 80]]
+Categories (2, interval[int64]): [(10, 40] &lt; (40, 80]]</code></pre><h3 id="2-3-groupby操作"><a href="#2-3-groupby操作" class="headerlink" title="2.3 groupby操作"></a>2.3 groupby操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">'key'</span>:[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>],<span class="string">'data'</span>:[<span class="number">0</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">20</span>]&#125;)</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key</th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>C</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>A</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>B</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>C</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#计算各key对应的值的和</span></span><br><span class="line">df.groupby(<span class="string">'key'</span>).sum()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+    </tr>
+    <tr>
+      <th>key</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h2 id="3-常用函数操作"><a href="#3-常用函数操作" class="headerlink" title="3. 常用函数操作"></a>3. 常用函数操作</h2><h3 id="3-1-Merge操作"><a href="#3-1-Merge操作" class="headerlink" title="3.1 Merge操作"></a>3.1 Merge操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">left = pd.DataFrame(&#123;<span class="string">'key'</span>:[<span class="string">'K0'</span>,<span class="string">'K1'</span>,<span class="string">'K2'</span>,<span class="string">'K3'</span>],</span><br><span class="line">                   <span class="string">'A'</span>:[<span class="string">'A0'</span>,<span class="string">'A1'</span>,<span class="string">'A2'</span>,<span class="string">'A3'</span>],</span><br><span class="line">                   <span class="string">'B'</span>:[<span class="string">'B0'</span>,<span class="string">'B1'</span>,<span class="string">'B2'</span>,<span class="string">'B3'</span>]&#125;)</span><br><span class="line">right = pd.DataFrame(&#123;<span class="string">'key'</span>:[<span class="string">'K0'</span>,<span class="string">'K1'</span>,<span class="string">'K2'</span>,<span class="string">'K3'</span>],</span><br><span class="line">                    <span class="string">'C'</span>:[<span class="string">'C0'</span>,<span class="string">'C1'</span>,<span class="string">'C2'</span>,<span class="string">'C3'</span>],</span><br><span class="line">                    <span class="string">'D'</span>:[<span class="string">'D0'</span>,<span class="string">'D1'</span>,<span class="string">'D2'</span>,<span class="string">'D3'</span>]&#125;)</span><br><span class="line">pd.merge(left,right,on = <span class="string">'key'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>K0</td>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>K1</td>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>D1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>K2</td>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>K3</td>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>D3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="3-1-排序操作"><a href="#3-1-排序操作" class="headerlink" title="3.1 排序操作"></a>3.1 排序操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data  = pd.DataFrame(&#123;<span class="string">'group'</span>:[<span class="string">'a'</span>,<span class="string">'a'</span>,<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'b'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'c'</span>,<span class="string">'c'</span>],</span><br><span class="line">                     <span class="string">'data'</span>:[<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">12</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>]&#125;)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group</th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>b</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>c</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>c</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>c</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.sort_values(by = [<span class="string">'group'</span>,<span class="string">'data'</span>],ascending = [<span class="literal">True</span>,<span class="literal">False</span>],inplace=<span class="literal">True</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group</th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>b</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>c</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>c</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>c</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="3-3-缺失值处理"><a href="#3-3-缺失值处理" class="headerlink" title="3.3 缺失值处理"></a>3.3 缺失值处理</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = pd.DataFrame(&#123;<span class="string">'k1'</span>:[<span class="string">'one'</span>] *<span class="number">3</span> + [<span class="string">'two'</span>]* <span class="number">4</span>,</span><br><span class="line">                    <span class="string">'k2'</span>:[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>]&#125;)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>k1</th>
+      <th>k2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>one</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>one</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>one</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>two</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>two</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>two</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>two</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#去掉冗余相同数据drop_duplicates()</span></span><br><span class="line">res =  data.drop_duplicates()</span><br><span class="line">res</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>k1</th>
+      <th>k2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>one</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>one</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>one</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>two</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>two</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#只考虑某些列的冗余数据处理</span></span><br><span class="line">res1 = data.drop_duplicates(subset=<span class="string">'k1'</span>)</span><br><span class="line">res1</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>k1</th>
+      <th>k2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>one</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>two</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#添加新列assign()</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">'data1'</span>:np.random.randn(<span class="number">5</span>),<span class="string">'data2'</span>:np.random.randn(<span class="number">5</span>)&#125;)</span><br><span class="line">df2 = df.assign(ration = df[<span class="string">'data1'</span>]/df[<span class="string">'data2'</span>])</span><br><span class="line">df2</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data1</th>
+      <th>data2</th>
+      <th>ration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.795552</td>
+      <td>1.063400</td>
+      <td>0.748121</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.516393</td>
+      <td>1.453561</td>
+      <td>1.043226</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.043458</td>
+      <td>-0.210488</td>
+      <td>4.957335</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.112729</td>
+      <td>1.536009</td>
+      <td>0.724429</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.302984</td>
+      <td>-1.075604</td>
+      <td>-0.281687</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame([range(<span class="number">3</span>),[<span class="number">0</span>,np.nan,<span class="number">0</span>],[<span class="number">0</span>,<span class="number">0</span>,np.nan],range(<span class="number">3</span>)])</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#通过isnull判断是否存在缺失值</span></span><br><span class="line">df.isnull()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#直接判断某列是否存在缺失值</span></span><br><span class="line">df.isnull().any()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    False
+1     True
+2     True
+dtype: bool</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#指定维度检查缺失值</span></span><br><span class="line">df.isnull().any(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    False
+1     True
+2     True
+3    False
+dtype: bool</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#缺失值填充</span></span><br><span class="line">df.fillna(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="3-4-apply自定义函数"><a href="#3-4-apply自定义函数" class="headerlink" title="3.4 apply自定义函数"></a>3.4 apply自定义函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = pd.DataFrame(&#123;<span class="string">'food'</span>:[<span class="string">'A1'</span>,<span class="string">'A2'</span>,<span class="string">'B1'</span>,<span class="string">'B2'</span>,<span class="string">'B3'</span>,<span class="string">'C1'</span>,<span class="string">'C2'</span>],</span><br><span class="line">                    <span class="string">'data'</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]&#125;)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>food</th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B3</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>C1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>C2</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">food_map</span><span class="params">(series)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> series[<span class="string">'food'</span>] == <span class="string">'A1'</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'A'</span></span><br><span class="line">    <span class="keyword">elif</span> series[<span class="string">'food'</span>] == <span class="string">'A2'</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'A'</span></span><br><span class="line">    <span class="keyword">elif</span> series[<span class="string">'food'</span>] == <span class="string">'B1'</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'B'</span></span><br><span class="line">    <span class="keyword">elif</span> series[<span class="string">'food'</span>] == <span class="string">'B2'</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'B'</span></span><br><span class="line">    <span class="keyword">elif</span> series[<span class="string">'food'</span>] == <span class="string">'B3'</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'B'</span></span><br><span class="line">    <span class="keyword">elif</span> series[<span class="string">'food'</span>] == <span class="string">'C1'</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'C'</span></span><br><span class="line">    <span class="keyword">elif</span> series[<span class="string">'food'</span>] == <span class="string">'C2'</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'C'</span> </span><br><span class="line">data[<span class="string">'food_map'</span>] = data.apply(food_map,axis = <span class="string">'columns'</span>)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>food</th>
+      <th>data</th>
+      <th>food_map</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A1</td>
+      <td>1</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A2</td>
+      <td>2</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B1</td>
+      <td>3</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B2</td>
+      <td>4</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B3</td>
+      <td>5</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>C1</td>
+      <td>6</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>C2</td>
+      <td>7</td>
+      <td>C</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="3-5-时间操作"><a href="#3-5-时间操作" class="headerlink" title="3.5 时间操作"></a>3.5 时间操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#读取数据时以时间为索引</span></span><br><span class="line">data = pd.read_csv(<span class="string">'./data/flowdata.csv'</span>,index_col = <span class="number">0</span>,parse_dates = <span class="literal">True</span>)</span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>L06_347</th>
+      <th>LS06_347</th>
+      <th>LS06_348</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2009-01-01 00:00:00</th>
+      <td>0.137417</td>
+      <td>0.097500</td>
+      <td>0.016833</td>
+    </tr>
+    <tr>
+      <th>2009-01-01 03:00:00</th>
+      <td>0.131250</td>
+      <td>0.088833</td>
+      <td>0.016417</td>
+    </tr>
+    <tr>
+      <th>2009-01-01 06:00:00</th>
+      <td>0.113500</td>
+      <td>0.091250</td>
+      <td>0.016750</td>
+    </tr>
+    <tr>
+      <th>2009-01-01 09:00:00</th>
+      <td>0.135750</td>
+      <td>0.091500</td>
+      <td>0.016250</td>
+    </tr>
+    <tr>
+      <th>2009-01-01 12:00:00</th>
+      <td>0.140917</td>
+      <td>0.096167</td>
+      <td>0.017000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#取某一年的数据</span></span><br><span class="line">data[<span class="string">'2013'</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>L06_347</th>
+      <th>LS06_347</th>
+      <th>LS06_348</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01 00:00:00</th>
+      <td>1.688333</td>
+      <td>1.688333</td>
+      <td>0.207333</td>
+    </tr>
+    <tr>
+      <th>2013-01-01 03:00:00</th>
+      <td>2.693333</td>
+      <td>2.693333</td>
+      <td>0.201500</td>
+    </tr>
+    <tr>
+      <th>2013-01-01 06:00:00</th>
+      <td>2.220833</td>
+      <td>2.220833</td>
+      <td>0.166917</td>
+    </tr>
+    <tr>
+      <th>2013-01-01 09:00:00</th>
+      <td>2.055000</td>
+      <td>2.055000</td>
+      <td>0.175667</td>
+    </tr>
+    <tr>
+      <th>2013-01-01 12:00:00</th>
+      <td>1.710000</td>
+      <td>1.710000</td>
+      <td>0.129583</td>
+    </tr>
+    <tr>
+      <th>2013-01-01 15:00:00</th>
+      <td>1.420000</td>
+      <td>1.420000</td>
+      <td>0.096333</td>
+    </tr>
+    <tr>
+      <th>2013-01-01 18:00:00</th>
+      <td>1.178583</td>
+      <td>1.178583</td>
+      <td>0.083083</td>
+    </tr>
+    <tr>
+      <th>2013-01-01 21:00:00</th>
+      <td>0.898250</td>
+      <td>0.898250</td>
+      <td>0.077167</td>
+    </tr>
+    <tr>
+      <th>2013-01-02 00:00:00</th>
+      <td>0.860000</td>
+      <td>0.860000</td>
+      <td>0.075000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<h3 id="3-6-绘图操作"><a href="#3-6-绘图操作" class="headerlink" title="3.6 绘图操作"></a>3.6 绘图操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#pandas简单绘图操作</span></span><br><span class="line">%matplotlib inline</span><br><span class="line">df = pd.DataFrame(np.random.randn(<span class="number">10</span>,<span class="number">4</span>).cumsum(<span class="number">0</span>),index = np.arange(<span class="number">0</span>,<span class="number">100</span>,<span class="number">10</span>),</span><br><span class="line">                  columns = [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>])</span><br><span class="line">df.plot()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1dbf30fb860&gt;</code></pre>{% asset_img output_80_1.png This is an test image %}
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment">#指定子图两行一列</span></span><br><span class="line">fig,axes = plt.subplots(<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">data = pd.Series(np.random.rand(<span class="number">16</span>),index = list(<span class="string">'abcdefghijklmnop'</span>))</span><br><span class="line">data.plot(ax = axes[<span class="number">0</span>],kind = <span class="string">'bar'</span>)</span><br><span class="line">data.plot(ax = axes[<span class="number">1</span>],kind = <span class="string">'barh'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1dbf37e0080&gt;</code></pre><p><img src="/2020/07/31/pandas/output_81_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.DataFrame(np.random.rand(<span class="number">6</span>,<span class="number">4</span>),index = [<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>,<span class="string">'four'</span>,<span class="string">'five'</span>,<span class="string">'six'</span>],</span><br><span class="line">                 columns = pd.Index([<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>], name = <span class="string">'Genus'</span>))</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Genus</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>0.825736</td>
+      <td>0.816818</td>
+      <td>0.836805</td>
+      <td>0.288769</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.568115</td>
+      <td>0.108279</td>
+      <td>0.188345</td>
+      <td>0.343175</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>0.669199</td>
+      <td>0.137701</td>
+      <td>0.567066</td>
+      <td>0.813652</td>
+    </tr>
+    <tr>
+      <th>four</th>
+      <td>0.961713</td>
+      <td>0.971082</td>
+      <td>0.319790</td>
+      <td>0.780224</td>
+    </tr>
+    <tr>
+      <th>five</th>
+      <td>0.196340</td>
+      <td>0.901948</td>
+      <td>0.684793</td>
+      <td>0.644339</td>
+    </tr>
+    <tr>
+      <th>six</th>
+      <td>0.249157</td>
+      <td>0.321956</td>
+      <td>0.110594</td>
+      <td>0.574358</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.plot(kind = <span class="string">'bar'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1dbf35d4cf8&gt;</code></pre><p><img src="/2020/07/31/pandas/output_83_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">'./data/macrodata.csv'</span>)</span><br><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>quarter</th>
+      <th>realgdp</th>
+      <th>realcons</th>
+      <th>realinv</th>
+      <th>realgovt</th>
+      <th>realdpi</th>
+      <th>cpi</th>
+      <th>m1</th>
+      <th>tbilrate</th>
+      <th>unemp</th>
+      <th>pop</th>
+      <th>infl</th>
+      <th>realint</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1959.0</td>
+      <td>1.0</td>
+      <td>2710.349</td>
+      <td>1707.4</td>
+      <td>286.898</td>
+      <td>470.045</td>
+      <td>1886.9</td>
+      <td>28.98</td>
+      <td>139.7</td>
+      <td>2.82</td>
+      <td>5.8</td>
+      <td>177.146</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1959.0</td>
+      <td>2.0</td>
+      <td>2778.801</td>
+      <td>1733.7</td>
+      <td>310.859</td>
+      <td>481.301</td>
+      <td>1919.7</td>
+      <td>29.15</td>
+      <td>141.7</td>
+      <td>3.08</td>
+      <td>5.1</td>
+      <td>177.830</td>
+      <td>2.34</td>
+      <td>0.74</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1959.0</td>
+      <td>3.0</td>
+      <td>2775.488</td>
+      <td>1751.8</td>
+      <td>289.226</td>
+      <td>491.260</td>
+      <td>1916.4</td>
+      <td>29.35</td>
+      <td>140.5</td>
+      <td>3.82</td>
+      <td>5.3</td>
+      <td>178.657</td>
+      <td>2.74</td>
+      <td>1.09</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1959.0</td>
+      <td>4.0</td>
+      <td>2785.204</td>
+      <td>1753.7</td>
+      <td>299.356</td>
+      <td>484.052</td>
+      <td>1931.3</td>
+      <td>29.37</td>
+      <td>140.0</td>
+      <td>4.33</td>
+      <td>5.6</td>
+      <td>179.386</td>
+      <td>0.27</td>
+      <td>4.06</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1960.0</td>
+      <td>1.0</td>
+      <td>2847.699</td>
+      <td>1770.5</td>
+      <td>331.722</td>
+      <td>462.199</td>
+      <td>1955.5</td>
+      <td>29.54</td>
+      <td>139.6</td>
+      <td>3.50</td>
+      <td>5.2</td>
+      <td>180.007</td>
+      <td>2.31</td>
+      <td>1.19</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.plot.scatter(<span class="string">'quarter'</span>,<span class="string">'realgdp'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1dbf39df198&gt;</code></pre><p><img src="/2020/07/31/pandas/output_85_1.png" alt="png"></p>
+<h2 id="4-大数据处理技巧"><a href="#4-大数据处理技巧" class="headerlink" title="4. 大数据处理技巧"></a>4. 大数据处理技巧</h2><h3 id="4-1-数值类型转换"><a href="#4-1-数值类型转换" class="headerlink" title="4.1 数值类型转换"></a>4.1 数值类型转换</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gl = pd.read_csv(<span class="string">'./data/game_logs.csv'</span>)</span><br><span class="line">gl.head()</span><br></pre></td></tr></table></figure>
+
+<pre><code>D:\anaconda3\lib\site-packages\IPython\core\interactiveshell.py:3049: DtypeWarning: Columns (12,13,14,15,19,20,81,83,85,87,93,94,95,96,97,98,99,100,105,106,108,109,111,112,114,115,117,118,120,121,123,124,126,127,129,130,132,133,135,136,138,139,141,142,144,145,147,148,150,151,153,154,156,157,160) have mixed types. Specify dtype option on import or set low_memory=False.
+  interactivity=interactivity, compiler=compiler, result=result)</code></pre><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>number_of_game</th>
+      <th>day_of_week</th>
+      <th>v_name</th>
+      <th>v_league</th>
+      <th>v_game_number</th>
+      <th>h_name</th>
+      <th>h_league</th>
+      <th>h_game_number</th>
+      <th>v_score</th>
+      <th>...</th>
+      <th>h_player_7_name</th>
+      <th>h_player_7_def_pos</th>
+      <th>h_player_8_id</th>
+      <th>h_player_8_name</th>
+      <th>h_player_8_def_pos</th>
+      <th>h_player_9_id</th>
+      <th>h_player_9_name</th>
+      <th>h_player_9_def_pos</th>
+      <th>additional_info</th>
+      <th>acquisition_info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>18710504</td>
+      <td>0</td>
+      <td>Thu</td>
+      <td>CL1</td>
+      <td>na</td>
+      <td>1</td>
+      <td>FW1</td>
+      <td>na</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>Ed Mincher</td>
+      <td>7.0</td>
+      <td>mcdej101</td>
+      <td>James McDermott</td>
+      <td>8.0</td>
+      <td>kellb105</td>
+      <td>Bill Kelly</td>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18710505</td>
+      <td>0</td>
+      <td>Fri</td>
+      <td>BS1</td>
+      <td>na</td>
+      <td>1</td>
+      <td>WS3</td>
+      <td>na</td>
+      <td>1</td>
+      <td>20</td>
+      <td>...</td>
+      <td>Asa Brainard</td>
+      <td>1.0</td>
+      <td>burrh101</td>
+      <td>Henry Burroughs</td>
+      <td>9.0</td>
+      <td>berth101</td>
+      <td>Henry Berthrong</td>
+      <td>8.0</td>
+      <td>HTBF</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>18710506</td>
+      <td>0</td>
+      <td>Sat</td>
+      <td>CL1</td>
+      <td>na</td>
+      <td>2</td>
+      <td>RC1</td>
+      <td>na</td>
+      <td>1</td>
+      <td>12</td>
+      <td>...</td>
+      <td>Pony Sager</td>
+      <td>6.0</td>
+      <td>birdg101</td>
+      <td>George Bird</td>
+      <td>7.0</td>
+      <td>stirg101</td>
+      <td>Gat Stires</td>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>18710508</td>
+      <td>0</td>
+      <td>Mon</td>
+      <td>CL1</td>
+      <td>na</td>
+      <td>3</td>
+      <td>CH1</td>
+      <td>na</td>
+      <td>1</td>
+      <td>12</td>
+      <td>...</td>
+      <td>Ed Duffy</td>
+      <td>6.0</td>
+      <td>pinke101</td>
+      <td>Ed Pinkham</td>
+      <td>5.0</td>
+      <td>zettg101</td>
+      <td>George Zettlein</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18710509</td>
+      <td>0</td>
+      <td>Tue</td>
+      <td>BS1</td>
+      <td>na</td>
+      <td>2</td>
+      <td>TRO</td>
+      <td>na</td>
+      <td>1</td>
+      <td>9</td>
+      <td>...</td>
+      <td>Steve Bellan</td>
+      <td>5.0</td>
+      <td>pikel101</td>
+      <td>Lip Pike</td>
+      <td>3.0</td>
+      <td>cravb101</td>
+      <td>Bill Craver</td>
+      <td>6.0</td>
+      <td>HTBF</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 161 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">gl.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(171907, 161)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#可以将数值类型向下转换减少内存占用</span></span><br><span class="line">gl.info(memory_usage = <span class="string">'deep'</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;
+RangeIndex: 171907 entries, 0 to 171906
+Columns: 161 entries, date to acquisition_info
+dtypes: float64(77), int64(6), object(78)
+memory usage: 860.5 MB</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Pandas</category>
+      </categories>
+      <tags>
+        <tag>Pandas</tag>
+      </tags>
+  </entry>
 </search>
