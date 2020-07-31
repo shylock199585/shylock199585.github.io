@@ -12,7 +12,9 @@
 
 
 
-<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><p>{ % raw asset_img output_3_1.png This is an test image %}</p>
+<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre>{% raw asset_img output_3_1.png This is an test image %}
+
+
 <h3 id="1-1-细节设置"><a href="#1-1-细节设置" class="headerlink" title="1.1 细节设置"></a>1.1 细节设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha53g5943j30k10bw753.jpg" alt="image.png"></p>
 <p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha54oyoq0j30kb07zgly.jpg" alt="image.png"></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>],<span class="string">'-.'</span>,color = <span class="string">'r'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
