@@ -4372,4 +4372,147 @@ memory usage: 860.5 MB</code></pre><figure class="highlight python"><table><tr><
         <tag>Pandas</tag>
       </tags>
   </entry>
+  <entry>
+    <title>使用Matplotlib进行简单绘图</title>
+    <url>/2020/07/31/Matplotlib/</url>
+    <content><![CDATA[<p>数据可视化库（Matplotlib）</p>
+<h2 id="1-常规绘图方法"><a href="#1-常规绘图方法" class="headerlink" title="1. 常规绘图方法"></a>1. 常规绘图方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>])</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><p>{ % raw asset_img output_3_1.png This is an test image %}</p>
+<h3 id="1-1-细节设置"><a href="#1-1-细节设置" class="headerlink" title="1.1 细节设置"></a>1.1 细节设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha53g5943j30k10bw753.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha54oyoq0j30kb07zgly.jpg" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>],<span class="string">'-.'</span>,color = <span class="string">'r'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_7_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array = np.arange(<span class="number">0</span>,<span class="number">10</span>,<span class="number">0.5</span>)</span><br><span class="line">plt.plot(array,array,<span class="string">'r--'</span>)</span><br><span class="line">plt.plot(array,array ** <span class="number">2</span>, <span class="string">'bs'</span>)</span><br><span class="line">plt.plot(array,array ** <span class="number">3</span>, <span class="string">'go'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20291197cc0&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_8_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(x,y,linewidth = <span class="number">3.0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20291252a58&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_9_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(x,y, color = <span class="string">'b'</span>,linestyle = <span class="string">':'</span>, marker = <span class="string">'o'</span>, markerfacecolor = <span class="string">'r'</span>, markersize = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x202912c46a0&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_10_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">line = plt.plot(x,y)</span><br><span class="line"><span class="comment">#alpha表示透明度</span></span><br><span class="line">plt.setp(line,color = <span class="string">'r'</span>, linewidth = <span class="number">2.0</span>, alpha = <span class="number">0.4</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[None, None, None]</code></pre><p><img src="/2020/07/31/Matplotlib/output_11_1.png" alt="png"></p>
+<h3 id="1-2-子图与标注"><a href="#1-2-子图与标注" class="headerlink" title="1.2 子图与标注"></a>1.2 子图与标注</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">211</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">212</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x202913e1e10&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_13_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">121</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x2029152ee10&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_14_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">321</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">324</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20292784eb8&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_15_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#标注解释说明</span></span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>, linestyle = <span class="string">':'</span>, marker = <span class="string">'o'</span>, markerfacecolor = <span class="string">'r'</span>, markersize = <span class="number">10</span>)</span><br><span class="line">plt.xlabel(<span class="string">'x:---'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'y:---'</span>)</span><br><span class="line"><span class="comment">#图题</span></span><br><span class="line">plt.title(<span class="string">'1231231'</span>)</span><br><span class="line"><span class="comment">#指定坐标叫注释</span></span><br><span class="line">plt.text(<span class="number">0</span>,<span class="number">0</span>, <span class="string">'yuandian'</span>)</span><br><span class="line"><span class="comment">#显示网格</span></span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#添加箭头，指定箭头的起始终止点和属性</span></span><br><span class="line">plt.annotate(<span class="string">'jiadedian'</span>, xy=(<span class="number">-5</span>,<span class="number">0</span>),xytext=(<span class="number">-2</span>,<span class="number">0.3</span>), arrowprops = dict(facecolor = <span class="string">'red'</span>, shrink=<span class="number">0.05</span>,headlength = <span class="number">20</span>, headwidth=<span class="number">20</span>) )</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(-2, 0.3, &apos;jiadedian&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_16_1.png" alt="png"></p>
+<h3 id="1-3-风格设置"><a href="#1-3-风格设置" class="headerlink" title="1.3 风格设置"></a>1.3 风格设置</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.style.available</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&apos;bmh&apos;,
+ &apos;classic&apos;,
+ &apos;dark_background&apos;,
+ &apos;fast&apos;,
+ &apos;fivethirtyeight&apos;,
+ &apos;ggplot&apos;,
+ &apos;grayscale&apos;,
+ &apos;seaborn-bright&apos;,
+ &apos;seaborn-colorblind&apos;,
+ &apos;seaborn-dark-palette&apos;,
+ &apos;seaborn-dark&apos;,
+ &apos;seaborn-darkgrid&apos;,
+ &apos;seaborn-deep&apos;,
+ &apos;seaborn-muted&apos;,
+ &apos;seaborn-notebook&apos;,
+ &apos;seaborn-paper&apos;,
+ &apos;seaborn-pastel&apos;,
+ &apos;seaborn-poster&apos;,
+ &apos;seaborn-talk&apos;,
+ &apos;seaborn-ticks&apos;,
+ &apos;seaborn-white&apos;,
+ &apos;seaborn-whitegrid&apos;,
+ &apos;seaborn&apos;,
+ &apos;Solarize_Light2&apos;,
+ &apos;tableau-colorblind10&apos;,
+ &apos;_classic_test&apos;]</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#plt.style.use('dark_background')</span></span><br><span class="line"><span class="comment"># plt.style.use('bmh')</span></span><br><span class="line">plt.style.use(<span class="string">'ggplot'</span>)</span><br><span class="line">plt.plot(x,y)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20292977978&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_19_1.png" alt="png"></p>
+<h2 id="2-常用图表绘制"><a href="#2-常用图表绘制" class="headerlink" title="2. 常用图表绘制"></a>2. 常用图表绘制</h2><h3 id="2-1-条形图"><a href="#2-1-条形图" class="headerlink" title="2.1 条形图"></a>2.1 条形图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.style.use(<span class="string">'seaborn'</span>)</span><br><span class="line">patterns = (<span class="string">'-'</span>, <span class="string">'+'</span>, <span class="string">'x'</span>, <span class="string">'\\'</span>,<span class="string">'*'</span>, <span class="string">'o'</span>, <span class="string">'O'</span>, <span class="string">'.'</span>)</span><br><span class="line">mean_value = range(<span class="number">1</span>, len(patterns) + <span class="number">1</span>)</span><br><span class="line">x_pos = list(range(len(mean_value)))</span><br><span class="line">bars = plt.bar(x_pos, mean_value, color = <span class="string">'white'</span>)</span><br><span class="line"><span class="keyword">for</span> bar, pattern <span class="keyword">in</span> zip(bars, patterns):</span><br><span class="line">    bar.set_hatch(pattern)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_22_0.png" alt="png"></p>
+<h3 id="2-2-盒图"><a href="#2-2-盒图" class="headerlink" title="2.2 盒图"></a>2.2 盒图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = [np.random.normal(<span class="number">0</span>,std,<span class="number">100</span>) <span class="keyword">for</span> std <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>)]</span><br><span class="line">fig = plt.figure(figsize = (<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.boxplot(data, sym = <span class="string">'s'</span>, vert = <span class="literal">True</span>)</span><br><span class="line">plt.xticks([y+<span class="number">1</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(len(data))], [<span class="string">'x1'</span>,<span class="string">'x2'</span>,<span class="string">'x3'</span>])</span><br><span class="line">plt.xlabel(<span class="string">'x'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'box plot'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0, 0.5, &apos;box plot&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_24_1.png" alt="png"></p>
+<h3 id="2-3-直方图和散点图"><a href="#2-3-直方图和散点图" class="headerlink" title="2.3 直方图和散点图"></a>2.3 直方图和散点图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = np.random.normal(<span class="number">0</span>,<span class="number">20</span>,<span class="number">1000</span>)</span><br><span class="line">bins = np.arange(<span class="number">-100</span>,<span class="number">100</span>,<span class="number">5</span>)</span><br><span class="line">plt.hist(data,bins=bins)</span><br><span class="line">plt.xlim([min(data) - <span class="number">5</span>, max(data) + <span class="number">5</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_26_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N = <span class="number">1000</span></span><br><span class="line">x = np.random.randn(N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">plt.scatter(x, y, alpha = <span class="number">0.3</span>)</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_27_0.png" alt="png"></p>
+<h3 id="2-4-3D图"><a href="#2-4-3D图" class="headerlink" title="2.4 3D图"></a>2.4 3D图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>,projection = <span class="string">'3d'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_29_0.png" alt="png"></p>
+<h3 id="2-5-布局设置"><a href="#2-5-布局设置" class="headerlink" title="2.5 布局设置"></a>2.5 布局设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha6m5m47tj30et098t9j.jpg" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#嵌套子图</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>,<span class="number">10</span>,<span class="number">1000</span>)</span><br><span class="line">y2 = np.sin(x**<span class="number">2</span>)</span><br><span class="line">y1 = x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">fig, ax1 = plt.subplots()</span><br><span class="line">left,bottom,width,height = [<span class="number">0.22</span>,<span class="number">0.45</span>,<span class="number">0.3</span>,<span class="number">0.35</span>]</span><br><span class="line">ax2 = fig.add_axes([left,bottom,width,height])</span><br><span class="line">ax1.plot(x,y1)</span><br><span class="line">ax2.plot(x,y2)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20294514828&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_32_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Matplotlib</category>
+      </categories>
+      <tags>
+        <tag>Matplotlib</tag>
+      </tags>
+  </entry>
 </search>
