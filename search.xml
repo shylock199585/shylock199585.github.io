@@ -1,6 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用Matplotlib进行简单绘图</title>
+    <url>/2020/07/31/Matplotlib/</url>
+    <content><![CDATA[<p>数据可视化库（Matplotlib）</p>
+<h2 id="1-常规绘图方法"><a href="#1-常规绘图方法" class="headerlink" title="1. 常规绘图方法"></a>1. 常规绘图方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>])</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><p>{ % raw asset_img output_3_1.png This is an test image %}</p>
+<h3 id="1-1-细节设置"><a href="#1-1-细节设置" class="headerlink" title="1.1 细节设置"></a>1.1 细节设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha53g5943j30k10bw753.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha54oyoq0j30kb07zgly.jpg" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>],<span class="string">'-.'</span>,color = <span class="string">'r'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_7_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array = np.arange(<span class="number">0</span>,<span class="number">10</span>,<span class="number">0.5</span>)</span><br><span class="line">plt.plot(array,array,<span class="string">'r--'</span>)</span><br><span class="line">plt.plot(array,array ** <span class="number">2</span>, <span class="string">'bs'</span>)</span><br><span class="line">plt.plot(array,array ** <span class="number">3</span>, <span class="string">'go'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20291197cc0&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_8_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(x,y,linewidth = <span class="number">3.0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20291252a58&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_9_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(x,y, color = <span class="string">'b'</span>,linestyle = <span class="string">':'</span>, marker = <span class="string">'o'</span>, markerfacecolor = <span class="string">'r'</span>, markersize = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x202912c46a0&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_10_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">line = plt.plot(x,y)</span><br><span class="line"><span class="comment">#alpha表示透明度</span></span><br><span class="line">plt.setp(line,color = <span class="string">'r'</span>, linewidth = <span class="number">2.0</span>, alpha = <span class="number">0.4</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[None, None, None]</code></pre><p><img src="/2020/07/31/Matplotlib/output_11_1.png" alt="png"></p>
+<h3 id="1-2-子图与标注"><a href="#1-2-子图与标注" class="headerlink" title="1.2 子图与标注"></a>1.2 子图与标注</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">211</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">212</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x202913e1e10&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_13_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">121</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x2029152ee10&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_14_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">321</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">324</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20292784eb8&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_15_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#标注解释说明</span></span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>, linestyle = <span class="string">':'</span>, marker = <span class="string">'o'</span>, markerfacecolor = <span class="string">'r'</span>, markersize = <span class="number">10</span>)</span><br><span class="line">plt.xlabel(<span class="string">'x:---'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'y:---'</span>)</span><br><span class="line"><span class="comment">#图题</span></span><br><span class="line">plt.title(<span class="string">'1231231'</span>)</span><br><span class="line"><span class="comment">#指定坐标叫注释</span></span><br><span class="line">plt.text(<span class="number">0</span>,<span class="number">0</span>, <span class="string">'yuandian'</span>)</span><br><span class="line"><span class="comment">#显示网格</span></span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#添加箭头，指定箭头的起始终止点和属性</span></span><br><span class="line">plt.annotate(<span class="string">'jiadedian'</span>, xy=(<span class="number">-5</span>,<span class="number">0</span>),xytext=(<span class="number">-2</span>,<span class="number">0.3</span>), arrowprops = dict(facecolor = <span class="string">'red'</span>, shrink=<span class="number">0.05</span>,headlength = <span class="number">20</span>, headwidth=<span class="number">20</span>) )</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(-2, 0.3, &apos;jiadedian&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_16_1.png" alt="png"></p>
+<h3 id="1-3-风格设置"><a href="#1-3-风格设置" class="headerlink" title="1.3 风格设置"></a>1.3 风格设置</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.style.available</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&apos;bmh&apos;,
+ &apos;classic&apos;,
+ &apos;dark_background&apos;,
+ &apos;fast&apos;,
+ &apos;fivethirtyeight&apos;,
+ &apos;ggplot&apos;,
+ &apos;grayscale&apos;,
+ &apos;seaborn-bright&apos;,
+ &apos;seaborn-colorblind&apos;,
+ &apos;seaborn-dark-palette&apos;,
+ &apos;seaborn-dark&apos;,
+ &apos;seaborn-darkgrid&apos;,
+ &apos;seaborn-deep&apos;,
+ &apos;seaborn-muted&apos;,
+ &apos;seaborn-notebook&apos;,
+ &apos;seaborn-paper&apos;,
+ &apos;seaborn-pastel&apos;,
+ &apos;seaborn-poster&apos;,
+ &apos;seaborn-talk&apos;,
+ &apos;seaborn-ticks&apos;,
+ &apos;seaborn-white&apos;,
+ &apos;seaborn-whitegrid&apos;,
+ &apos;seaborn&apos;,
+ &apos;Solarize_Light2&apos;,
+ &apos;tableau-colorblind10&apos;,
+ &apos;_classic_test&apos;]</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#plt.style.use('dark_background')</span></span><br><span class="line"><span class="comment"># plt.style.use('bmh')</span></span><br><span class="line">plt.style.use(<span class="string">'ggplot'</span>)</span><br><span class="line">plt.plot(x,y)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20292977978&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_19_1.png" alt="png"></p>
+<h2 id="2-常用图表绘制"><a href="#2-常用图表绘制" class="headerlink" title="2. 常用图表绘制"></a>2. 常用图表绘制</h2><h3 id="2-1-条形图"><a href="#2-1-条形图" class="headerlink" title="2.1 条形图"></a>2.1 条形图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.style.use(<span class="string">'seaborn'</span>)</span><br><span class="line">patterns = (<span class="string">'-'</span>, <span class="string">'+'</span>, <span class="string">'x'</span>, <span class="string">'\\'</span>,<span class="string">'*'</span>, <span class="string">'o'</span>, <span class="string">'O'</span>, <span class="string">'.'</span>)</span><br><span class="line">mean_value = range(<span class="number">1</span>, len(patterns) + <span class="number">1</span>)</span><br><span class="line">x_pos = list(range(len(mean_value)))</span><br><span class="line">bars = plt.bar(x_pos, mean_value, color = <span class="string">'white'</span>)</span><br><span class="line"><span class="keyword">for</span> bar, pattern <span class="keyword">in</span> zip(bars, patterns):</span><br><span class="line">    bar.set_hatch(pattern)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_22_0.png" alt="png"></p>
+<h3 id="2-2-盒图"><a href="#2-2-盒图" class="headerlink" title="2.2 盒图"></a>2.2 盒图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = [np.random.normal(<span class="number">0</span>,std,<span class="number">100</span>) <span class="keyword">for</span> std <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>)]</span><br><span class="line">fig = plt.figure(figsize = (<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.boxplot(data, sym = <span class="string">'s'</span>, vert = <span class="literal">True</span>)</span><br><span class="line">plt.xticks([y+<span class="number">1</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(len(data))], [<span class="string">'x1'</span>,<span class="string">'x2'</span>,<span class="string">'x3'</span>])</span><br><span class="line">plt.xlabel(<span class="string">'x'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'box plot'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0, 0.5, &apos;box plot&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_24_1.png" alt="png"></p>
+<h3 id="2-3-直方图和散点图"><a href="#2-3-直方图和散点图" class="headerlink" title="2.3 直方图和散点图"></a>2.3 直方图和散点图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = np.random.normal(<span class="number">0</span>,<span class="number">20</span>,<span class="number">1000</span>)</span><br><span class="line">bins = np.arange(<span class="number">-100</span>,<span class="number">100</span>,<span class="number">5</span>)</span><br><span class="line">plt.hist(data,bins=bins)</span><br><span class="line">plt.xlim([min(data) - <span class="number">5</span>, max(data) + <span class="number">5</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_26_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N = <span class="number">1000</span></span><br><span class="line">x = np.random.randn(N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">plt.scatter(x, y, alpha = <span class="number">0.3</span>)</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_27_0.png" alt="png"></p>
+<h3 id="2-4-3D图"><a href="#2-4-3D图" class="headerlink" title="2.4 3D图"></a>2.4 3D图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>,projection = <span class="string">'3d'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_29_0.png" alt="png"></p>
+<h3 id="2-5-布局设置"><a href="#2-5-布局设置" class="headerlink" title="2.5 布局设置"></a>2.5 布局设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha6m5m47tj30et098t9j.jpg" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#嵌套子图</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>,<span class="number">10</span>,<span class="number">1000</span>)</span><br><span class="line">y2 = np.sin(x**<span class="number">2</span>)</span><br><span class="line">y1 = x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">fig, ax1 = plt.subplots()</span><br><span class="line">left,bottom,width,height = [<span class="number">0.22</span>,<span class="number">0.45</span>,<span class="number">0.3</span>,<span class="number">0.35</span>]</span><br><span class="line">ax2 = fig.add_axes([left,bottom,width,height])</span><br><span class="line">ax1.plot(x,y1)</span><br><span class="line">ax2.plot(x,y2)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20294514828&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_32_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Matplotlib</category>
+      </categories>
+      <tags>
+        <tag>Matplotlib</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决Hexo框架博客图片不显示的问题</title>
+    <url>/2020/07/16/Hexo%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/</url>
+    <content><![CDATA[<ol>
+<li><p>打开博客所在文件夹blog，找到<code>_config.yml</code>配置文件，修改语句<code>post_asset_folder: true</code></p>
+</li>
+<li><p>git bash安装插件：<br><code>npm install https://github.com/7ym0n/hexo-asset-image --save</code></p>
+</li>
+<li><p>每次执行<code>hexo new &quot;文件名&quot;</code>命令时，文件所在文件夹会自动创建一个同名文件夹用于放置资源。</p>
+</li>
+<li><p>插入图片时用这种方式：<code>{ % raw asset_img test.jpg This is an test image %}</code></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo搭建简要过程</title>
     <url>/2020/07/05/hexo%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h4><p><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a><br><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></p>
@@ -39,351 +203,6 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网络利器工具</title>
-    <url>/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h3 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h3><p>用来快速构建网络链接,常用来调试客户端程序。</p>
-<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-i</td>
-<td>设置数据包传送的时间间隔</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>以服务器方式运行，默认为客户端运行</td>
-</tr>
-<tr>
-<td>-k</td>
-<td>重复接受并处理某个端口的所有链接</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>以客户端运行时强制使用指定端口</td>
-</tr>
-<tr>
-<td>-C</td>
-<td>将CR和LF两个字符作为结束符</td>
-</tr>
-<tr>
-<td>-u</td>
-<td>使用UDP协议，默认为TCP协议</td>
-</tr>
-<tr>
-<td>-X</td>
-<td>nc客户端余代理服务器通信默认为socks5协议</td>
-</tr>
-<tr>
-<td>-z</td>
-<td>扫描目标机器某个范围内服务是否开启</td>
-</tr>
-</tbody></table>
-<h4 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h4><table>
-<thead>
-<tr>
-<th>执行任务</th>
-<th>执行命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>扫描机器A端口号在30-40的服务</td>
-<td>nc -z A 30-40</td>
-</tr>
-<tr>
-<td>连接服务器A 端口号为5000</td>
-<td>nc -C A 5000</td>
-</tr>
-<tr>
-<td>传送文件</td>
-<td>MachineA: nc -v -n ip portE: \a.exe</td>
-</tr>
-</tbody></table>
-<h3 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h3><p>实现对网路连通性探测。给地方发送数据包，根据返回的信息初步判断目标机器是否存在或者目标机器操作系统。</p>
-<img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ping1.png" class title="This is an test image">
-<p>在具体实现中其实使用了ICMP协议，它是一种基于IP协议的控制协议，网际控制协议，其报文格式如下：</p>
-<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ping2.png" alt="avatar"></p>
-<h4 id="字段含义："><a href="#字段含义：" class="headerlink" title="字段含义："></a>字段含义：</h4><ul>
-<li>类型：表示ICMP的类型，如果为0表示请求类型，为8表示应答</li>
-<li>代码：用来查找产生错误的原因</li>
-<li>校验和：检查错误的数据</li>
-<li>标识符:使用标识符确认到底是谁发送的控制协议</li>
-<li>序列号：唯一确定的一个报文</li>
-</ul>
-<p>ping命令组装成上述的IP报文进行发送，报文目的地为ping目的地址，原地址为发送ping主机地址，然后按照ICMP的规则填写数据。随后IP报文通过ARP协议，请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址。</p>
-<h4 id="ping的详细参数"><a href="#ping的详细参数" class="headerlink" title="ping的详细参数"></a>ping的详细参数</h4><p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ping3.png" alt="avatar"></p>
-<h4 id="常用参数："><a href="#常用参数：" class="headerlink" title="常用参数："></a>常用参数：</h4><ul>
-<li>[-l] :定义所发送数据包的大小，默认为32字节</li>
-<li>[-n] :定义所发数据包的次数，默认为3次</li>
-<li>[-t] :表示不间断向目标IP发送数据包</li>
-</ul>
-<h4 id="TTL"><a href="#TTL" class="headerlink" title="TTL"></a>TTL</h4><p>TTL 是 IP 协议包中的一个值，它告诉网络路由器包在网络中的时间是否太长而应被丢弃。</p>
-<ul>
-<li>TTL设置时间越长，那么缓存时间也就越长，更新也就越不容易生效。增大TTL可以节约域名解析时间从而加快网站的访问。</li>
-<li>减小TTL值，减少更换空间时的不可访问时间。</li>
-</ul>
-<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><ul>
-<li>Request timed out</li>
-</ul>
-<h4 id="可能出现的情况"><a href="#可能出现的情况" class="headerlink" title="可能出现的情况"></a>可能出现的情况</h4><ul>
-<li>对方已经关机或者根本没有这个地址</li>
-<li>可能不在同一个网段，即使通过路由也无法找到对方从而出现超时</li>
-<li>对方存在但是设置了防火墙过滤</li>
-<li>Destination host Unreachable</li>
-<li>与对方不在同一个网段且没有设置默认路由</li>
-<li>网线出毛病</li>
-<li>Bad IP address</li>
-<li>要么是IP地址不存在，要么是没有正确连接DNS服务器从而无法解析</li>
-</ul>
-<h3 id="ifconfig-ipaddr"><a href="#ifconfig-ipaddr" class="headerlink" title="ifconfig/ipaddr"></a>ifconfig/ipaddr</h3><p>查看服务器网卡，IP等信息</p>
-<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ifconfig1.png" alt="avatar"></p>
-<p>上图中被马赛克的位置假设为10.172.100.3，这样就是一个IP地址，凡是都有规则，IP地址按照小数点分割为四部分，每部分占8字节，所以IP地址为32位，那么这样的IP地址一共有多少呢</p>
-<p>从而出现IPV6，128位</p>
-<p>当时觉得32位很够用了，还将其分为5类，如下图所示</p>
-<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ifconfig2.png" alt="avatar"></p>
-<p>各类地址的主机数量:</p>
-<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ifconfig3.png" alt="avatar"></p>
-<h4 id="无类型域间选路"><a href="#无类型域间选路" class="headerlink" title="无类型域间选路"></a>无类型域间选路</h4><p>CIDR 地址中包含标准的32位IP地址和有关网络前缀位数的信息。比如10.172.100.3/24，IP地址斜杠后面数字24，代表24位是网络号，后面八位为主机号。</p>
-<h4 id="计算网络号"><a href="#计算网络号" class="headerlink" title="计算网络号"></a>计算网络号</h4><p>使用IP地址和子网掩码进行AND计算得到网络号。</p>
-<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ifconfig4.png" alt="avatar"></p>
-<h3 id="tcpdump"><a href="#tcpdump" class="headerlink" title="tcpdump"></a>tcpdump</h3><p>和它类似的工具在windows中是wireshark，其采用底层库winpcap/libpcap实现。采用了bpf过滤机制。</p>
-<p>不同参数的含义:</p>
-<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/tcpdump1.png" alt="avatar"></p>
-<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><table>
-<thead>
-<tr>
-<th>执行任务</th>
-<th>执行命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>捕获特定网口数据包</td>
-<td>tcpdump -i eth0</td>
-</tr>
-<tr>
-<td>捕获特定个数(1000)的包</td>
-<td>tcpdump -c 1000 -i eth0</td>
-</tr>
-<tr>
-<td>将捕获的包保存到文件</td>
-<td>tcpdump -w a.pcap -i eth0</td>
-</tr>
-<tr>
-<td>读取pcap格式的包</td>
-<td>tcpdump -r a.pcap</td>
-</tr>
-<tr>
-<td>增加捕获包的时间戳</td>
-<td>tcpdump -n -ttt -i eth0</td>
-</tr>
-<tr>
-<td>指定捕获包的协议类型</td>
-<td>tcpdump -i eth0 arp</td>
-</tr>
-<tr>
-<td>捕获指定端口</td>
-<td>tcpdump -i eth0 post 22</td>
-</tr>
-<tr>
-<td>捕获特定目标ip+port的包</td>
-<td>tcpdump -i eth0 dst address and port 22</td>
-</tr>
-<tr>
-<td>捕获DNS请求和响应</td>
-<td>tcpdump -i eth0 -s0 port 53</td>
-</tr>
-<tr>
-<td>匹配Http请求头</td>
-<td>tcpdump -s 0 -v -n -l</td>
-</tr>
-<tr>
-<td>捕获特定网口数据包</td>
-<td>tcpdump -i eth0</td>
-</tr>
-<tr>
-<td>捕获特定个数(1000)的包</td>
-<td>tcpdump -c 1000 -i eth0</td>
-</tr>
-<tr>
-<td>将捕获的包保存到文件</td>
-<td>tcpdump -w a.pcap -i eth0</td>
-</tr>
-<tr>
-<td>读取pcap格式的包</td>
-<td>tcpdump -r a.pcap</td>
-</tr>
-<tr>
-<td>增加捕获包的时间戳</td>
-<td>tcpdump -n -ttt -i eth0</td>
-</tr>
-<tr>
-<td>指定捕获包的协议类型</td>
-<td>tcpdump -i eth0 arp</td>
-</tr>
-<tr>
-<td>捕获指定端口</td>
-<td>tcpdump -i eth0 post 22</td>
-</tr>
-<tr>
-<td>捕获特定目标ip+port的包</td>
-<td>tcpdump -i eth0 dst address and port 22</td>
-</tr>
-<tr>
-<td>捕获DNS请求和响应</td>
-<td>tcpdump -i eth0 -s0 port 53</td>
-</tr>
-<tr>
-<td>匹配Http请求头</td>
-<td>tcpdump -s 0 -v -n -l | egrep -i “POST /|GET /Host:”</td>
-</tr>
-</tbody></table>
-<h3 id="Isof"><a href="#Isof" class="headerlink" title="Isof"></a>Isof</h3><p>列出当前系统打开的文件描述符工具。可以得知感兴趣的描述符是被哪些进程使用</p>
-<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/Isof1.png" alt="avatar"></p>
-<h4 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h4><table>
-<thead>
-<tr>
-<th>执行任务</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>列出所有的网络链接</td>
-<td>lsof -i</td>
-</tr>
-<tr>
-<td>列出所有udp的网络链接</td>
-<td>lsof -i udp</td>
-</tr>
-<tr>
-<td>列出谁在使用某个端口</td>
-<td>lsof -i :3306</td>
-</tr>
-<tr>
-<td>列出谁在使用特定的tcp端口</td>
-<td>lsof -i tcp:80</td>
-</tr>
-<tr>
-<td>根据文件描述范围列出文件信息</td>
-<td>lsof -d 2-3</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>udp</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>列出谁在使用某个端口</td>
-<td>lsof -i :3306</td>
-</tr>
-<tr>
-<td>列出谁在使用特定的tcp端口</td>
-<td>lsof -i tcp:80</td>
-</tr>
-<tr>
-<td>根据文件描述范围列出文件信息</td>
-<td>lsof -d 2-3</td>
-</tr>
-</tbody></table>
-<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><p>netstat是一个网络信息统计工具。它可以得到网卡接口上全部了解，路由表信息，网卡接口信息等。通常在网络编程中我们用它来显示TCP连接以及状态信息。</p>
-<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/netsat1.png" alt></p>
-<h4 id="案例-2"><a href="#案例-2" class="headerlink" title="案例"></a>案例</h4><table>
-<thead>
-<tr>
-<th>执行任务</th>
-<th>执行命令</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>列出所有连接</td>
-<td>netstat -a</td>
-</tr>
-<tr>
-<td>只列出TCP或者UDP</td>
-<td>netstat -at/netstat -au</td>
-</tr>
-<tr>
-<td>列出监听中的连接</td>
-<td>netstat -tnl</td>
-</tr>
-<tr>
-<td>获取进程名、进程号以及用户 ID</td>
-<td>nestat  -nlpt</td>
-</tr>
-<tr>
-<td>打印统计信息</td>
-<td>netstat -s</td>
-</tr>
-<tr>
-<td>netstat持续输出</td>
-<td>netstat -ct</td>
-</tr>
-<tr>
-<td>打印active状态的连接</td>
-<td>netstat -atnp</td>
-</tr>
-<tr>
-<td>查看服务是否运行(npt)</td>
-<td>netstat -aple</td>
-</tr>
-</tbody></table>
-<h3 id="dpkt"><a href="#dpkt" class="headerlink" title="dpkt"></a>dpkt</h3><p>dpkt定义包packet类，它定义了网络报文类型的基础类。其中IP，ICMP等继承于dpkt class，每一个子类有一个_ hdr_ 结构，此结构定义了不同报文的头部，方便取出相应的控制字段。示例如下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line">import dpkt</span><br><span class="line">import socket</span><br><span class="line">import optparse</span><br><span class="line"></span><br><span class="line">def printPcap(pcap):</span><br><span class="line">    <span class="comment"># 遍历[timestamp, packet]记录的数组</span></span><br><span class="line">    <span class="keyword">for</span> (ts, buf) <span class="keyword">in</span> pcap:</span><br><span class="line">        try:</span><br><span class="line">            <span class="comment"># 获取以太网部分数据</span></span><br><span class="line">            eth = dpkt.ethernet.Ethernet(buf)</span><br><span class="line">            <span class="comment"># 获取IP层数据</span></span><br><span class="line">            ip = eth.data</span><br><span class="line">            <span class="comment"># 把存储在inet_ntoa中的IP地址转换成一个字符串</span></span><br><span class="line">            src = socket.inet_ntoa(ip.src)</span><br><span class="line">            dst = socket.inet_ntoa(ip.dst)</span><br><span class="line">            <span class="built_in">print</span> <span class="string">'[+] 源地址: '</span> + src + <span class="string">' --&gt; 目标地址: '</span> + dst</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    parser = optparse.OptionParser(<span class="string">'[*] Usage : ./pcapTest.py -f &lt;file&gt;'</span>)<span class="comment">#测试包</span></span><br><span class="line">    parser.add_option(<span class="string">'-f'</span>,dest=<span class="string">'fileName'</span>,<span class="built_in">type</span>=<span class="string">'string'</span>,<span class="built_in">help</span>=<span class="string">'specify target filename'</span>)</span><br><span class="line">    (options,args) = parser.parse_args()</span><br><span class="line">    fileName = options.fileName<span class="comment"># 取得包名</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> fileName == None:</span><br><span class="line">        <span class="built_in">print</span> parser.usage</span><br><span class="line">        <span class="built_in">exit</span>(0)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment">#f = open('geotest.pcap')</span></span><br><span class="line">        f = open(fileName)</span><br><span class="line">        pcap = dpkt.pcap.Reader(f)</span><br><span class="line">        printPcap(pcap)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<h3 id="scapy"><a href="#scapy" class="headerlink" title="scapy"></a>scapy</h3><p>“强大的交互式包操作工具”、“支持大量协议的包解析和包构造”、“轻松取代 hping，85% 的 nmap，arpspoof，tcpdump 等等”。不过归根到底，它说的强大功能，都是基于 Scapy 是一个强大的网络数据包操作工具才能实现得了的。只是大概介绍，具体用法官网非常详细，有助于学习网络协议</p>
-<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/scapy.png" alt></p>
-]]></content>
-      <categories>
-        <category>网络工具</category>
-      </categories>
-      <tags>
-        <tag>网络工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决Hexo框架博客图片不显示的问题</title>
-    <url>/2020/07/16/Hexo%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/</url>
-    <content><![CDATA[<ol>
-<li><p>打开博客所在文件夹blog，找到<code>_config.yml</code>配置文件，修改语句<code>post_asset_folder: true</code></p>
-</li>
-<li><p>git bash安装插件：<br><code>npm install https://github.com/7ym0n/hexo-asset-image --save</code></p>
-</li>
-<li><p>每次执行<code>hexo new &quot;文件名&quot;</code>命令时，文件所在文件夹会自动创建一个同名文件夹用于放置资源。</p>
-</li>
-<li><p>插入图片时用这种方式：<code>{ % raw asset_img test.jpg This is an test image %}</code></p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python包管理工具：Conda和pip比较</title>
-    <url>/2020/07/27/pipconda/</url>
-    <content><![CDATA[<p>pip是Python Packaging Authority推荐的用于从Python Package Index安装包的工具。pip安装打包为wheels或源代码分发的Python软件。</p>
-<p>Conda是跨平台的包和环境管理器，可以安装和管理来自Anaconda repository以 Anaconda Cloud的conda包。 Conda包是二进制文件，徐需要使用编译器来安装它们。另外，conda包不仅限于Python软件。它们还可能包含C或C ++库，R包或任何其他软件。这是conda和pip之间的关键区别。 </p>
-<p>pip安装Python包，而conda安装包可能包含用任何语言编写的软件的包。在使用pip之前，必须通过系统包管理器或下载并运行安装程序来安装Python解释器。而Conda可以直接安装Python包以及Python解释器。</p>
-<p>另一个区别是conda能够创建可以包含不同版本的Python或其他软件包的隔离环境。在使用数据科学工具时，这非常有用，因为不同的工具可能包含冲突的要求，这些要求可能会阻止它们全部安装到单个环境中。 </p>
-<p>pip和conda在如何实现环境中的依赖关系方面也有所不同。安装包时，pip会在递归的串行循环中安装依赖项。没有努力确保同时满足所有包的依赖性。如果较早安装的软件包与稍后安装的软件包具有不兼容的依赖性版本，则可能导致破坏的环境。conda使用可确保满足环境中安装的所有包的所有要求。此检查可能需要额外的时间，但有助于防止创建破坏的环境，前期关于依赖关系包的元数据是正确的。</p>
-<p>考虑到conda和pip之间的相似性，有些人试图将这些工具结合起来创建数据科学环境也就不足为奇了。将pip与conda结合的主要原因是有些包只能通过pip安装。 Anaconda创酷提供超过1,500个软件包，包括最流行的数据科学，机器学习和AI框架。这些，以及包括conda-forge和bioconda在内的数据通过Anaconda云提供的数千个附加软件包，可以使用conda进行安装。尽管有大量的软件包，但与PyPI上提供的150,000多个软件包相比，它仍然很小。有时候需要的包没有conda包，但在PyPI上有，可以用pip安装。</p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -1037,6 +856,23 @@ None</code></pre><figure class="highlight python"><table><tr><td class="code"><p
       </categories>
       <tags>
         <tag>Numpy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python包管理工具：Conda和pip比较</title>
+    <url>/2020/07/27/pipconda/</url>
+    <content><![CDATA[<p>pip是Python Packaging Authority推荐的用于从Python Package Index安装包的工具。pip安装打包为wheels或源代码分发的Python软件。</p>
+<p>Conda是跨平台的包和环境管理器，可以安装和管理来自Anaconda repository以 Anaconda Cloud的conda包。 Conda包是二进制文件，徐需要使用编译器来安装它们。另外，conda包不仅限于Python软件。它们还可能包含C或C ++库，R包或任何其他软件。这是conda和pip之间的关键区别。 </p>
+<p>pip安装Python包，而conda安装包可能包含用任何语言编写的软件的包。在使用pip之前，必须通过系统包管理器或下载并运行安装程序来安装Python解释器。而Conda可以直接安装Python包以及Python解释器。</p>
+<p>另一个区别是conda能够创建可以包含不同版本的Python或其他软件包的隔离环境。在使用数据科学工具时，这非常有用，因为不同的工具可能包含冲突的要求，这些要求可能会阻止它们全部安装到单个环境中。 </p>
+<p>pip和conda在如何实现环境中的依赖关系方面也有所不同。安装包时，pip会在递归的串行循环中安装依赖项。没有努力确保同时满足所有包的依赖性。如果较早安装的软件包与稍后安装的软件包具有不兼容的依赖性版本，则可能导致破坏的环境。conda使用可确保满足环境中安装的所有包的所有要求。此检查可能需要额外的时间，但有助于防止创建破坏的环境，前期关于依赖关系包的元数据是正确的。</p>
+<p>考虑到conda和pip之间的相似性，有些人试图将这些工具结合起来创建数据科学环境也就不足为奇了。将pip与conda结合的主要原因是有些包只能通过pip安装。 Anaconda创酷提供超过1,500个软件包，包括最流行的数据科学，机器学习和AI框架。这些，以及包括conda-forge和bioconda在内的数据通过Anaconda云提供的数千个附加软件包，可以使用conda进行安装。尽管有大量的软件包，但与PyPI上提供的150,000多个软件包相比，它仍然很小。有时候需要的包没有conda包，但在PyPI上有，可以用pip安装。</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -4373,146 +4209,310 @@ memory usage: 860.5 MB</code></pre><figure class="highlight python"><table><tr><
       </tags>
   </entry>
   <entry>
-    <title>使用Matplotlib进行简单绘图</title>
-    <url>/2020/07/31/Matplotlib/</url>
-    <content><![CDATA[<p>数据可视化库（Matplotlib）</p>
-<h2 id="1-常规绘图方法"><a href="#1-常规绘图方法" class="headerlink" title="1. 常规绘图方法"></a>1. 常规绘图方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>])</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><p>{ % raw asset_img output_3_1.png This is an test image %}</p>
-<h3 id="1-1-细节设置"><a href="#1-1-细节设置" class="headerlink" title="1.1 细节设置"></a>1.1 细节设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha53g5943j30k10bw753.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha54oyoq0j30kb07zgly.jpg" alt="image.png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>],<span class="string">'-.'</span>,color = <span class="string">'r'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_7_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array = np.arange(<span class="number">0</span>,<span class="number">10</span>,<span class="number">0.5</span>)</span><br><span class="line">plt.plot(array,array,<span class="string">'r--'</span>)</span><br><span class="line">plt.plot(array,array ** <span class="number">2</span>, <span class="string">'bs'</span>)</span><br><span class="line">plt.plot(array,array ** <span class="number">3</span>, <span class="string">'go'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x20291197cc0&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_8_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(x,y,linewidth = <span class="number">3.0</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x20291252a58&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_9_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(x,y, color = <span class="string">'b'</span>,linestyle = <span class="string">':'</span>, marker = <span class="string">'o'</span>, markerfacecolor = <span class="string">'r'</span>, markersize = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x202912c46a0&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_10_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">line = plt.plot(x,y)</span><br><span class="line"><span class="comment">#alpha表示透明度</span></span><br><span class="line">plt.setp(line,color = <span class="string">'r'</span>, linewidth = <span class="number">2.0</span>, alpha = <span class="number">0.4</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[None, None, None]</code></pre><p><img src="/2020/07/31/Matplotlib/output_11_1.png" alt="png"></p>
-<h3 id="1-2-子图与标注"><a href="#1-2-子图与标注" class="headerlink" title="1.2 子图与标注"></a>1.2 子图与标注</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">211</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">212</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x202913e1e10&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_13_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">121</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x2029152ee10&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_14_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">321</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">324</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x20292784eb8&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_15_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#标注解释说明</span></span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>, linestyle = <span class="string">':'</span>, marker = <span class="string">'o'</span>, markerfacecolor = <span class="string">'r'</span>, markersize = <span class="number">10</span>)</span><br><span class="line">plt.xlabel(<span class="string">'x:---'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'y:---'</span>)</span><br><span class="line"><span class="comment">#图题</span></span><br><span class="line">plt.title(<span class="string">'1231231'</span>)</span><br><span class="line"><span class="comment">#指定坐标叫注释</span></span><br><span class="line">plt.text(<span class="number">0</span>,<span class="number">0</span>, <span class="string">'yuandian'</span>)</span><br><span class="line"><span class="comment">#显示网格</span></span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#添加箭头，指定箭头的起始终止点和属性</span></span><br><span class="line">plt.annotate(<span class="string">'jiadedian'</span>, xy=(<span class="number">-5</span>,<span class="number">0</span>),xytext=(<span class="number">-2</span>,<span class="number">0.3</span>), arrowprops = dict(facecolor = <span class="string">'red'</span>, shrink=<span class="number">0.05</span>,headlength = <span class="number">20</span>, headwidth=<span class="number">20</span>) )</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>Text(-2, 0.3, &apos;jiadedian&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_16_1.png" alt="png"></p>
-<h3 id="1-3-风格设置"><a href="#1-3-风格设置" class="headerlink" title="1.3 风格设置"></a>1.3 风格设置</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.style.available</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&apos;bmh&apos;,
- &apos;classic&apos;,
- &apos;dark_background&apos;,
- &apos;fast&apos;,
- &apos;fivethirtyeight&apos;,
- &apos;ggplot&apos;,
- &apos;grayscale&apos;,
- &apos;seaborn-bright&apos;,
- &apos;seaborn-colorblind&apos;,
- &apos;seaborn-dark-palette&apos;,
- &apos;seaborn-dark&apos;,
- &apos;seaborn-darkgrid&apos;,
- &apos;seaborn-deep&apos;,
- &apos;seaborn-muted&apos;,
- &apos;seaborn-notebook&apos;,
- &apos;seaborn-paper&apos;,
- &apos;seaborn-pastel&apos;,
- &apos;seaborn-poster&apos;,
- &apos;seaborn-talk&apos;,
- &apos;seaborn-ticks&apos;,
- &apos;seaborn-white&apos;,
- &apos;seaborn-whitegrid&apos;,
- &apos;seaborn&apos;,
- &apos;Solarize_Light2&apos;,
- &apos;tableau-colorblind10&apos;,
- &apos;_classic_test&apos;]</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#plt.style.use('dark_background')</span></span><br><span class="line"><span class="comment"># plt.style.use('bmh')</span></span><br><span class="line">plt.style.use(<span class="string">'ggplot'</span>)</span><br><span class="line">plt.plot(x,y)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x20292977978&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_19_1.png" alt="png"></p>
-<h2 id="2-常用图表绘制"><a href="#2-常用图表绘制" class="headerlink" title="2. 常用图表绘制"></a>2. 常用图表绘制</h2><h3 id="2-1-条形图"><a href="#2-1-条形图" class="headerlink" title="2.1 条形图"></a>2.1 条形图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.style.use(<span class="string">'seaborn'</span>)</span><br><span class="line">patterns = (<span class="string">'-'</span>, <span class="string">'+'</span>, <span class="string">'x'</span>, <span class="string">'\\'</span>,<span class="string">'*'</span>, <span class="string">'o'</span>, <span class="string">'O'</span>, <span class="string">'.'</span>)</span><br><span class="line">mean_value = range(<span class="number">1</span>, len(patterns) + <span class="number">1</span>)</span><br><span class="line">x_pos = list(range(len(mean_value)))</span><br><span class="line">bars = plt.bar(x_pos, mean_value, color = <span class="string">'white'</span>)</span><br><span class="line"><span class="keyword">for</span> bar, pattern <span class="keyword">in</span> zip(bars, patterns):</span><br><span class="line">    bar.set_hatch(pattern)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/07/31/Matplotlib/output_22_0.png" alt="png"></p>
-<h3 id="2-2-盒图"><a href="#2-2-盒图" class="headerlink" title="2.2 盒图"></a>2.2 盒图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = [np.random.normal(<span class="number">0</span>,std,<span class="number">100</span>) <span class="keyword">for</span> std <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>)]</span><br><span class="line">fig = plt.figure(figsize = (<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.boxplot(data, sym = <span class="string">'s'</span>, vert = <span class="literal">True</span>)</span><br><span class="line">plt.xticks([y+<span class="number">1</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(len(data))], [<span class="string">'x1'</span>,<span class="string">'x2'</span>,<span class="string">'x3'</span>])</span><br><span class="line">plt.xlabel(<span class="string">'x'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'box plot'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>Text(0, 0.5, &apos;box plot&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_24_1.png" alt="png"></p>
-<h3 id="2-3-直方图和散点图"><a href="#2-3-直方图和散点图" class="headerlink" title="2.3 直方图和散点图"></a>2.3 直方图和散点图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = np.random.normal(<span class="number">0</span>,<span class="number">20</span>,<span class="number">1000</span>)</span><br><span class="line">bins = np.arange(<span class="number">-100</span>,<span class="number">100</span>,<span class="number">5</span>)</span><br><span class="line">plt.hist(data,bins=bins)</span><br><span class="line">plt.xlim([min(data) - <span class="number">5</span>, max(data) + <span class="number">5</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/07/31/Matplotlib/output_26_0.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N = <span class="number">1000</span></span><br><span class="line">x = np.random.randn(N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">plt.scatter(x, y, alpha = <span class="number">0.3</span>)</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/07/31/Matplotlib/output_27_0.png" alt="png"></p>
-<h3 id="2-4-3D图"><a href="#2-4-3D图" class="headerlink" title="2.4 3D图"></a>2.4 3D图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>,projection = <span class="string">'3d'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/07/31/Matplotlib/output_29_0.png" alt="png"></p>
-<h3 id="2-5-布局设置"><a href="#2-5-布局设置" class="headerlink" title="2.5 布局设置"></a>2.5 布局设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha6m5m47tj30et098t9j.jpg" alt="image.png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#嵌套子图</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>,<span class="number">10</span>,<span class="number">1000</span>)</span><br><span class="line">y2 = np.sin(x**<span class="number">2</span>)</span><br><span class="line">y1 = x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">fig, ax1 = plt.subplots()</span><br><span class="line">left,bottom,width,height = [<span class="number">0.22</span>,<span class="number">0.45</span>,<span class="number">0.3</span>,<span class="number">0.35</span>]</span><br><span class="line">ax2 = fig.add_axes([left,bottom,width,height])</span><br><span class="line">ax1.plot(x,y1)</span><br><span class="line">ax2.plot(x,y2)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x20294514828&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_32_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>网络利器工具</title>
+    <url>/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h3 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h3><p>用来快速构建网络链接,常用来调试客户端程序。</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-i</td>
+<td>设置数据包传送的时间间隔</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>以服务器方式运行，默认为客户端运行</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>重复接受并处理某个端口的所有链接</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>以客户端运行时强制使用指定端口</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>将CR和LF两个字符作为结束符</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>使用UDP协议，默认为TCP协议</td>
+</tr>
+<tr>
+<td>-X</td>
+<td>nc客户端余代理服务器通信默认为socks5协议</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>扫描目标机器某个范围内服务是否开启</td>
+</tr>
+</tbody></table>
+<h4 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h4><table>
+<thead>
+<tr>
+<th>执行任务</th>
+<th>执行命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>扫描机器A端口号在30-40的服务</td>
+<td>nc -z A 30-40</td>
+</tr>
+<tr>
+<td>连接服务器A 端口号为5000</td>
+<td>nc -C A 5000</td>
+</tr>
+<tr>
+<td>传送文件</td>
+<td>MachineA: nc -v -n ip portE: \a.exe</td>
+</tr>
+</tbody></table>
+<h3 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h3><p>实现对网路连通性探测。给地方发送数据包，根据返回的信息初步判断目标机器是否存在或者目标机器操作系统。</p>
+<img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ping1.png" class title="This is an test image">
+<p>在具体实现中其实使用了ICMP协议，它是一种基于IP协议的控制协议，网际控制协议，其报文格式如下：</p>
+<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ping2.png" alt="avatar"></p>
+<h4 id="字段含义："><a href="#字段含义：" class="headerlink" title="字段含义："></a>字段含义：</h4><ul>
+<li>类型：表示ICMP的类型，如果为0表示请求类型，为8表示应答</li>
+<li>代码：用来查找产生错误的原因</li>
+<li>校验和：检查错误的数据</li>
+<li>标识符:使用标识符确认到底是谁发送的控制协议</li>
+<li>序列号：唯一确定的一个报文</li>
+</ul>
+<p>ping命令组装成上述的IP报文进行发送，报文目的地为ping目的地址，原地址为发送ping主机地址，然后按照ICMP的规则填写数据。随后IP报文通过ARP协议，请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址。</p>
+<h4 id="ping的详细参数"><a href="#ping的详细参数" class="headerlink" title="ping的详细参数"></a>ping的详细参数</h4><p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ping3.png" alt="avatar"></p>
+<h4 id="常用参数："><a href="#常用参数：" class="headerlink" title="常用参数："></a>常用参数：</h4><ul>
+<li>[-l] :定义所发送数据包的大小，默认为32字节</li>
+<li>[-n] :定义所发数据包的次数，默认为3次</li>
+<li>[-t] :表示不间断向目标IP发送数据包</li>
+</ul>
+<h4 id="TTL"><a href="#TTL" class="headerlink" title="TTL"></a>TTL</h4><p>TTL 是 IP 协议包中的一个值，它告诉网络路由器包在网络中的时间是否太长而应被丢弃。</p>
+<ul>
+<li>TTL设置时间越长，那么缓存时间也就越长，更新也就越不容易生效。增大TTL可以节约域名解析时间从而加快网站的访问。</li>
+<li>减小TTL值，减少更换空间时的不可访问时间。</li>
+</ul>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>Request timed out</li>
+</ul>
+<h4 id="可能出现的情况"><a href="#可能出现的情况" class="headerlink" title="可能出现的情况"></a>可能出现的情况</h4><ul>
+<li>对方已经关机或者根本没有这个地址</li>
+<li>可能不在同一个网段，即使通过路由也无法找到对方从而出现超时</li>
+<li>对方存在但是设置了防火墙过滤</li>
+<li>Destination host Unreachable</li>
+<li>与对方不在同一个网段且没有设置默认路由</li>
+<li>网线出毛病</li>
+<li>Bad IP address</li>
+<li>要么是IP地址不存在，要么是没有正确连接DNS服务器从而无法解析</li>
+</ul>
+<h3 id="ifconfig-ipaddr"><a href="#ifconfig-ipaddr" class="headerlink" title="ifconfig/ipaddr"></a>ifconfig/ipaddr</h3><p>查看服务器网卡，IP等信息</p>
+<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ifconfig1.png" alt="avatar"></p>
+<p>上图中被马赛克的位置假设为10.172.100.3，这样就是一个IP地址，凡是都有规则，IP地址按照小数点分割为四部分，每部分占8字节，所以IP地址为32位，那么这样的IP地址一共有多少呢</p>
+<p>从而出现IPV6，128位</p>
+<p>当时觉得32位很够用了，还将其分为5类，如下图所示</p>
+<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ifconfig2.png" alt="avatar"></p>
+<p>各类地址的主机数量:</p>
+<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ifconfig3.png" alt="avatar"></p>
+<h4 id="无类型域间选路"><a href="#无类型域间选路" class="headerlink" title="无类型域间选路"></a>无类型域间选路</h4><p>CIDR 地址中包含标准的32位IP地址和有关网络前缀位数的信息。比如10.172.100.3/24，IP地址斜杠后面数字24，代表24位是网络号，后面八位为主机号。</p>
+<h4 id="计算网络号"><a href="#计算网络号" class="headerlink" title="计算网络号"></a>计算网络号</h4><p>使用IP地址和子网掩码进行AND计算得到网络号。</p>
+<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/ifconfig4.png" alt="avatar"></p>
+<h3 id="tcpdump"><a href="#tcpdump" class="headerlink" title="tcpdump"></a>tcpdump</h3><p>和它类似的工具在windows中是wireshark，其采用底层库winpcap/libpcap实现。采用了bpf过滤机制。</p>
+<p>不同参数的含义:</p>
+<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/tcpdump1.png" alt="avatar"></p>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><table>
+<thead>
+<tr>
+<th>执行任务</th>
+<th>执行命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>捕获特定网口数据包</td>
+<td>tcpdump -i eth0</td>
+</tr>
+<tr>
+<td>捕获特定个数(1000)的包</td>
+<td>tcpdump -c 1000 -i eth0</td>
+</tr>
+<tr>
+<td>将捕获的包保存到文件</td>
+<td>tcpdump -w a.pcap -i eth0</td>
+</tr>
+<tr>
+<td>读取pcap格式的包</td>
+<td>tcpdump -r a.pcap</td>
+</tr>
+<tr>
+<td>增加捕获包的时间戳</td>
+<td>tcpdump -n -ttt -i eth0</td>
+</tr>
+<tr>
+<td>指定捕获包的协议类型</td>
+<td>tcpdump -i eth0 arp</td>
+</tr>
+<tr>
+<td>捕获指定端口</td>
+<td>tcpdump -i eth0 post 22</td>
+</tr>
+<tr>
+<td>捕获特定目标ip+port的包</td>
+<td>tcpdump -i eth0 dst address and port 22</td>
+</tr>
+<tr>
+<td>捕获DNS请求和响应</td>
+<td>tcpdump -i eth0 -s0 port 53</td>
+</tr>
+<tr>
+<td>匹配Http请求头</td>
+<td>tcpdump -s 0 -v -n -l</td>
+</tr>
+<tr>
+<td>捕获特定网口数据包</td>
+<td>tcpdump -i eth0</td>
+</tr>
+<tr>
+<td>捕获特定个数(1000)的包</td>
+<td>tcpdump -c 1000 -i eth0</td>
+</tr>
+<tr>
+<td>将捕获的包保存到文件</td>
+<td>tcpdump -w a.pcap -i eth0</td>
+</tr>
+<tr>
+<td>读取pcap格式的包</td>
+<td>tcpdump -r a.pcap</td>
+</tr>
+<tr>
+<td>增加捕获包的时间戳</td>
+<td>tcpdump -n -ttt -i eth0</td>
+</tr>
+<tr>
+<td>指定捕获包的协议类型</td>
+<td>tcpdump -i eth0 arp</td>
+</tr>
+<tr>
+<td>捕获指定端口</td>
+<td>tcpdump -i eth0 post 22</td>
+</tr>
+<tr>
+<td>捕获特定目标ip+port的包</td>
+<td>tcpdump -i eth0 dst address and port 22</td>
+</tr>
+<tr>
+<td>捕获DNS请求和响应</td>
+<td>tcpdump -i eth0 -s0 port 53</td>
+</tr>
+<tr>
+<td>匹配Http请求头</td>
+<td>tcpdump -s 0 -v -n -l | egrep -i “POST /|GET /Host:”</td>
+</tr>
+</tbody></table>
+<h3 id="Isof"><a href="#Isof" class="headerlink" title="Isof"></a>Isof</h3><p>列出当前系统打开的文件描述符工具。可以得知感兴趣的描述符是被哪些进程使用</p>
+<h4 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h4><p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/Isof1.png" alt="avatar"></p>
+<h4 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h4><table>
+<thead>
+<tr>
+<th>执行任务</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列出所有的网络链接</td>
+<td>lsof -i</td>
+</tr>
+<tr>
+<td>列出所有udp的网络链接</td>
+<td>lsof -i udp</td>
+</tr>
+<tr>
+<td>列出谁在使用某个端口</td>
+<td>lsof -i :3306</td>
+</tr>
+<tr>
+<td>列出谁在使用特定的tcp端口</td>
+<td>lsof -i tcp:80</td>
+</tr>
+<tr>
+<td>根据文件描述范围列出文件信息</td>
+<td>lsof -d 2-3</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>udp</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列出谁在使用某个端口</td>
+<td>lsof -i :3306</td>
+</tr>
+<tr>
+<td>列出谁在使用特定的tcp端口</td>
+<td>lsof -i tcp:80</td>
+</tr>
+<tr>
+<td>根据文件描述范围列出文件信息</td>
+<td>lsof -d 2-3</td>
+</tr>
+</tbody></table>
+<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><p>netstat是一个网络信息统计工具。它可以得到网卡接口上全部了解，路由表信息，网卡接口信息等。通常在网络编程中我们用它来显示TCP连接以及状态信息。</p>
+<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/netsat1.png" alt></p>
+<h4 id="案例-2"><a href="#案例-2" class="headerlink" title="案例"></a>案例</h4><table>
+<thead>
+<tr>
+<th>执行任务</th>
+<th>执行命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列出所有连接</td>
+<td>netstat -a</td>
+</tr>
+<tr>
+<td>只列出TCP或者UDP</td>
+<td>netstat -at/netstat -au</td>
+</tr>
+<tr>
+<td>列出监听中的连接</td>
+<td>netstat -tnl</td>
+</tr>
+<tr>
+<td>获取进程名、进程号以及用户 ID</td>
+<td>nestat  -nlpt</td>
+</tr>
+<tr>
+<td>打印统计信息</td>
+<td>netstat -s</td>
+</tr>
+<tr>
+<td>netstat持续输出</td>
+<td>netstat -ct</td>
+</tr>
+<tr>
+<td>打印active状态的连接</td>
+<td>netstat -atnp</td>
+</tr>
+<tr>
+<td>查看服务是否运行(npt)</td>
+<td>netstat -aple</td>
+</tr>
+</tbody></table>
+<h3 id="dpkt"><a href="#dpkt" class="headerlink" title="dpkt"></a>dpkt</h3><p>dpkt定义包packet类，它定义了网络报文类型的基础类。其中IP，ICMP等继承于dpkt class，每一个子类有一个_ hdr_ 结构，此结构定义了不同报文的头部，方便取出相应的控制字段。示例如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line">import dpkt</span><br><span class="line">import socket</span><br><span class="line">import optparse</span><br><span class="line"></span><br><span class="line">def printPcap(pcap):</span><br><span class="line">    <span class="comment"># 遍历[timestamp, packet]记录的数组</span></span><br><span class="line">    <span class="keyword">for</span> (ts, buf) <span class="keyword">in</span> pcap:</span><br><span class="line">        try:</span><br><span class="line">            <span class="comment"># 获取以太网部分数据</span></span><br><span class="line">            eth = dpkt.ethernet.Ethernet(buf)</span><br><span class="line">            <span class="comment"># 获取IP层数据</span></span><br><span class="line">            ip = eth.data</span><br><span class="line">            <span class="comment"># 把存储在inet_ntoa中的IP地址转换成一个字符串</span></span><br><span class="line">            src = socket.inet_ntoa(ip.src)</span><br><span class="line">            dst = socket.inet_ntoa(ip.dst)</span><br><span class="line">            <span class="built_in">print</span> <span class="string">'[+] 源地址: '</span> + src + <span class="string">' --&gt; 目标地址: '</span> + dst</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    parser = optparse.OptionParser(<span class="string">'[*] Usage : ./pcapTest.py -f &lt;file&gt;'</span>)<span class="comment">#测试包</span></span><br><span class="line">    parser.add_option(<span class="string">'-f'</span>,dest=<span class="string">'fileName'</span>,<span class="built_in">type</span>=<span class="string">'string'</span>,<span class="built_in">help</span>=<span class="string">'specify target filename'</span>)</span><br><span class="line">    (options,args) = parser.parse_args()</span><br><span class="line">    fileName = options.fileName<span class="comment"># 取得包名</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> fileName == None:</span><br><span class="line">        <span class="built_in">print</span> parser.usage</span><br><span class="line">        <span class="built_in">exit</span>(0)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment">#f = open('geotest.pcap')</span></span><br><span class="line">        f = open(fileName)</span><br><span class="line">        pcap = dpkt.pcap.Reader(f)</span><br><span class="line">        printPcap(pcap)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="scapy"><a href="#scapy" class="headerlink" title="scapy"></a>scapy</h3><p>“强大的交互式包操作工具”、“支持大量协议的包解析和包构造”、“轻松取代 hping，85% 的 nmap，arpspoof，tcpdump 等等”。不过归根到底，它说的强大功能，都是基于 Scapy 是一个强大的网络数据包操作工具才能实现得了的。只是大概介绍，具体用法官网非常详细，有助于学习网络协议</p>
+<p><img src="/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/scapy.png" alt></p>
 ]]></content>
       <categories>
-        <category>Matplotlib</category>
+        <category>网络工具</category>
       </categories>
       <tags>
-        <tag>Matplotlib</tag>
+        <tag>网络工具</tag>
       </tags>
   </entry>
 </search>
