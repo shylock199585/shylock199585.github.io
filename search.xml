@@ -4687,4 +4687,15 @@ memory usage: 860.5 MB</code></pre><figure class="highlight python"><table><tr><
         <tag>计算机网络</tag>
       </tags>
   </entry>
+  <entry>
+    <title>使用python实现数据结构算法</title>
+    <url>/2020/08/03/python%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def binary_search(list, item):</span><br><span class="line">    low &#x3D; 0</span><br><span class="line">    high &#x3D; len(list) - 1</span><br><span class="line">    while(low &lt;&#x3D; high):</span><br><span class="line">        mid &#x3D; (low + high) &#x2F;&#x2F; 2</span><br><span class="line">        guess &#x3D; list[mid]</span><br><span class="line">        if guess &#x3D;&#x3D; item:</span><br><span class="line">            return mid</span><br><span class="line">        elif guess &gt; item:</span><br><span class="line">            high &#x3D; mid - 1</span><br><span class="line">        elif guess &lt; item:</span><br><span class="line">            low &#x3D; mid + 1</span><br><span class="line">    return None</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
 </search>
