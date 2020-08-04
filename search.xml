@@ -12,7 +12,12 @@
 
 
 
-<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><h3 id="1-1-细节设置"><a href="#1-1-细节设置" class="headerlink" title="1.1 细节设置"></a>1.1 细节设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha53g5943j30k10bw753.jpg" alt="image.png"></p>
+<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><a id="more"></a>
+
+
+
+
+<h3 id="1-1-细节设置"><a href="#1-1-细节设置" class="headerlink" title="1.1 细节设置"></a>1.1 细节设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha53g5943j30k10bw753.jpg" alt="image.png"></p>
 <p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha54oyoq0j30kb07zgly.jpg" alt="image.png"></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>],<span class="string">'-.'</span>,color = <span class="string">'r'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
 
@@ -168,7 +173,7 @@
     <url>/2020/07/05/hexo%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h4><p><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a><br><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></p>
 <h4 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
+<a id="more"></a>
 <h4 id="Hexo-初始化"><a href="#Hexo-初始化" class="headerlink" title="Hexo 初始化"></a>Hexo 初始化</h4><p>安装 Hexo 完成后，执行下列命令，在指定文件夹中新建所需要的文件。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt; <span class="comment"># 初始化项目名称 </span></span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt; </span><br><span class="line">$ npm install <span class="comment"># 安装模块</span></span><br></pre></td></tr></table></figure>
 
@@ -216,7 +221,10 @@
 
 
 
-<pre><code>array([2, 3, 4, 5, 6])</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array2 +array</span><br></pre></td></tr></table></figure>
+<pre><code>array([2, 3, 4, 5, 6])</code></pre><a id="more"></a>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">array2 +array</span><br></pre></td></tr></table></figure>
 
 
 
@@ -862,6 +870,7 @@ None</code></pre><figure class="highlight python"><table><tr><td class="code"><p
     <url>/2020/07/27/pipconda/</url>
     <content><![CDATA[<p>pip是Python Packaging Authority推荐的用于从Python Package Index安装包的工具。pip安装打包为wheels或源代码分发的Python软件。</p>
 <p>Conda是跨平台的包和环境管理器，可以安装和管理来自Anaconda repository以 Anaconda Cloud的conda包。 Conda包是二进制文件，徐需要使用编译器来安装它们。另外，conda包不仅限于Python软件。它们还可能包含C或C ++库，R包或任何其他软件。这是conda和pip之间的关键区别。 </p>
+<a id="more"></a>
 <p>pip安装Python包，而conda安装包可能包含用任何语言编写的软件的包。在使用pip之前，必须通过系统包管理器或下载并运行安装程序来安装Python解释器。而Conda可以直接安装Python包以及Python解释器。</p>
 <p>另一个区别是conda能够创建可以包含不同版本的Python或其他软件包的隔离环境。在使用数据科学工具时，这非常有用，因为不同的工具可能包含冲突的要求，这些要求可能会阻止它们全部安装到单个环境中。 </p>
 <p>pip和conda在如何实现环境中的依赖关系方面也有所不同。安装包时，pip会在递归的串行循环中安装依赖项。没有努力确保同时满足所有包的依赖性。如果较早安装的软件包与稍后安装的软件包具有不兼容的依赖性版本，则可能导致破坏的环境。conda使用可确保满足环境中安装的所有包的所有要求。此检查可能需要额外的时间，但有助于防止创建破坏的环境，前期关于依赖关系包的元数据是正确的。</p>
@@ -880,6 +889,8 @@ None</code></pre><figure class="highlight python"><table><tr><td class="code"><p
     <content><![CDATA[<h1 id="数据分析库Pandas"><a href="#数据分析库Pandas" class="headerlink" title="数据分析库Pandas"></a>数据分析库Pandas</h1><h2 id="1-数据预处理"><a href="#1-数据预处理" class="headerlink" title="1. 数据预处理"></a>1. 数据预处理</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
 
 <h3 id="1-1-数据读取"><a href="#1-1-数据读取" class="headerlink" title="1.1 数据读取"></a>1.1 数据读取</h3><p>泰坦尼克号数据<br><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gh8sfplueyj30oy0fkgn6.jpg" alt="image.png"></p>
+<a id="more"></a>
+
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">'./data/titanic.csv'</span>)</span><br><span class="line"><span class="comment">#展示数据，默认前5条</span></span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
 
 
@@ -4247,15 +4258,23 @@ memory usage: 860.5 MB</code></pre><figure class="highlight python"><table><tr><
 <td>-z</td>
 <td>扫描目标机器某个范围内服务是否开启</td>
 </tr>
-</tbody></table>
-<h4 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h4><table>
-<thead>
 <tr>
-<th>执行任务</th>
-<th>执行命令</th>
+<td><a id="more"></a></td>
+<td></td>
 </tr>
-</thead>
-<tbody><tr>
+<tr>
+<td>#### 案例：</td>
+<td></td>
+</tr>
+<tr>
+<td>执行任务</td>
+<td>执行命令</td>
+</tr>
+<tr>
+<td>—-</td>
+<td>—-</td>
+</tr>
+<tr>
 <td>扫描机器A端口号在30-40的服务</td>
 <td>nc -z A 30-40</td>
 </tr>
@@ -4516,6 +4535,7 @@ memory usage: 860.5 MB</code></pre><figure class="highlight python"><table><tr><
     <url>/2020/08/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</url>
     <content><![CDATA[<h1 id="一-OSI与TCP-IP各层的结构、功能与协议"><a href="#一-OSI与TCP-IP各层的结构、功能与协议" class="headerlink" title="一 OSI与TCP/IP各层的结构、功能与协议"></a>一 OSI与TCP/IP各层的结构、功能与协议</h1><h2 id="五层协议的体系结构"><a href="#五层协议的体系结构" class="headerlink" title="五层协议的体系结构"></a>五层协议的体系结构</h2><p>中和了OSI的七层结构和TCP/IP的四层结构。</p>
 <p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb25bueipj30hl09kmxl.jpg" alt="undefined"></p>
+<a id="more"></a>
 <h3 id="1-应用层"><a href="#1-应用层" class="headerlink" title="1 应用层"></a>1 应用层</h3><p>功能：通过应用进程间的交互来完成特定网络应用。<br>应用层协议定义的是应用进程（<strong>进程：主机中正在运行的程序</strong>）间的通信和交互的规则。对于不同的网络应用需要不同的应用层协议，在互联网中应用层协议很多，如域名系统 DNS，支持万维网应用的 HTTP 协议，支持电子邮件的 SMTP 协议等等。应用层交互的数据单元称为<strong>报文</strong>。</p>
 <h4 id="域名系统（Domain-Name-System，DNS）"><a href="#域名系统（Domain-Name-System，DNS）" class="headerlink" title="域名系统（Domain Name System，DNS）"></a>域名系统（Domain Name System，DNS）</h4><p>将<strong>域名和IP地址相互映射</strong>的一个分布式数据库。</p>
 <h4 id="超文本传输协议（HTTP，HyperText-Transfer-Protocol"><a href="#超文本传输协议（HTTP，HyperText-Transfer-Protocol" class="headerlink" title="超文本传输协议（HTTP，HyperText Transfer Protocol)"></a>超文本传输协议（HTTP，HyperText Transfer Protocol)</h4><p>互联网上应用最为广泛的一种网络协议。所有的 WWW（万维网） 文件都必须遵守这个标准。设计 HTTP 最初的目的是为了提供一种发布和接收 HTML 页面的方法。</p>

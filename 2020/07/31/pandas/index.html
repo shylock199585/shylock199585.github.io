@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="使用Pandas的一些基本操作">
+  <meta name="description" content="数据分析库Pandas1. 数据预处理1import pandas as pd  1.1 数据读取泰坦尼克号数据">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pandas的基本操作">
 <meta property="og:url" content="http://yoursite.com/2020/07/31/pandas/index.html">
 <meta property="og:site_name" content="Shylock&#39;s Blog">
-<meta property="og:description" content="使用Pandas的一些基本操作">
+<meta property="og:description" content="数据分析库Pandas1. 数据预处理1import pandas as pd  1.1 数据读取泰坦尼克号数据">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/005PNXlEgy1gh8sfplueyj30oy0fkgn6.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/07/31/pandas/output_81_1.png">
 <meta property="og:image" content="http://yoursite.com/2020/07/31/pandas/output_83_1.png">
 <meta property="og:image" content="http://yoursite.com/2020/07/31/pandas/output_85_1.png">
 <meta property="article:published_time" content="2020-07-31T03:15:01.000Z">
-<meta property="article:modified_time" content="2020-07-31T07:42:51.490Z">
+<meta property="article:modified_time" content="2020-08-04T11:48:20.713Z">
 <meta property="article:author" content="yuanpeng">
 <meta property="article:tag" content="Pandas">
 <meta name="twitter:card" content="summary">
@@ -223,10 +223,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-07-31 11:15:01 / 修改时间：15:42:51" itemprop="dateCreated datePublished" datetime="2020-07-31T11:15:01+08:00">2020-07-31</time>
+              <time title="创建时间：2020-07-31 11:15:01" itemprop="dateCreated datePublished" datetime="2020-07-31T11:15:01+08:00">2020-07-31</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-04 19:48:20" itemprop="dateModified" datetime="2020-08-04T19:48:20+08:00">2020-08-04</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -245,7 +251,6 @@
               <span class="post-meta-item-text">阅读次数：</span>
               <span id="busuanzi_value_page_pv"></span>
             </span>
-            <div class="post-description">使用Pandas的一些基本操作</div>
 
         </div>
       </header>
@@ -259,6 +264,8 @@
         <h1 id="数据分析库Pandas"><a href="#数据分析库Pandas" class="headerlink" title="数据分析库Pandas"></a>数据分析库Pandas</h1><h2 id="1-数据预处理"><a href="#1-数据预处理" class="headerlink" title="1. 数据预处理"></a>1. 数据预处理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
 
 <h3 id="1-1-数据读取"><a href="#1-1-数据读取" class="headerlink" title="1.1 数据读取"></a>1.1 数据读取</h3><p>泰坦尼克号数据<br><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gh8sfplueyj30oy0fkgn6.jpg" alt="image.png"></p>
+<a id="more"></a>
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">'./data/titanic.csv'</span>)</span><br><span class="line"><span class="comment">#展示数据，默认前5条</span></span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
 
 

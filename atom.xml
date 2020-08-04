@@ -48,11 +48,12 @@
     <link href="http://yoursite.com/2020/08/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     <id>http://yoursite.com/2020/08/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</id>
     <published>2020-08-01T01:29:01.000Z</published>
-    <updated>2020-08-01T06:18:46.291Z</updated>
+    <updated>2020-08-04T11:47:32.314Z</updated>
     
     <summary type="html">
     
-      搞定计算机网络面试，从JavaGuide总结的知识点
+      &lt;h1 id=&quot;一-OSI与TCP-IP各层的结构、功能与协议&quot;&gt;&lt;a href=&quot;#一-OSI与TCP-IP各层的结构、功能与协议&quot; class=&quot;headerlink&quot; title=&quot;一 OSI与TCP/IP各层的结构、功能与协议&quot;&gt;&lt;/a&gt;一 OSI与TCP/IP各层的结构、功能与协议&lt;/h1&gt;&lt;h2 id=&quot;五层协议的体系结构&quot;&gt;&lt;a href=&quot;#五层协议的体系结构&quot; class=&quot;headerlink&quot; title=&quot;五层协议的体系结构&quot;&gt;&lt;/a&gt;五层协议的体系结构&lt;/h2&gt;&lt;p&gt;中和了OSI的七层结构和TCP/IP的四层结构。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/005PNXlEgy1ghb25bueipj30hl09kmxl.jpg&quot; alt=&quot;undefined&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -69,11 +70,20 @@
     <link href="http://yoursite.com/2020/07/31/Matplotlib/"/>
     <id>http://yoursite.com/2020/07/31/Matplotlib/</id>
     <published>2020-07-31T07:30:01.000Z</published>
-    <updated>2020-07-31T07:43:18.797Z</updated>
+    <updated>2020-08-04T11:46:54.732Z</updated>
     
     <summary type="html">
     
-      使用Matplotlib绘图
+      &lt;p&gt;数据可视化库（Matplotlib）&lt;/p&gt;
+&lt;h2 id=&quot;1-常规绘图方法&quot;&gt;&lt;a href=&quot;#1-常规绘图方法&quot; class=&quot;headerlink&quot; title=&quot;1. 常规绘图方法&quot;&gt;&lt;/a&gt;1. 常规绘图方法&lt;/h2&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; matplotlib.pyplot &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; plt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;%matplotlib inline&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;plt.plot([&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;],[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;25&lt;/span&gt;])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;plt.xlabel(&lt;span class=&quot;string&quot;&gt;&#39;xlabel&#39;&lt;/span&gt;, fontsize = &lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;plt.ylabel(&lt;span class=&quot;string&quot;&gt;&#39;ylabel&#39;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+
+&lt;pre&gt;&lt;code&gt;Text(0, 0.5, &amp;apos;ylabel&amp;apos;)&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -90,11 +100,13 @@
     <link href="http://yoursite.com/2020/07/31/pandas/"/>
     <id>http://yoursite.com/2020/07/31/pandas/</id>
     <published>2020-07-31T03:15:01.000Z</published>
-    <updated>2020-07-31T07:42:51.490Z</updated>
+    <updated>2020-08-04T11:48:20.713Z</updated>
     
     <summary type="html">
     
-      使用Pandas的一些基本操作
+      &lt;h1 id=&quot;数据分析库Pandas&quot;&gt;&lt;a href=&quot;#数据分析库Pandas&quot; class=&quot;headerlink&quot; title=&quot;数据分析库Pandas&quot;&gt;&lt;/a&gt;数据分析库Pandas&lt;/h1&gt;&lt;h2 id=&quot;1-数据预处理&quot;&gt;&lt;a href=&quot;#1-数据预处理&quot; class=&quot;headerlink&quot; title=&quot;1. 数据预处理&quot;&gt;&lt;/a&gt;1. 数据预处理&lt;/h2&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; pandas &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; pd&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;1-1-数据读取&quot;&gt;&lt;a href=&quot;#1-1-数据读取&quot; class=&quot;headerlink&quot; title=&quot;1.1 数据读取&quot;&gt;&lt;/a&gt;1.1 数据读取&lt;/h3&gt;&lt;p&gt;泰坦尼克号数据&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/005PNXlEgy1gh8sfplueyj30oy0fkgn6.jpg&quot; alt=&quot;image.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -111,11 +123,20 @@
     <link href="http://yoursite.com/2020/07/30/Numpy/"/>
     <id>http://yoursite.com/2020/07/30/Numpy/</id>
     <published>2020-07-30T02:02:01.000Z</published>
-    <updated>2020-07-30T02:03:25.601Z</updated>
+    <updated>2020-08-04T11:49:27.629Z</updated>
     
     <summary type="html">
     
-      使用Numpy的一些基本操作
+      &lt;h1 id=&quot;1-Numpy的基本操作&quot;&gt;&lt;a href=&quot;#1-Numpy的基本操作&quot; class=&quot;headerlink&quot; title=&quot;1. Numpy的基本操作&quot;&gt;&lt;/a&gt;1. Numpy的基本操作&lt;/h1&gt;&lt;p&gt;导入numpy&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; numpy &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; np&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;1-1-array数组&quot;&gt;&lt;a href=&quot;#1-1-array数组&quot; class=&quot;headerlink&quot; title=&quot;1.1 array数组&quot;&gt;&lt;/a&gt;1.1 array数组&lt;/h3&gt;&lt;p&gt;定义数组array = [1,2,3,4,5]&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;array = np.array([&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array2 = array + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;array2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+
+&lt;pre&gt;&lt;code&gt;array([2, 3, 4, 5, 6])&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -132,11 +153,12 @@
     <link href="http://yoursite.com/2020/07/27/pipconda/"/>
     <id>http://yoursite.com/2020/07/27/pipconda/</id>
     <published>2020-07-27T12:43:01.000Z</published>
-    <updated>2020-07-27T12:47:52.067Z</updated>
+    <updated>2020-08-04T11:50:00.774Z</updated>
     
     <summary type="html">
     
-      python包管理工具：Conda和pip比较
+      &lt;p&gt;pip是Python Packaging Authority推荐的用于从Python Package Index安装包的工具。pip安装打包为wheels或源代码分发的Python软件。&lt;/p&gt;
+&lt;p&gt;Conda是跨平台的包和环境管理器，可以安装和管理来自Anaconda repository以 Anaconda Cloud的conda包。 Conda包是二进制文件，徐需要使用编译器来安装它们。另外，conda包不仅限于Python软件。它们还可能包含C或C ++库，R包或任何其他软件。这是conda和pip之间的关键区别。 &lt;/p&gt;
     
     </summary>
     
@@ -174,11 +196,52 @@
     <link href="http://yoursite.com/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/"/>
     <id>http://yoursite.com/2020/07/16/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%91%BD%E4%BB%A4/</id>
     <published>2020-07-16T02:06:01.000Z</published>
-    <updated>2020-07-16T03:37:41.850Z</updated>
+    <updated>2020-08-04T11:51:03.906Z</updated>
     
     <summary type="html">
     
-      使用Linux或者Windows中相关网络工具可以更快更准的找到故障
+      &lt;h3 id=&quot;nc&quot;&gt;&lt;a href=&quot;#nc&quot; class=&quot;headerlink&quot; title=&quot;nc&quot;&gt;&lt;/a&gt;nc&lt;/h3&gt;&lt;p&gt;用来快速构建网络链接,常用来调试客户端程序。&lt;/p&gt;
+&lt;h4 id=&quot;参数&quot;&gt;&lt;a href=&quot;#参数&quot; class=&quot;headerlink&quot; title=&quot;参数&quot;&gt;&lt;/a&gt;参数&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;-i&lt;/td&gt;
+&lt;td&gt;设置数据包传送的时间间隔&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-l&lt;/td&gt;
+&lt;td&gt;以服务器方式运行，默认为客户端运行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-k&lt;/td&gt;
+&lt;td&gt;重复接受并处理某个端口的所有链接&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-p&lt;/td&gt;
+&lt;td&gt;以客户端运行时强制使用指定端口&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-C&lt;/td&gt;
+&lt;td&gt;将CR和LF两个字符作为结束符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-u&lt;/td&gt;
+&lt;td&gt;使用UDP协议，默认为TCP协议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-X&lt;/td&gt;
+&lt;td&gt;nc客户端余代理服务器通信默认为socks5协议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;-z&lt;/td&gt;
+&lt;td&gt;扫描目标机器某个范围内服务是否开启&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
     
     </summary>
     
@@ -195,11 +258,12 @@
     <link href="http://yoursite.com/2020/07/05/hexo%E6%90%AD%E5%BB%BA/"/>
     <id>http://yoursite.com/2020/07/05/hexo%E6%90%AD%E5%BB%BA/</id>
     <published>2020-07-05T02:40:01.000Z</published>
-    <updated>2020-07-05T07:10:06.124Z</updated>
+    <updated>2020-08-04T11:51:35.022Z</updated>
     
     <summary type="html">
     
-      使用Hexo搭建个人GitHub Pages的简要过程
+      &lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;h4 id=&quot;安装前提&quot;&gt;&lt;a href=&quot;#安装前提&quot; class=&quot;headerlink&quot; title=&quot;安装前提&quot;&gt;&lt;/a&gt;安装前提&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://nodejs.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Node.js&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://git-scm.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;git&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;安装-Hexo&quot;&gt;&lt;a href=&quot;#安装-Hexo&quot; class=&quot;headerlink&quot; title=&quot;安装 Hexo&quot;&gt;&lt;/a&gt;安装 Hexo&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ npm install -g hexo-cli&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
