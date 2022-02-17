@@ -6,10 +6,37 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-11-29T14:12:23.837Z</updated>
+  <updated>2022-02-17T01:23:54.030Z</updated>
   <id>http://yoursite.com/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CTF常用文件头</title>
+    <link href="http://yoursite.com/2022/02/17/%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E5%A4%B4/"/>
+    <id>http://yoursite.com/2022/02/17/%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E5%A4%B4/</id>
+    <published>2022-02-17T01:23:01.000Z</published>
+    <updated>2022-02-17T01:23:54.030Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;JPEG (jpg)，                        　　文件头：FFD8FF　　　　　　　　　　　　　　&lt;br&gt;PNG (png)，                       　　 文件头：89504E47 
+        
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://yoursite.com/categories/CTF/"/>
+    
+    
+      <category term="CTF" scheme="http://yoursite.com/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql查询练习</title>
