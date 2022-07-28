@@ -1,4 +1,4 @@
-#EasySQL
+# EasySQL
 1.涉及漏洞类型
 SQL注入
 
@@ -23,3 +23,5 @@ SELECT * FROM admin WHERE Username='1' OR 1=1 OR '1'='1' AND Password='EDFKGMZDF
 (3.)1=1返回真(此处是真)
 
 以上的结果是:   假  or 真 or假  返回真。验证通过。
+
+# WarmUp
