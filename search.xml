@@ -1,191 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>使用Matplotlib进行简单绘图</title>
-    <url>/2020/07/31/Matplotlib/</url>
-    <content><![CDATA[<p>数据可视化库（Matplotlib）</p>
-<h2 id="1-常规绘图方法"><a href="#1-常规绘图方法" class="headerlink" title="1. 常规绘图方法"></a>1. 常规绘图方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>])</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><a id="more"></a>
-
-
-
-
-<h3 id="1-1-细节设置"><a href="#1-1-细节设置" class="headerlink" title="1.1 细节设置"></a>1.1 细节设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha53g5943j30k10bw753.jpg" alt="image.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha54oyoq0j30kb07zgly.jpg" alt="image.png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>],<span class="string">'-.'</span>,color = <span class="string">'r'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_7_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array = np.arange(<span class="number">0</span>,<span class="number">10</span>,<span class="number">0.5</span>)</span><br><span class="line">plt.plot(array,array,<span class="string">'r--'</span>)</span><br><span class="line">plt.plot(array,array ** <span class="number">2</span>, <span class="string">'bs'</span>)</span><br><span class="line">plt.plot(array,array ** <span class="number">3</span>, <span class="string">'go'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x20291197cc0&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_8_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(x,y,linewidth = <span class="number">3.0</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x20291252a58&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_9_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(x,y, color = <span class="string">'b'</span>,linestyle = <span class="string">':'</span>, marker = <span class="string">'o'</span>, markerfacecolor = <span class="string">'r'</span>, markersize = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x202912c46a0&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_10_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">line = plt.plot(x,y)</span><br><span class="line"><span class="comment">#alpha表示透明度</span></span><br><span class="line">plt.setp(line,color = <span class="string">'r'</span>, linewidth = <span class="number">2.0</span>, alpha = <span class="number">0.4</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[None, None, None]</code></pre><p><img src="/2020/07/31/Matplotlib/output_11_1.png" alt="png"></p>
-<h3 id="1-2-子图与标注"><a href="#1-2-子图与标注" class="headerlink" title="1.2 子图与标注"></a>1.2 子图与标注</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">211</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">212</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x202913e1e10&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_13_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">121</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x2029152ee10&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_14_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">321</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">324</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x20292784eb8&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_15_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#标注解释说明</span></span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>, linestyle = <span class="string">':'</span>, marker = <span class="string">'o'</span>, markerfacecolor = <span class="string">'r'</span>, markersize = <span class="number">10</span>)</span><br><span class="line">plt.xlabel(<span class="string">'x:---'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'y:---'</span>)</span><br><span class="line"><span class="comment">#图题</span></span><br><span class="line">plt.title(<span class="string">'1231231'</span>)</span><br><span class="line"><span class="comment">#指定坐标叫注释</span></span><br><span class="line">plt.text(<span class="number">0</span>,<span class="number">0</span>, <span class="string">'yuandian'</span>)</span><br><span class="line"><span class="comment">#显示网格</span></span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#添加箭头，指定箭头的起始终止点和属性</span></span><br><span class="line">plt.annotate(<span class="string">'jiadedian'</span>, xy=(<span class="number">-5</span>,<span class="number">0</span>),xytext=(<span class="number">-2</span>,<span class="number">0.3</span>), arrowprops = dict(facecolor = <span class="string">'red'</span>, shrink=<span class="number">0.05</span>,headlength = <span class="number">20</span>, headwidth=<span class="number">20</span>) )</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>Text(-2, 0.3, &apos;jiadedian&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_16_1.png" alt="png"></p>
-<h3 id="1-3-风格设置"><a href="#1-3-风格设置" class="headerlink" title="1.3 风格设置"></a>1.3 风格设置</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.style.available</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&apos;bmh&apos;,
- &apos;classic&apos;,
- &apos;dark_background&apos;,
- &apos;fast&apos;,
- &apos;fivethirtyeight&apos;,
- &apos;ggplot&apos;,
- &apos;grayscale&apos;,
- &apos;seaborn-bright&apos;,
- &apos;seaborn-colorblind&apos;,
- &apos;seaborn-dark-palette&apos;,
- &apos;seaborn-dark&apos;,
- &apos;seaborn-darkgrid&apos;,
- &apos;seaborn-deep&apos;,
- &apos;seaborn-muted&apos;,
- &apos;seaborn-notebook&apos;,
- &apos;seaborn-paper&apos;,
- &apos;seaborn-pastel&apos;,
- &apos;seaborn-poster&apos;,
- &apos;seaborn-talk&apos;,
- &apos;seaborn-ticks&apos;,
- &apos;seaborn-white&apos;,
- &apos;seaborn-whitegrid&apos;,
- &apos;seaborn&apos;,
- &apos;Solarize_Light2&apos;,
- &apos;tableau-colorblind10&apos;,
- &apos;_classic_test&apos;]</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#plt.style.use('dark_background')</span></span><br><span class="line"><span class="comment"># plt.style.use('bmh')</span></span><br><span class="line">plt.style.use(<span class="string">'ggplot'</span>)</span><br><span class="line">plt.plot(x,y)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x20292977978&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_19_1.png" alt="png"></p>
-<h2 id="2-常用图表绘制"><a href="#2-常用图表绘制" class="headerlink" title="2. 常用图表绘制"></a>2. 常用图表绘制</h2><h3 id="2-1-条形图"><a href="#2-1-条形图" class="headerlink" title="2.1 条形图"></a>2.1 条形图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.style.use(<span class="string">'seaborn'</span>)</span><br><span class="line">patterns = (<span class="string">'-'</span>, <span class="string">'+'</span>, <span class="string">'x'</span>, <span class="string">'\\'</span>,<span class="string">'*'</span>, <span class="string">'o'</span>, <span class="string">'O'</span>, <span class="string">'.'</span>)</span><br><span class="line">mean_value = range(<span class="number">1</span>, len(patterns) + <span class="number">1</span>)</span><br><span class="line">x_pos = list(range(len(mean_value)))</span><br><span class="line">bars = plt.bar(x_pos, mean_value, color = <span class="string">'white'</span>)</span><br><span class="line"><span class="keyword">for</span> bar, pattern <span class="keyword">in</span> zip(bars, patterns):</span><br><span class="line">    bar.set_hatch(pattern)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/07/31/Matplotlib/output_22_0.png" alt="png"></p>
-<h3 id="2-2-盒图"><a href="#2-2-盒图" class="headerlink" title="2.2 盒图"></a>2.2 盒图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = [np.random.normal(<span class="number">0</span>,std,<span class="number">100</span>) <span class="keyword">for</span> std <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>)]</span><br><span class="line">fig = plt.figure(figsize = (<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.boxplot(data, sym = <span class="string">'s'</span>, vert = <span class="literal">True</span>)</span><br><span class="line">plt.xticks([y+<span class="number">1</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(len(data))], [<span class="string">'x1'</span>,<span class="string">'x2'</span>,<span class="string">'x3'</span>])</span><br><span class="line">plt.xlabel(<span class="string">'x'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'box plot'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>Text(0, 0.5, &apos;box plot&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_24_1.png" alt="png"></p>
-<h3 id="2-3-直方图和散点图"><a href="#2-3-直方图和散点图" class="headerlink" title="2.3 直方图和散点图"></a>2.3 直方图和散点图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = np.random.normal(<span class="number">0</span>,<span class="number">20</span>,<span class="number">1000</span>)</span><br><span class="line">bins = np.arange(<span class="number">-100</span>,<span class="number">100</span>,<span class="number">5</span>)</span><br><span class="line">plt.hist(data,bins=bins)</span><br><span class="line">plt.xlim([min(data) - <span class="number">5</span>, max(data) + <span class="number">5</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/07/31/Matplotlib/output_26_0.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N = <span class="number">1000</span></span><br><span class="line">x = np.random.randn(N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">plt.scatter(x, y, alpha = <span class="number">0.3</span>)</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/07/31/Matplotlib/output_27_0.png" alt="png"></p>
-<h3 id="2-4-3D图"><a href="#2-4-3D图" class="headerlink" title="2.4 3D图"></a>2.4 3D图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>,projection = <span class="string">'3d'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/2020/07/31/Matplotlib/output_29_0.png" alt="png"></p>
-<h3 id="2-5-布局设置"><a href="#2-5-布局设置" class="headerlink" title="2.5 布局设置"></a>2.5 布局设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha6m5m47tj30et098t9j.jpg" alt="image.png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#嵌套子图</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>,<span class="number">10</span>,<span class="number">1000</span>)</span><br><span class="line">y2 = np.sin(x**<span class="number">2</span>)</span><br><span class="line">y1 = x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">fig, ax1 = plt.subplots()</span><br><span class="line">left,bottom,width,height = [<span class="number">0.22</span>,<span class="number">0.45</span>,<span class="number">0.3</span>,<span class="number">0.35</span>]</span><br><span class="line">ax2 = fig.add_axes([left,bottom,width,height])</span><br><span class="line">ax1.plot(x,y1)</span><br><span class="line">ax2.plot(x,y2)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>[&lt;matplotlib.lines.Line2D at 0x20294514828&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_32_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Matplotlib</category>
-      </categories>
-      <tags>
-        <tag>Matplotlib</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo搭建简要过程</title>
-    <url>/2020/07/05/hexo%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h4><p><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a><br><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></p>
-<h4 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="Hexo-初始化"><a href="#Hexo-初始化" class="headerlink" title="Hexo 初始化"></a>Hexo 初始化</h4><p>安装 Hexo 完成后，执行下列命令，在指定文件夹中新建所需要的文件。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt; <span class="comment"># 初始化项目名称 </span></span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt; </span><br><span class="line">$ npm install <span class="comment"># 安装模块</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo clean <span class="comment"># 必要时，清除上次生成页面时造成的缓存 </span></span><br><span class="line">$ hexo g  <span class="comment"># 生成静态页面 </span></span><br><span class="line">$ hexo s  <span class="comment"># 在本地启动Hexo，可以在浏览器访问 localhost:4000 来预览</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="GitHub-支持"><a href="#GitHub-支持" class="headerlink" title="GitHub 支持"></a>GitHub 支持</h4><p>在 GitHub 按照 <code>username.github.io</code> 格式新建仓库，然后在项目根目录下执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>打开 <code>_config.yml</code> ，编辑 <code>deploy</code>字段，注意替换用户名</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:yourusername&#x2F;yourusername.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>配置完成后，执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<p>将本地内容部署在 GitHub 中，输入域名 <code>username.github.io</code> 进行访问</p>
-<h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><blockquote>
-<p>如果不喜欢默认主题，可以参考如下方式更改。</p>
-</blockquote>
-<p>要把主题更换为Next，先定位到Hexo站点目录进行主题下载</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> your-hexo-site</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>打开站点配置文件 <code>_config.yml</code>，修改 <code>theme</code> 字段值为 <code>next</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-<h4 id="修改Scheme"><a href="#修改Scheme" class="headerlink" title="修改Scheme"></a>修改Scheme</h4><p>在主题配置文件 <code>themes/next/_config.yml</code> 中进行修改，通过注释和反注释三选一。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br></pre></td></tr></table></figure>
-<h4 id="修改菜单"><a href="#修改菜单" class="headerlink" title="修改菜单"></a>修改菜单</h4><p>在主题配置文件中，找到 <code>menu</code> 字段并进行适当修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F;</span><br><span class="line">  archives: &#x2F;archives &#x2F;&#x2F;归档</span><br><span class="line">  about: &#x2F;about</span><br><span class="line">  categories: &#x2F;categories  &#x2F;&#x2F;分类</span><br><span class="line">  tags: &#x2F;tags   &#x2F;&#x2F;标签</span><br><span class="line">  #commonweal: &#x2F;404.html</span><br></pre></td></tr></table></figure>
-<h4 id="设置头像"><a href="#设置头像" class="headerlink" title="设置头像"></a>设置头像</h4><p>在主题配置文件中修改 <code>avatar</code> 字段，可以图片存在 <code>next/source/images</code> 目录</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line"># in theme directory(source&#x2F;images): &#x2F;images&#x2F;avatar.jpg</span><br><span class="line"># in site  directory(source&#x2F;uploads): &#x2F;uploads&#x2F;avatar.jpg</span><br><span class="line">avatar: &#x2F;images&#x2F;avatar.jpg</span><br></pre></td></tr></table></figure>
-
-<h4 id="进阶设定"><a href="#进阶设定" class="headerlink" title="进阶设定"></a>进阶设定</h4><p>官方文档介绍的很详细，请首先查阅<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">Next使用文档</a></p>
+    <title>解决Hexo框架博客图片不显示的问题</title>
+    <url>/2020/07/16/Hexo%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/</url>
+    <content><![CDATA[<ol>
+<li><p>打开博客所在文件夹blog，找到<code>_config.yml</code>配置文件，修改语句<code>post_asset_folder: true</code></p>
+</li>
+<li><p>git bash安装插件：<br><code>npm install https://github.com/7ym0n/hexo-asset-image --save</code></p>
+</li>
+<li><p>每次执行<code>hexo new &quot;文件名&quot;</code>命令时，文件所在文件夹会自动创建一个同名文件夹用于放置资源。</p>
+</li>
+<li><p>插入图片时用这种方式：<code>{ % raw asset_img test.jpg This is an test image %}</code></p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Hexo</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CTF在线工具合集</title>
+    <url>/2024/11/19/CTF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<p>1、在线RSA加密/解密工具：<a href="https://tool.ip138.com/rsa/" target="_blank" rel="noopener">https://tool.ip138.com/rsa/</a></p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -845,21 +690,150 @@ None</code></pre><figure class="highlight python"><table><tr><td class="code"><p
       </tags>
   </entry>
   <entry>
-    <title>python包管理工具：Conda和pip比较</title>
-    <url>/2020/07/27/pipconda/</url>
-    <content><![CDATA[<p>pip是Python Packaging Authority推荐的用于从Python Package Index安装包的工具。pip安装打包为wheels或源代码分发的Python软件。</p>
-<p>Conda是跨平台的包和环境管理器，可以安装和管理来自Anaconda repository以 Anaconda Cloud的conda包。 Conda包是二进制文件，徐需要使用编译器来安装它们。另外，conda包不仅限于Python软件。它们还可能包含C或C ++库，R包或任何其他软件。这是conda和pip之间的关键区别。 </p>
-<a id="more"></a>
-<p>pip安装Python包，而conda安装包可能包含用任何语言编写的软件的包。在使用pip之前，必须通过系统包管理器或下载并运行安装程序来安装Python解释器。而Conda可以直接安装Python包以及Python解释器。</p>
-<p>另一个区别是conda能够创建可以包含不同版本的Python或其他软件包的隔离环境。在使用数据科学工具时，这非常有用，因为不同的工具可能包含冲突的要求，这些要求可能会阻止它们全部安装到单个环境中。 </p>
-<p>pip和conda在如何实现环境中的依赖关系方面也有所不同。安装包时，pip会在递归的串行循环中安装依赖项。没有努力确保同时满足所有包的依赖性。如果较早安装的软件包与稍后安装的软件包具有不兼容的依赖性版本，则可能导致破坏的环境。conda使用可确保满足环境中安装的所有包的所有要求。此检查可能需要额外的时间，但有助于防止创建破坏的环境，前期关于依赖关系包的元数据是正确的。</p>
-<p>考虑到conda和pip之间的相似性，有些人试图将这些工具结合起来创建数据科学环境也就不足为奇了。将pip与conda结合的主要原因是有些包只能通过pip安装。 Anaconda创酷提供超过1,500个软件包，包括最流行的数据科学，机器学习和AI框架。这些，以及包括conda-forge和bioconda在内的数据通过Anaconda云提供的数千个附加软件包，可以使用conda进行安装。尽管有大量的软件包，但与PyPI上提供的150,000多个软件包相比，它仍然很小。有时候需要的包没有conda包，但在PyPI上有，可以用pip安装。</p>
+    <title>使用Matplotlib进行简单绘图</title>
+    <url>/2020/07/31/Matplotlib/</url>
+    <content><![CDATA[<p>数据可视化库（Matplotlib）</p>
+<h2 id="1-常规绘图方法"><a href="#1-常规绘图方法" class="headerlink" title="1. 常规绘图方法"></a>1. 常规绘图方法</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>])</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><a id="more"></a>
+
+
+
+
+<h3 id="1-1-细节设置"><a href="#1-1-细节设置" class="headerlink" title="1.1 细节设置"></a>1.1 细节设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha53g5943j30k10bw753.jpg" alt="image.png"></p>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha54oyoq0j30kb07zgly.jpg" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">4</span>,<span class="number">9</span>,<span class="number">16</span>,<span class="number">25</span>],<span class="string">'-.'</span>,color = <span class="string">'r'</span>)</span><br><span class="line">plt.xlabel(<span class="string">'xlabel'</span>, fontsize = <span class="number">16</span>)</span><br><span class="line">plt.ylabel(<span class="string">'ylabel'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0, 0.5, &apos;ylabel&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_7_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">array = np.arange(<span class="number">0</span>,<span class="number">10</span>,<span class="number">0.5</span>)</span><br><span class="line">plt.plot(array,array,<span class="string">'r--'</span>)</span><br><span class="line">plt.plot(array,array ** <span class="number">2</span>, <span class="string">'bs'</span>)</span><br><span class="line">plt.plot(array,array ** <span class="number">3</span>, <span class="string">'go'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20291197cc0&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_8_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(x,y,linewidth = <span class="number">3.0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20291252a58&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_9_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = np.linspace(<span class="number">-10</span>,<span class="number">10</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line">plt.plot(x,y, color = <span class="string">'b'</span>,linestyle = <span class="string">':'</span>, marker = <span class="string">'o'</span>, markerfacecolor = <span class="string">'r'</span>, markersize = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x202912c46a0&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_10_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">line = plt.plot(x,y)</span><br><span class="line"><span class="comment">#alpha表示透明度</span></span><br><span class="line">plt.setp(line,color = <span class="string">'r'</span>, linewidth = <span class="number">2.0</span>, alpha = <span class="number">0.4</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[None, None, None]</code></pre><p><img src="/2020/07/31/Matplotlib/output_11_1.png" alt="png"></p>
+<h3 id="1-2-子图与标注"><a href="#1-2-子图与标注" class="headerlink" title="1.2 子图与标注"></a>1.2 子图与标注</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">211</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">212</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x202913e1e10&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_13_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">121</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">122</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x2029152ee10&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_14_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.subplot(<span class="number">321</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'r'</span>)</span><br><span class="line">plt.subplot(<span class="number">324</span>)</span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20292784eb8&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_15_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#标注解释说明</span></span><br><span class="line">plt.plot(x,y,color = <span class="string">'b'</span>, linestyle = <span class="string">':'</span>, marker = <span class="string">'o'</span>, markerfacecolor = <span class="string">'r'</span>, markersize = <span class="number">10</span>)</span><br><span class="line">plt.xlabel(<span class="string">'x:---'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'y:---'</span>)</span><br><span class="line"><span class="comment">#图题</span></span><br><span class="line">plt.title(<span class="string">'1231231'</span>)</span><br><span class="line"><span class="comment">#指定坐标叫注释</span></span><br><span class="line">plt.text(<span class="number">0</span>,<span class="number">0</span>, <span class="string">'yuandian'</span>)</span><br><span class="line"><span class="comment">#显示网格</span></span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#添加箭头，指定箭头的起始终止点和属性</span></span><br><span class="line">plt.annotate(<span class="string">'jiadedian'</span>, xy=(<span class="number">-5</span>,<span class="number">0</span>),xytext=(<span class="number">-2</span>,<span class="number">0.3</span>), arrowprops = dict(facecolor = <span class="string">'red'</span>, shrink=<span class="number">0.05</span>,headlength = <span class="number">20</span>, headwidth=<span class="number">20</span>) )</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(-2, 0.3, &apos;jiadedian&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_16_1.png" alt="png"></p>
+<h3 id="1-3-风格设置"><a href="#1-3-风格设置" class="headerlink" title="1.3 风格设置"></a>1.3 风格设置</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.style.available</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&apos;bmh&apos;,
+ &apos;classic&apos;,
+ &apos;dark_background&apos;,
+ &apos;fast&apos;,
+ &apos;fivethirtyeight&apos;,
+ &apos;ggplot&apos;,
+ &apos;grayscale&apos;,
+ &apos;seaborn-bright&apos;,
+ &apos;seaborn-colorblind&apos;,
+ &apos;seaborn-dark-palette&apos;,
+ &apos;seaborn-dark&apos;,
+ &apos;seaborn-darkgrid&apos;,
+ &apos;seaborn-deep&apos;,
+ &apos;seaborn-muted&apos;,
+ &apos;seaborn-notebook&apos;,
+ &apos;seaborn-paper&apos;,
+ &apos;seaborn-pastel&apos;,
+ &apos;seaborn-poster&apos;,
+ &apos;seaborn-talk&apos;,
+ &apos;seaborn-ticks&apos;,
+ &apos;seaborn-white&apos;,
+ &apos;seaborn-whitegrid&apos;,
+ &apos;seaborn&apos;,
+ &apos;Solarize_Light2&apos;,
+ &apos;tableau-colorblind10&apos;,
+ &apos;_classic_test&apos;]</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#plt.style.use('dark_background')</span></span><br><span class="line"><span class="comment"># plt.style.use('bmh')</span></span><br><span class="line">plt.style.use(<span class="string">'ggplot'</span>)</span><br><span class="line">plt.plot(x,y)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20292977978&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_19_1.png" alt="png"></p>
+<h2 id="2-常用图表绘制"><a href="#2-常用图表绘制" class="headerlink" title="2. 常用图表绘制"></a>2. 常用图表绘制</h2><h3 id="2-1-条形图"><a href="#2-1-条形图" class="headerlink" title="2.1 条形图"></a>2.1 条形图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.style.use(<span class="string">'seaborn'</span>)</span><br><span class="line">patterns = (<span class="string">'-'</span>, <span class="string">'+'</span>, <span class="string">'x'</span>, <span class="string">'\\'</span>,<span class="string">'*'</span>, <span class="string">'o'</span>, <span class="string">'O'</span>, <span class="string">'.'</span>)</span><br><span class="line">mean_value = range(<span class="number">1</span>, len(patterns) + <span class="number">1</span>)</span><br><span class="line">x_pos = list(range(len(mean_value)))</span><br><span class="line">bars = plt.bar(x_pos, mean_value, color = <span class="string">'white'</span>)</span><br><span class="line"><span class="keyword">for</span> bar, pattern <span class="keyword">in</span> zip(bars, patterns):</span><br><span class="line">    bar.set_hatch(pattern)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_22_0.png" alt="png"></p>
+<h3 id="2-2-盒图"><a href="#2-2-盒图" class="headerlink" title="2.2 盒图"></a>2.2 盒图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = [np.random.normal(<span class="number">0</span>,std,<span class="number">100</span>) <span class="keyword">for</span> std <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>)]</span><br><span class="line">fig = plt.figure(figsize = (<span class="number">8</span>,<span class="number">6</span>))</span><br><span class="line">plt.boxplot(data, sym = <span class="string">'s'</span>, vert = <span class="literal">True</span>)</span><br><span class="line">plt.xticks([y+<span class="number">1</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(len(data))], [<span class="string">'x1'</span>,<span class="string">'x2'</span>,<span class="string">'x3'</span>])</span><br><span class="line">plt.xlabel(<span class="string">'x'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'box plot'</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Text(0, 0.5, &apos;box plot&apos;)</code></pre><p><img src="/2020/07/31/Matplotlib/output_24_1.png" alt="png"></p>
+<h3 id="2-3-直方图和散点图"><a href="#2-3-直方图和散点图" class="headerlink" title="2.3 直方图和散点图"></a>2.3 直方图和散点图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = np.random.normal(<span class="number">0</span>,<span class="number">20</span>,<span class="number">1000</span>)</span><br><span class="line">bins = np.arange(<span class="number">-100</span>,<span class="number">100</span>,<span class="number">5</span>)</span><br><span class="line">plt.hist(data,bins=bins)</span><br><span class="line">plt.xlim([min(data) - <span class="number">5</span>, max(data) + <span class="number">5</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_26_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">N = <span class="number">1000</span></span><br><span class="line">x = np.random.randn(N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line">plt.scatter(x, y, alpha = <span class="number">0.3</span>)</span><br><span class="line">plt.grid(<span class="literal">True</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_27_0.png" alt="png"></p>
+<h3 id="2-4-3D图"><a href="#2-4-3D图" class="headerlink" title="2.4 3D图"></a>2.4 3D图</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>,projection = <span class="string">'3d'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/2020/07/31/Matplotlib/output_29_0.png" alt="png"></p>
+<h3 id="2-5-布局设置"><a href="#2-5-布局设置" class="headerlink" title="2.5 布局设置"></a>2.5 布局设置</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1gha6m5m47tj30et098t9j.jpg" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#嵌套子图</span></span><br><span class="line">x = np.linspace(<span class="number">0</span>,<span class="number">10</span>,<span class="number">1000</span>)</span><br><span class="line">y2 = np.sin(x**<span class="number">2</span>)</span><br><span class="line">y1 = x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">fig, ax1 = plt.subplots()</span><br><span class="line">left,bottom,width,height = [<span class="number">0.22</span>,<span class="number">0.45</span>,<span class="number">0.3</span>,<span class="number">0.35</span>]</span><br><span class="line">ax2 = fig.add_axes([left,bottom,width,height])</span><br><span class="line">ax1.plot(x,y1)</span><br><span class="line">ax2.plot(x,y2)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[&lt;matplotlib.lines.Line2D at 0x20294514828&gt;]</code></pre><p><img src="/2020/07/31/Matplotlib/output_32_1.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>python</category>
+        <category>Matplotlib</category>
       </categories>
       <tags>
-        <tag>python</tag>
+        <tag>Matplotlib</tag>
       </tags>
   </entry>
   <entry>
@@ -874,24 +848,56 @@ None</code></pre><figure class="highlight python"><table><tr><td class="code"><p
       </tags>
   </entry>
   <entry>
-    <title>解决Hexo框架博客图片不显示的问题</title>
-    <url>/2020/07/16/Hexo%E5%9B%BE%E7%89%87%E4%B8%8D%E6%98%BE%E7%A4%BA/</url>
-    <content><![CDATA[<ol>
-<li><p>打开博客所在文件夹blog，找到<code>_config.yml</code>配置文件，修改语句<code>post_asset_folder: true</code></p>
-</li>
-<li><p>git bash安装插件：<br><code>npm install https://github.com/7ym0n/hexo-asset-image --save</code></p>
-</li>
-<li><p>每次执行<code>hexo new &quot;文件名&quot;</code>命令时，文件所在文件夹会自动创建一个同名文件夹用于放置资源。</p>
-</li>
-<li><p>插入图片时用这种方式：<code>{ % raw asset_img test.jpg This is an test image %}</code></p>
-</li>
-</ol>
+    <title>Hexo搭建简要过程</title>
+    <url>/2020/07/05/hexo%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h4><p><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a><br><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a></p>
+<h4 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="Hexo-初始化"><a href="#Hexo-初始化" class="headerlink" title="Hexo 初始化"></a>Hexo 初始化</h4><p>安装 Hexo 完成后，执行下列命令，在指定文件夹中新建所需要的文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt; <span class="comment"># 初始化项目名称 </span></span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt; </span><br><span class="line">$ npm install <span class="comment"># 安装模块</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo clean <span class="comment"># 必要时，清除上次生成页面时造成的缓存 </span></span><br><span class="line">$ hexo g  <span class="comment"># 生成静态页面 </span></span><br><span class="line">$ hexo s  <span class="comment"># 在本地启动Hexo，可以在浏览器访问 localhost:4000 来预览</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="GitHub-支持"><a href="#GitHub-支持" class="headerlink" title="GitHub 支持"></a>GitHub 支持</h4><p>在 GitHub 按照 <code>username.github.io</code> 格式新建仓库，然后在项目根目录下执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm i hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>打开 <code>_config.yml</code> ，编辑 <code>deploy</code>字段，注意替换用户名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:yourusername&#x2F;yourusername.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>配置完成后，执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>将本地内容部署在 GitHub 中，输入域名 <code>username.github.io</code> 进行访问</p>
+<h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><blockquote>
+<p>如果不喜欢默认主题，可以参考如下方式更改。</p>
+</blockquote>
+<p>要把主题更换为Next，先定位到Hexo站点目录进行主题下载</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> your-hexo-site</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>打开站点配置文件 <code>_config.yml</code>，修改 <code>theme</code> 字段值为 <code>next</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<h4 id="修改Scheme"><a href="#修改Scheme" class="headerlink" title="修改Scheme"></a>修改Scheme</h4><p>在主题配置文件 <code>themes/next/_config.yml</code> 中进行修改，通过注释和反注释三选一。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line">#scheme: Pisces</span><br></pre></td></tr></table></figure>
+<h4 id="修改菜单"><a href="#修改菜单" class="headerlink" title="修改菜单"></a>修改菜单</h4><p>在主题配置文件中，找到 <code>menu</code> 字段并进行适当修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: &#x2F;</span><br><span class="line">  archives: &#x2F;archives &#x2F;&#x2F;归档</span><br><span class="line">  about: &#x2F;about</span><br><span class="line">  categories: &#x2F;categories  &#x2F;&#x2F;分类</span><br><span class="line">  tags: &#x2F;tags   &#x2F;&#x2F;标签</span><br><span class="line">  #commonweal: &#x2F;404.html</span><br></pre></td></tr></table></figure>
+<h4 id="设置头像"><a href="#设置头像" class="headerlink" title="设置头像"></a>设置头像</h4><p>在主题配置文件中修改 <code>avatar</code> 字段，可以图片存在 <code>next/source/images</code> 目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line"># in theme directory(source&#x2F;images): &#x2F;images&#x2F;avatar.jpg</span><br><span class="line"># in site  directory(source&#x2F;uploads): &#x2F;uploads&#x2F;avatar.jpg</span><br><span class="line">avatar: &#x2F;images&#x2F;avatar.jpg</span><br></pre></td></tr></table></figure>
+
+<h4 id="进阶设定"><a href="#进阶设定" class="headerlink" title="进阶设定"></a>进阶设定</h4><p>官方文档介绍的很详细，请首先查阅<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">Next使用文档</a></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CTF常用文件头</title>
+    <url>/2022/02/17/%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E5%A4%B4/</url>
+    <content><![CDATA[<p>JPEG (jpg)，                        　　文件头：FFD8FF　　　　　　　　　　　　　　<br>PNG (png)，                       　　 文件头：89504E47  文件尾：0000000049454E44AE426082<br>GIF (gif)，                           　　文件头：47494638<br>ZIP Archive (zip)，                     文件头：504B0304 文件尾：00000000<br>TIFF (tif)，                           　  文件头：49492A00<br>Windows Bitmap (bmp)，      　  文件头：424D<br>CAD (dwg)，                        　  文件头：41433130<br>Adobe Photoshop (psd)，          文件头：38425053<br>Rich Text Format (rtf)，             文件头：7B5C727466<br>XML (xml)，                              文件头：3C3F786D6C<br>HTML (html)，                           文件头：68746D6C3E<br>Email [thorough only] (eml)，     文件头：44656C69766572792D646174653A<br>Outlook Express (dbx)，            文件头：CFAD12FEC5FD746F<br>Outlook (pst)，                         文件头：2142444E<br>MS Word/Excel (xls.or.doc)，      文件头：D0CF11E0<br>MS Access (mdb)，                    文件头：5374616E64617264204A<br>WordPerfect (wpd)，                  文件头：FF575043<br>Adobe Acrobat (pdf)，               文件头：255044462D312E<br>Quicken (qdf)，                         文件头：AC9EBD8F<br>Windows Password (pwl)，         文件头：E3828596<br>RAR Archive (rar)，                    文件头：52617221<br>Wave (wav)，                            文件头：57415645<br>AVI (avi)，                                 文件头：41564920<br>Real Audio (ram)，                     文件头：2E7261FD<br>Real Media (rm)，                       文件头：2E524D46<br>MPEG (mpg)，                           文件头：000001BA<br>MPEG (mpg)，                           文件头：000001B3<br>Quicktime (mov)，                     文件头：6D6F6F76<br>Windows Media (asf)，               文件头：3026B2758E66CF11<br>MIDI (mid)，                              文件头：4D546864</p>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -910,6 +916,24 @@ None</code></pre><figure class="highlight python"><table><tr><td class="code"><p
 <li>对象：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。<a id="more"></a></li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>python包管理工具：Conda和pip比较</title>
+    <url>/2020/07/27/pipconda/</url>
+    <content><![CDATA[<p>pip是Python Packaging Authority推荐的用于从Python Package Index安装包的工具。pip安装打包为wheels或源代码分发的Python软件。</p>
+<p>Conda是跨平台的包和环境管理器，可以安装和管理来自Anaconda repository以 Anaconda Cloud的conda包。 Conda包是二进制文件，徐需要使用编译器来安装它们。另外，conda包不仅限于Python软件。它们还可能包含C或C ++库，R包或任何其他软件。这是conda和pip之间的关键区别。 </p>
+<a id="more"></a>
+<p>pip安装Python包，而conda安装包可能包含用任何语言编写的软件的包。在使用pip之前，必须通过系统包管理器或下载并运行安装程序来安装Python解释器。而Conda可以直接安装Python包以及Python解释器。</p>
+<p>另一个区别是conda能够创建可以包含不同版本的Python或其他软件包的隔离环境。在使用数据科学工具时，这非常有用，因为不同的工具可能包含冲突的要求，这些要求可能会阻止它们全部安装到单个环境中。 </p>
+<p>pip和conda在如何实现环境中的依赖关系方面也有所不同。安装包时，pip会在递归的串行循环中安装依赖项。没有努力确保同时满足所有包的依赖性。如果较早安装的软件包与稍后安装的软件包具有不兼容的依赖性版本，则可能导致破坏的环境。conda使用可确保满足环境中安装的所有包的所有要求。此检查可能需要额外的时间，但有助于防止创建破坏的环境，前期关于依赖关系包的元数据是正确的。</p>
+<p>考虑到conda和pip之间的相似性，有些人试图将这些工具结合起来创建数据科学环境也就不足为奇了。将pip与conda结合的主要原因是有些包只能通过pip安装。 Anaconda创酷提供超过1,500个软件包，包括最流行的数据科学，机器学习和AI框架。这些，以及包括conda-forge和bioconda在内的数据通过Anaconda云提供的数千个附加软件包，可以使用conda进行安装。尽管有大量的软件包，但与PyPI上提供的150,000多个软件包相比，它仍然很小。有时候需要的包没有conda包，但在PyPI上有，可以用pip安装。</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
   </entry>
   <entry>
     <title>网络利器工具</title>
@@ -1417,995 +1441,6 @@ None</code></pre><figure class="highlight python"><table><tr><td class="code"><p
       <tags>
         <tag>mysql</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>计算机网络面试知识点总结</title>
-    <url>/2020/08/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</url>
-    <content><![CDATA[<h1 id="一-OSI与TCP-IP各层的结构、功能与协议"><a href="#一-OSI与TCP-IP各层的结构、功能与协议" class="headerlink" title="一 OSI与TCP/IP各层的结构、功能与协议"></a>一 OSI与TCP/IP各层的结构、功能与协议</h1><h2 id="五层协议的体系结构"><a href="#五层协议的体系结构" class="headerlink" title="五层协议的体系结构"></a>五层协议的体系结构</h2><p>中和了OSI的七层结构和TCP/IP的四层结构。</p>
-<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb25bueipj30hl09kmxl.jpg" alt="undefined"></p>
-<a id="more"></a>
-<h3 id="1-应用层"><a href="#1-应用层" class="headerlink" title="1 应用层"></a>1 应用层</h3><p>功能：通过应用进程间的交互来完成特定网络应用。<br>应用层协议定义的是应用进程（<strong>进程：主机中正在运行的程序</strong>）间的通信和交互的规则。对于不同的网络应用需要不同的应用层协议，在互联网中应用层协议很多，如域名系统 DNS，支持万维网应用的 HTTP 协议，支持电子邮件的 SMTP 协议等等。应用层交互的数据单元称为<strong>报文</strong>。</p>
-<h4 id="域名系统（Domain-Name-System，DNS）"><a href="#域名系统（Domain-Name-System，DNS）" class="headerlink" title="域名系统（Domain Name System，DNS）"></a>域名系统（Domain Name System，DNS）</h4><p>将<strong>域名和IP地址相互映射</strong>的一个分布式数据库。</p>
-<h4 id="超文本传输协议（HTTP，HyperText-Transfer-Protocol"><a href="#超文本传输协议（HTTP，HyperText-Transfer-Protocol" class="headerlink" title="超文本传输协议（HTTP，HyperText Transfer Protocol)"></a>超文本传输协议（HTTP，HyperText Transfer Protocol)</h4><p>互联网上应用最为广泛的一种网络协议。所有的 WWW（万维网） 文件都必须遵守这个标准。设计 HTTP 最初的目的是为了提供一种发布和接收 HTML 页面的方法。</p>
-<h3 id="2-运输层"><a href="#2-运输层" class="headerlink" title="2 运输层"></a>2 运输层</h3><h4 id="两种协议"><a href="#两种协议" class="headerlink" title="两种协议"></a>两种协议</h4><ol>
-<li>传输控制协议 （TCP, Transmisson Control Protocol）–提供面向连接的，可靠的数据传输服务。</li>
-<li>用户数据协议 UDP（User Datagram Protocol）–提供无连接的，尽最大努力的数据传输服务（不保证数据传输的可靠性）。</li>
-</ol>
-<h4 id="UDP的主要特点"><a href="#UDP的主要特点" class="headerlink" title="UDP的主要特点"></a>UDP的主要特点</h4><ol>
-<li>面向无连接；</li>
-<li>尽最大努力交付，不保证可靠交付，主机不需保持复杂链接状态；</li>
-<li>面向报文；</li>
-<li>没有拥塞控制，出现拥塞情况时发送速率不会降低（实时应用如直播，视频会议）；</li>
-<li>支持一对一、一对多、多对多、多对一的交互通信；</li>
-<li>首部开销小，8个字节，TCP首部20个字节。</li>
-</ol>
-<h4 id="TCP的主要特点"><a href="#TCP的主要特点" class="headerlink" title="TCP的主要特点"></a>TCP的主要特点</h4><ol>
-<li>面向连接（就好像打电话一样，通话前需要先拨号建立连接，通话结束后要挂机释放连接）；</li>
-<li>每一条 TCP 连接只能有两个端点，只能是点对点（一对一）；</li>
-<li>TCP 提供可靠交付的服务。通过TCP连接传送的数据，无差错、不丢失、不重复、并且按序到达；</li>
-<li>TCP 提供全双工通信。TCP 允许通信双方的应用进程在任何时候都能发送数据。TCP 连接的两端都设有发送缓存和接收缓存，用来临时存放双方通信的数据；</li>
-<li>面向字节流。TCP 中的“流”（Stream）指的是流入进程或从进程流出的字节序列。“面向字节流”的含义是：虽然应用程序和 TCP 的交互是一次一个数据块（大小不等），但 TCP 把应用程序交下来的数据仅仅看成是一连串的无结构的字节流。</li>
-</ol>
-<h3 id="3-网络层"><a href="#3-网络层" class="headerlink" title="3 网络层"></a>3 网络层</h3><p>网络层负责为分组交换网上的不同主机提供通信服务。 在发送数据时，<strong>网络层把运输层产生的报文段或用户数据报封装成分组和包进行传送</strong>。在 TCP/IP 体系结构中，由于网络层使用 IP 协议，因此分组也叫 IP 数据报 ，简称数据报。</p>
-<p>网络层的另一个任务就是选择合适的路由，使源主机运输层所传下来的分株，能通过网络层中的路由器找到目的主机。</p>
-<p>互联网是由大量的异构（heterogeneous）网络通过路由器（router）相互连接起来的。互联网使用的网络层协议是无连接的网际协议（Intert Prococol）和许多路由选择协议，因此互联网的网络层也叫做网际层或IP层。</p>
-<h3 id="4-数据链路层"><a href="#4-数据链路层" class="headerlink" title="4 数据链路层"></a>4 数据链路层</h3><p>数据链路层。两台主机之间数据传输的链路上的协议。 在两个相邻节点之间传送数据时，数据链路层将网络层交下来的 <strong>IP 数据报组装程帧</strong>，在两个相邻节点间的链路上传送帧。每一帧包括数据和必要的控制信息（如同步信息，地址信息，差错控制等）。<br>在接收数据时，控制信息使接收端能够知道一个帧从哪个比特开始和到哪个比特结束。这样，数据链路层在收到一个帧后，就可从中提出数据部分，上交给网络层。<br>控制信息还使接收端能够检测到所收到的帧中有无差错。如果发现差错，数据链路层就简单地丢弃这个出了差错的帧，以避免继续在网络中传送下去白白浪费网络资源。如果需要改正数据在链路层传输时出现差错（这就是说，数据链路层不仅要检错，而且还要纠错），那么就要采用可靠性传输协议来纠正出现的差错。</p>
-<h3 id="5-物理层"><a href="#5-物理层" class="headerlink" title="5 物理层"></a>5 物理层</h3><p>传送数据单位是比特。<br>物理层的作用是<strong>实现相邻计算机节点之间比特流的透明传送</strong>，尽可能屏蔽掉具体传输介质和物理设备的差异。 使其上面的数据链路层不必考虑网络的具体传输介质是什么。“透明传送比特流”表示经实际电路传送后的比特流没有发生变化，对传送的比特流来说，这个电路好像是看不见的。</p>
-<p>在互联网使用的各种协议中最重要和最著名的就是 TCP/IP 两个协议。现在经常提到的TCP/IP并不一定单指TCP和IP这两个具体的协议，而往往表示互联网所使用的整个TCP/IP协议族。</p>
-<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb3m8azlbg30v41830yk.gif" alt="undefined"></p>
-<h1 id="二-TCP-三次握手和四次挥手"><a href="#二-TCP-三次握手和四次挥手" class="headerlink" title="二 TCP 三次握手和四次挥手"></a>二 TCP 三次握手和四次挥手</h1><p>为了准确无误地把数据送达目标处，TCP协议采用了三次握手。</p>
-<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb4euupowj30o00c7mxg.jpg" alt="undefined"></p>
-<ul>
-<li>客户端–发送带有 SYN 标志的数据包–一次握手–服务端</li>
-<li>服务端–发送带有 SYN/ACK 标志的数据包–二次握手–客户端</li>
-<li>客户端–发送带有带有 ACK 标志的数据包–三次握手–服务端</li>
-</ul>
-<h2 id="为什么要三次握手"><a href="#为什么要三次握手" class="headerlink" title="为什么要三次握手"></a>为什么要三次握手</h2><p>三次握手的目的是建立可靠的通信信道，双方确认自己与对方的发送与接收是正常的。<br>第一次握手：Client 什么都不能确认；Server 确认了对方发送正常<br>第二次握手：Client 确认了：自己发送、接收正常，对方发送、接收正常；Server 确认了：自己接收正常，对方发送正常<br>第三次握手：Client 确认了：自己发送、接收正常，对方发送、接收正常；Server 确认了：自己发送、接收正常，对方发送接收正常<br>所以三次握手就能确认双发收发功能都正常，缺一不可。</p>
-<h2 id="为什么要传回-SYN"><a href="#为什么要传回-SYN" class="headerlink" title="为什么要传回 SYN"></a>为什么要传回 SYN</h2><p>接收端传回发送端所发送的 SYN 是为了告诉发送端，我接收到的信息确实就是你所发送的信号了。</p>
-<h2 id="传了-SYN-为啥还要传-ACK"><a href="#传了-SYN-为啥还要传-ACK" class="headerlink" title="传了 SYN,为啥还要传 ACK"></a>传了 SYN,为啥还要传 ACK</h2><p>双方通信无误必须是两者互相发送信息都无误。传了 SYN，证明发送方到接收方的通道没有问题，但是接收方到发送方的通道还需要 ACK 信号来进行验证。</p>
-<blockquote>
-<p>SYN 是 TCP/IP 建立连接时使用的握手信号。在客户机和服务器之间建立正常的 TCP 网络连接时，客户机首先发出一个 SYN 消息，服务器使用 SYN-ACK 应答表示接收到了这个消息，最后客户机再以 ACK(Acknowledgement[汉译：确认字符 ,在数据通信传输中，接收站发给发送站的一种传输控制字符。它表示确认发来的数据已经接受无误。]）消息响应。这样在客户机和服务器之间才能建立起可靠的TCP连接，数据才可以在客户机和服务器之间传递。</p>
-</blockquote>
-<h2 id="断开-TCP-连接需要“四次挥手”"><a href="#断开-TCP-连接需要“四次挥手”" class="headerlink" title="断开 TCP 连接需要“四次挥手”"></a>断开 TCP 连接需要“四次挥手”</h2><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb4tkp2v6j30dw09g3ye.jpg" alt="undefined"></p>
-<ul>
-<li>客户端-发送一个 FIN，用来关闭客户端到服务器的数据传送</li>
-<li>服务器-收到这个 FIN，它发回一个 ACK，确认序号为收到的序号加1 。和 SYN 一样，一个 FIN 将占用一个序号</li>
-<li>服务器-关闭与客户端的连接，发送一个FIN给客户端</li>
-<li>客户端-发回 ACK 报文确认，并将确认序号设置为收到序号加1</li>
-</ul>
-<h3 id="为什么要四次挥手"><a href="#为什么要四次挥手" class="headerlink" title="为什么要四次挥手"></a>为什么要四次挥手</h3><p>任何一方都可以在数据传送结束后发出连接释放的通知，待对方确认后进入<strong>半关闭状态</strong>。当另一方也没有数据再发送的时候，则发出连接释放通知，对方确认后就完全关闭了TCP连接。<br>举个例子：A 和 B 打电话，通话即将结束后，A 说“我没啥要说的了”，B回答“我知道了”，但是 B 可能还会有要说的话，A 不能要求 B 跟着自己的节奏结束通话，于是 B 可能又巴拉巴拉说了一通，最后 B 说“我说完了”，A 回答“知道了”，这样通话才算结束。</p>
-<h1 id="三-TCP、UDP-协议的区别"><a href="#三-TCP、UDP-协议的区别" class="headerlink" title="三 TCP、UDP 协议的区别"></a>三 TCP、UDP 协议的区别</h1><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb4yheti2j30nw064aa1.jpg" alt="undefined"></p>
-<p>UDP 在传送数据之前不需要先建立连接，远地主机在收到 UDP 报文后，不需要给出任何确认。虽然 UDP 不提供可靠交付，但在某些情况下 UDP 确是一种最有效的工作方式（一般用于即时通信），比如： QQ 语音、 QQ 视频 、直播等等<br>TCP 提供面向连接的服务。在传送数据之前必须先建立连接，数据传送结束后要释放连接。 TCP 不提供广播或多播服务。由于 TCP 要提供可靠的，面向连接的运输服务（TCP的可靠体现在TCP在传递数据之前，会有三次握手来建立连接，而且在数据传递时，有确认、窗口、重传、拥塞控制机制，在数据传完后，还会断开连接用来节约系统资源），这一难以避免增加了许多开销，如确认，流量控制，计时器以及连接管理等。这不仅使协议数据单元的首部增大很多，还要占用许多处理机资源。TCP 一般用于文件传输、发送和接收邮件、远程登录等场景。</p>
-<h1 id="四-TCP-协议如何保证可靠传输"><a href="#四-TCP-协议如何保证可靠传输" class="headerlink" title="四 TCP 协议如何保证可靠传输"></a>四 TCP 协议如何保证可靠传输</h1><ol>
-<li>应用数据被分割成 TCP 认为最适合发送的数据块。</li>
-<li>TCP 给发送的每一个包进行编号，接收方对数据包进行排序，把有序数据传送给应用层。</li>
-<li><strong>校验和</strong>： TCP 将保持它首部和数据的检验和。这是一个端到端的检验和，目的是检测数据在传输过程中的任何变化。如果收到段的检验和有差错，TCP 将丢弃这个报文段和不确认收到此报文段。</li>
-<li>TCP 的接收端会丢弃重复的数据。</li>
-<li><strong>流量控制</strong>： TCP 连接的每一方都有固定大小的缓冲空间，TCP的接收端只允许发送端发送接收端缓冲区能接纳的数据。当接收方来不及处理发送方的数据，能提示发送方降低发送的速率，防止包丢失。TCP 使用的流量控制协议是可变大小的滑动窗口协议。 （<strong>TCP 利用滑动窗口实现流量控制</strong>）</li>
-<li><strong>拥塞控制</strong>： 当网络拥塞时，减少数据的发送。</li>
-<li><strong>停止等待协议</strong>: 也是为了实现可靠传输的，它的基本原理就是每发完一个分组就停止发送，等待对方确认。在收到确认后再发下一个分组。</li>
-<li><strong>超时重传</strong>： 当 TCP 发出一个段后，它启动一个定时器，等待目的端确认收到这个报文段。如果不能及时收到一个确认，将重发这个报文段。</li>
-</ol>
-<h2 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h2><ul>
-<li>停止等待协议是为了实现可靠传输的，它的基本原理就是每发完一个分组就停止发送，等待对方确认。在收到确认后再发下一个分组；</li>
-<li>在停止等待协议中，若接收方收到重复分组，就丢弃该分组，但同时还要发送确认；</li>
-</ul>
-<h3 id="1-无差错情况"><a href="#1-无差错情况" class="headerlink" title="1) 无差错情况"></a>1) 无差错情况</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb8qpnmwtj30ea0d5dft.jpg" alt="undefined"></p>
-<p>发送方发送分组,接收方在规定时间内收到,并且回复确认.发送方再次发送。</p>
-<h3 id="2-出现差错情况（超时重传）"><a href="#2-出现差错情况（超时重传）" class="headerlink" title="2) 出现差错情况（超时重传）:"></a>2) 出现差错情况（超时重传）:</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb8rkehhmj30qh0dcq37.jpg" alt="undefined"></p>
-<p>停止等待协议中超时重传是指只要超过一段时间仍然没有收到确认，就重传前面发送过的分组（认为刚才发送过的分组丢失了）。因此每发送完一个分组需要设置一个超时计时器，其重转时间应比数据在分组传输的平均往返时间更长一些。这种自动重传方式常称为自动重传请求 ARQ 。另外在停止等待协议中若收到重复分组，就丢弃该分组，但同时还要发送确认。连续 ARQ 协议 可提高信道利用率。发送维持一个发送窗口，凡位于发送窗口内的分组可连续发送出去，而不需要等待对方确认。接收方一般采用累积确认，对按序到达的最后一个分组发送确认，表明到这个分组位置的所有分组都已经正确收到了。</p>
-<h3 id="3-确认丢失和确认迟到"><a href="#3-确认丢失和确认迟到" class="headerlink" title="3) 确认丢失和确认迟到"></a>3) 确认丢失和确认迟到</h3><ul>
-<li><strong>确认丢失</strong>：确认消息在传输过程丢失</li>
-</ul>
-<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb8ujp3tbj30pi0ct3ys.jpg" alt="undefined"></p>
-<ol>
-<li>丢弃这个重复的M1消息，不向上层交付。</li>
-<li>向A发送确认消息。（不会认为已经发送过了，就不再发送。A能重传，就证明B的确认消息丢失）。</li>
-</ol>
-<ul>
-<li><strong>确认迟到</strong> ：确认消息在传输过程中迟到</li>
-</ul>
-<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb8x0vymuj30oz0cigly.jpg" alt="undefined"></p>
-<p>A发送M1消息，B收到并发送确认。在超时时间内没有收到确认消息，A重传M1消息，B仍然收到并继续发送确认消息（B收到了2份M1）。此时A收到了B第二次发送的确认消息。接着发送其他数据。过了一会，A收到了B第一次发送的对M1的确认消息（A也收到了2份确认消息）。处理如下：</p>
-<ol>
-<li>A收到重复的确认后，直接丢弃。</li>
-<li>B收到重复的M1后，也直接丢弃重复的M1。</li>
-</ol>
-<h2 id="自动重传请求-ARQ-协议"><a href="#自动重传请求-ARQ-协议" class="headerlink" title="自动重传请求 ARQ 协议"></a>自动重传请求 ARQ 协议</h2><p>停止等待协议中超时重传是指只要超过一段时间仍然没有收到确认，就重传前面发送过的分组（认为刚才发送过的分组丢失了）。因此每发送完一个分组需要设置一个超时计时器，其重转时间应比数据在分组传输的平均往返时间更长一些。这种自动重传方式常称为自动重传请求ARQ。</p>
-<p>优点： 简单<br>缺点： 信道利用率低</p>
-<h2 id="连续ARQ协议"><a href="#连续ARQ协议" class="headerlink" title="连续ARQ协议"></a>连续ARQ协议</h2><p>连续 ARQ 协议可提高信道利用率。发送方维持一个发送窗口，凡位于发送窗口内的分组可以连续发送出去，而不需要等待对方确认。接收方一般采用累计确认，对按序到达的最后一个分组发送确认，表明到这个分组为止的所有分组都已经正确收到了。</p>
-<p>优点： 信道利用率高，容易实现，即使确认丢失，也不必重传。<br>缺点： 不能向发送方反映出接收方已经正确收到的所有分组的信息。 比如：发送方发送了 5条 消息，中间第三条丢失（3号），这时接收方只能对前两个发送确认。发送方无法知道后三个分组的下落，而只好把后三个全部重传一次。这也叫 Go-Back-N（回退 N），表示需要退回来重传已经发送过的 N 个消息。</p>
-<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><ul>
-<li>TCP 利用滑动窗口实现流量控制的机制。</li>
-<li>滑动窗口（Sliding window）是一种流量控制技术。早期的网络通信中，通信双方不会考虑网络的拥挤情况直接发送数据。由于大家不知道网络拥塞状况，同时发送数据，导致中间节点阻塞掉包，谁也发不了数据，所以就有了滑动窗口机制来解决此问题。</li>
-<li>TCP 中采用滑动窗口来进行传输控制，滑动窗口的大小意味着接收方还有多大的缓冲区可以用于接收数据。发送方可以通过滑动窗口的大小来确定应该发送多少字节的数据。当滑动窗口为 0 时，发送方一般不能再发送数据报，但有两种情况除外，一种情况是可以发送紧急数据，例如，允许用户终止在远端机上的运行进程。另一种情况是发送方可以发送一个 1 字节的数据报来通知接收方重新声明它希望接收的下一字节及发送方的滑动窗口大小。</li>
-</ul>
-<h2 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h2><ul>
-<li>TCP 利用滑动窗口实现流量控制。</li>
-<li>流量控制是为了控制发送方发送速率，保证接收方来得及接收。</li>
-<li>接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，从而影响发送方的发送速率。将窗口字段设置为 0，则发送方不能发送数据。</li>
-</ul>
-<h2 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h2><p>在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分，网络的性能就要变坏。这种情况就叫拥塞。拥塞控制就是为了防止过多的数据注入到网络中，这样就可以使网络中的路由器或链路不致过载。拥塞控制所要做的都有一个前提，就是网络能够承受现有的网络负荷。拥塞控制是一个全局性的过程，涉及到所有的主机，所有的路由器，以及与降低网络传输性能有关的所有因素。相反，流量控制往往是点对点通信量的控制，是个端到端的问题。流量控制所要做到的就是抑制发送端发送数据的速率，以便使接收端来得及接收。<br>为了进行拥塞控制，TCP 发送方要维持一个 拥塞窗口(cwnd) 的状态变量。拥塞控制窗口的大小取决于网络的拥塞程度，并且动态变化。发送方让自己的发送窗口取为拥塞窗口和接收方的接受窗口中较小的一个。<br>TCP的拥塞控制采用了四种算法，即 慢开始 、 拥塞避免 、快重传 和 快恢复。在网络层也可以使路由器采用适当的分组丢弃策略（如主动队列管理 AQM），以减少网络拥塞的发生。</p>
-<ul>
-<li>慢开始： 慢开始算法的思路是当主机开始发送数据时，如果立即把大量数据字节注入到网络，那么可能会引起网络阻塞，因为现在还不知道网络的符合情况。经验表明，较好的方法是先探测一下，即由小到大逐渐增大发送窗口，也就是由小到大逐渐增大拥塞窗口数值。cwnd初始值为1，每经过一个传播轮次，cwnd加倍。</li>
-</ul>
-<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb95g7r02j30t60fkmz6.jpg" alt="undefined"></p>
-<ul>
-<li><p>拥塞避免： 拥塞避免算法的思路是让拥塞窗口cwnd缓慢增大，即每经过一个往返时间RTT就把发送方的cwnd加1.</p>
-</li>
-<li><p>快重传与快恢复：<br>在 TCP/IP 中，快速重传和恢复（fast retransmit and recovery，FRR）是一种拥塞控制算法，它能快速恢复丢失的数据包。没有 FRR，如果数据包丢失了，TCP 将会使用定时器来要求传输暂停。在暂停的这段时间内，没有新的或复制的数据包被发送。有了 FRR，如果接收机接收到一个不按顺序的数据段，它会立即给发送机发送一个重复确认。如果发送机接收到三个重复确认，它会假定确认件指出的数据段丢失了，并立即重传这些丢失的数据段。有了 FRR，就不会因为重传时要求的暂停被耽误。  当有单独的数据包丢失时，快速重传和恢复（FRR）能最有效地工作。当有多个数据信息包在某一段很短的时间内丢失时，它则不能很有效地工作。</p>
-</li>
-</ul>
-<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb96ohq96j30wm0i0gmn.jpg" alt="undefined"></p>
-<h1 id="五-在浏览器中输入url地址-gt-gt-显示主页的过程（面试常客）"><a href="#五-在浏览器中输入url地址-gt-gt-显示主页的过程（面试常客）" class="headerlink" title="五 在浏览器中输入url地址 -&gt;&gt; 显示主页的过程（面试常客）"></a>五 在浏览器中输入url地址 -&gt;&gt; 显示主页的过程（面试常客）</h1><blockquote>
-<p>打开一个网页，整个过程会使用哪些协议</p>
-</blockquote>
-<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb97hdzhuj30g40csjrp.jpg" alt="undefined"></p>
-<h1 id="六-状态码"><a href="#六-状态码" class="headerlink" title="六 状态码"></a>六 状态码</h1><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb9jd08ylj30ip06274m.jpg" alt="undefined"></p>
-<h1 id="七-各种协议与HTTP协议之间的关系"><a href="#七-各种协议与HTTP协议之间的关系" class="headerlink" title="七 各种协议与HTTP协议之间的关系"></a>七 各种协议与HTTP协议之间的关系</h1><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb9kz8docj30nd0x575m.jpg" alt="undefined"></p>
-<h1 id="八-HTTP长连接、短连接"><a href="#八-HTTP长连接、短连接" class="headerlink" title="八 HTTP长连接、短连接"></a>八 HTTP长连接、短连接</h1><p><strong>在HTTP/1.0中默认使用短连接</strong>。也就是说，客户端和服务器每进行一次HTTP操作，就建立一次连接，任务结束就中断连接。当客户端浏览器访问的某个HTML或其他类型的Web页中包含有其他的Web资源（如JavaScript文件、图像文件、CSS文件等），每遇到这样一个Web资源，浏览器就会重新建立一个HTTP会话。<br>而从<strong>HTTP/1.1起，默认使用长连接</strong>，用以保持连接特性。使用长连接的HTTP协议，会在响应头加入这行代码：</p>
-<p><code>Connection:keep-alive</code></p>
-<p>复制代码在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，客户端再次访问这个服务器时，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现长连接需要客户端和服务端都支持长连接。<br><strong>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接。</strong><br><a href="https://www.cnblogs.com/gotodsp/p/6366163.html" target="_blank" rel="noopener">—— 《HTTP长连接、短连接究竟是什么？》</a></p>
-<h2 id="HTTP与HTTPS的区别"><a href="#HTTP与HTTPS的区别" class="headerlink" title="HTTP与HTTPS的区别"></a>HTTP与HTTPS的区别</h2><p>超文本传输协议HTTP协议被用于在Web浏览器和网站服务器之间传递信息，HTTP协议以<strong>明文方式</strong>发送内容，不提供任何方式的数据加密，如果攻击者截取了Web浏览器和网站服务器之间的传输报文，就可以直接读懂其中的信息，因此，HTTP协议不适合传输一些敏感信息，比如：信用卡号、密码等支付信息。</p>
-<p>　　为了解决HTTP协议的这一缺陷，需要使用另一种协议：安全套接字层超文本传输协议HTTPS，为了数据传输的安全，<strong>HTTPS在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密</strong>。</p>
-<h3 id="1-HTTP和HTTPS的基本概念"><a href="#1-HTTP和HTTPS的基本概念" class="headerlink" title="1 HTTP和HTTPS的基本概念"></a>1 HTTP和HTTPS的基本概念</h3><p>　　HTTP：是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。</p>
-<p>　　HTTPS：是以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。</p>
-<p>　　HTTPS协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。</p>
-<h3 id="2-HTTP与HTTPS有什么区别？"><a href="#2-HTTP与HTTPS有什么区别？" class="headerlink" title="2 HTTP与HTTPS有什么区别？"></a>2 HTTP与HTTPS有什么区别？</h3><p>　　HTTP协议传输的数据都是未加密的，也就是明文的，因此使用HTTP协议传输隐私信息非常不安全，为了保证这些隐私数据能加密传输，于是网景公司设计了SSL（Secure Sockets Layer）协议用于对HTTP协议传输的数据进行加密，从而就诞生了HTTPS。简单来说，HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全。</p>
-<p>　　HTTPS和HTTP的区别主要如下：</p>
-<p>　　1、https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。</p>
-<p>　　2、http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。</p>
-<p>　　3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
-<p>　　4、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
-<h3 id="3-HTTPS的工作原理"><a href="#3-HTTPS的工作原理" class="headerlink" title="3 HTTPS的工作原理"></a>3 HTTPS的工作原理</h3><p>　　我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取，所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。<br><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghba3dc5odj30go03rmy4.jpg" alt="undefined"></p>
-<p>客户端在使用HTTPS方式与Web服务器通信时有以下几个步骤，如图所示。</p>
-<p>　　（1）客户使用https的URL访问Web服务器，要求与Web服务器建立SSL连接。</p>
-<p>　　（2）Web服务器收到客户端请求后，会将网站的证书信息（证书中包含公钥）传送一份给客户端。</p>
-<p>　　（3）客户端的浏览器与Web服务器开始协商SSL连接的安全等级，也就是信息加密的等级。</p>
-<p>　　（4）客户端的浏览器根据双方同意的安全等级，建立会话密钥，然后利用网站的公钥将会话密钥加密，并传送给网站。</p>
-<p>　　（5）Web服务器利用自己的私钥解密出会话密钥。</p>
-<p>　　（6）Web服务器利用会话密钥加密与客户端之间的通信。<br><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghba4ow5mfg30a50bf3yd.gif" alt="undefined"></p>
-<h1 id="九-cookie-和session-的区别"><a href="#九-cookie-和session-的区别" class="headerlink" title="九 cookie 和session 的区别"></a>九 cookie 和session 的区别</h1><p>二者的定义：</p>
-<p>当你在浏览网站的时候，WEB 服务器会先送一小小资料放在你的计算机上，Cookie 会帮你在网站上所打的文字或是一些选择，都纪录下来。当下次你再光临同一个网站，WEB 服务器会先看看有没有它上次留下的 Cookie 资料，有的话，就会依据 Cookie里的内容来判断使用者，送出特定的网页内容给你。 Cookie 的使用很普遍，许多有提供个人化服务的网站，都是利用 Cookie来辨认使用者，以方便送出使用者量身定做的内容，像是 Web 接口的免费 email 网站，都要用到 Cookie。</p>
-<p>具体来说cookie机制采用的是在<strong>客户端保持状态</strong>的方案，而session机制采用的是在<strong>服务器端保持状态</strong>的方案。</p>
-<p>同时我们也看到，由于采用服务器端保持状态的方案在客户端也需要保存一个标识，所以<strong>session机制可能需要借助于cookie机制</strong>来达到保存标识的目的，但实际上它还有其他选择。</p>
-<p>cookie机制。正统的cookie分发是通过扩展HTTP协议来实现的，服务器通过在HTTP的响应头中加上一行特殊的指示以提示浏览器按照指示生成相应的cookie。然而纯粹的客户端脚本如JavaScript或者VBScript也可以生成cookie。而cookie的使用是由浏览器按照一定的原则在后台自动发送给服务器的。浏览器检查所有存储的cookie，如果某个cookie所声明的作用范围大于等于将要请求的资源所在的位置，则把该cookie附在请求资源的HTTP请求头上发送给服务器。</p>
-<p>cookie的内容主要包括：名字，值，过期时间，路径和域。路径与域一起构成cookie的作用范围。若不设置过期时间，则表示这个cookie的生命期为浏览器会话期间，关闭浏览器窗口，cookie就消失。这种生命期为浏览器会话期的cookie被称为会话cookie。会话cookie一般不存储在硬盘上而是保存在内存里，当然这种行为并不是规范规定的。若设置了过期时间，浏览器就会把cookie保存到硬盘上，关闭后再次打开浏览器，这些cookie仍然有效直到超过设定的过期时间。存储在硬盘上的cookie可以在不同的浏览器进程间共享，比如两个IE窗口。而对于保存在内存里的cookie，不同的浏览器有不同的处理方式</p>
-<p>session机制。session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。</p>
-<p>cookie 和session 的区别：</p>
-<p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。</p>
-<p>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗<br>   考虑到安全应当使用session。</p>
-<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能<br>   考虑到减轻服务器性能方面，应当使用COOKIE。</p>
-<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
-<p>5、建议：<br>   将登陆信息等重要信息存放为SESSION<br>   其他信息如果需要保留，可以放在COOKIE中</p>
-<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><h2 id="计算机网络常见问题回顾"><a href="#计算机网络常见问题回顾" class="headerlink" title="计算机网络常见问题回顾"></a>计算机网络常见问题回顾</h2><ul>
-<li>①TCP三次握手和四次挥手、</li>
-<li>②在浏览器中输入url地址-&gt;&gt;显示主页的过程</li>
-<li>③HTTP和HTTPS的区别</li>
-<li>④TCP、UDP协议的区别</li>
-<li>⑤常见的状态码。<h2 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h2>《图解HTTP》<h2 id="开源文档推荐"><a href="#开源文档推荐" class="headerlink" title="开源文档推荐"></a>开源文档推荐</h2>Java-Guide：一份涵盖大部分Java程序员所需要掌握的核心知识，正在一步一步慢慢完善，期待您的参与。</li>
-</ul>
-<p>Github地址：<a href="https://github.com/Snailclimb/JavaGuide" target="_blank" rel="noopener">github.com/Snailclimb/…</a></p>
-<p>作者：JavaGuide<br>链接：<a href="https://juejin.im/post/6844903662838349838" target="_blank" rel="noopener">https://juejin.im/post/6844903662838349838</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>项目记录</title>
-    <url>/2020/08/19/%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h3 id="导入原始流量数据分析包"><a href="#导入原始流量数据分析包" class="headerlink" title="导入原始流量数据分析包"></a>导入原始流量数据分析包</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">from</span> scapy.all <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看流量结构信息</span></span><br><span class="line">pkts = rdpcap(<span class="string">"./data/test.pcap"</span>)</span><br><span class="line">pkts[<span class="number">0</span>].show()</span><br></pre></td></tr></table></figure>
-
-<pre><code>###[ Ethernet ]### 
-  dst       = 52:54:00:12:34:56
-  src       = 52:55:10:00:02:02
-  type      = IPv4
-###[ IP ]### 
-     version   = 4
-     ihl       = 5
-     tos       = 0x0
-     len       = 48
-     id        = 645
-     flags     = DF
-     frag      = 0
-     ttl       = 128
-     proto     = tcp
-     chksum    = 0xb48e
-     src       = 192.168.0.67
-     dst       = 115.223.14.234
-     \options   \
-###[ TCP ]### 
-        sport     = 1040
-        dport     = https
-        seq       = 1155960802
-        ack       = 0
-        dataofs   = 7
-        reserved  = 0
-        flags     = S
-        window    = 65535
-        chksum    = 0x64d7
-        urgptr    = 0
-        options   = [(&apos;MSS&apos;, 1460), (&apos;NOP&apos;, None), (&apos;NOP&apos;, None), (&apos;SAckOK&apos;, b&apos;&apos;)]</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># [Ethernet] </span></span><br><span class="line"><span class="comment"># dst: 目标mac地址 </span></span><br><span class="line"><span class="comment"># scr：本地mac地址 </span></span><br><span class="line"><span class="comment"># type：IPv4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [IP] </span></span><br><span class="line"><span class="comment"># version  </span></span><br><span class="line"><span class="comment"># ihl    首部长度（Internet Header Length， IHL）   </span></span><br><span class="line"><span class="comment"># tos   服务类型type of serve</span></span><br><span class="line"><span class="comment"># len   IP包长度</span></span><br><span class="line"><span class="comment"># id       </span></span><br><span class="line"><span class="comment"># flags    标志字段</span></span><br><span class="line"><span class="comment"># frag     碎片</span></span><br><span class="line"><span class="comment"># ttl      数据包在网络中的时间是否太长而应被丢弃time to live</span></span><br><span class="line"><span class="comment"># proto    协议</span></span><br><span class="line"><span class="comment"># chksum   校验和</span></span><br><span class="line"><span class="comment"># dst       目的ip</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [TCP]</span></span><br><span class="line"><span class="comment"># sport     源端口</span></span><br><span class="line"><span class="comment"># dport     目标端口</span></span><br><span class="line"><span class="comment"># seq       顺序号码</span></span><br><span class="line"><span class="comment"># ack       确认</span></span><br><span class="line"><span class="comment"># dataofs   数据偏移字段</span></span><br><span class="line"><span class="comment"># reserved  </span></span><br><span class="line"><span class="comment"># flags    标志</span></span><br><span class="line"><span class="comment"># window   窗口大小</span></span><br><span class="line"><span class="comment"># chksum   校验和</span></span><br><span class="line"><span class="comment"># urgptr   </span></span><br><span class="line"><span class="comment"># options   头部选项字段</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="原始流量数据集："><a href="#原始流量数据集：" class="headerlink" title="原始流量数据集："></a>原始流量数据集：</h3><p>train.py</p>
-<ul>
-<li>black (1500个pcap文件) </li>
-<li>white (1500个pcap文件)</li>
-</ul>
-<p>test.py (没有提供标签)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">"./data/train.csv"</span>)</span><br><span class="line">data.shape</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>(1752060, 24)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.head()</span><br></pre></td></tr></table></figure>
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}</code></pre><p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>dst</th>
-      <th>src</th>
-      <th>type</th>
-      <th>version</th>
-      <th>ihl</th>
-      <th>tos</th>
-      <th>len</th>
-      <th>id</th>
-      <th>flags</th>
-      <th>frag</th>
-      <th>...</th>
-      <th>dport</th>
-      <th>seq</th>
-      <th>ack</th>
-      <th>dataofs</th>
-      <th>reserved</th>
-      <th>flags.1</th>
-      <th>window</th>
-      <th>chksum.1</th>
-      <th>urgptr</th>
-      <th>label</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>52:54:00:12:34:56</td>
-      <td>52:55:10:00:02:02</td>
-      <td>2048</td>
-      <td>4</td>
-      <td>5</td>
-      <td>0</td>
-      <td>48</td>
-      <td>196</td>
-      <td>DF</td>
-      <td>0</td>
-      <td>...</td>
-      <td>443</td>
-      <td>3781184629</td>
-      <td>0</td>
-      <td>7</td>
-      <td>0</td>
-      <td>S</td>
-      <td>65535</td>
-      <td>15493</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>52:54:00:12:34:56</td>
-      <td>52:55:10:00:02:02</td>
-      <td>2048</td>
-      <td>4</td>
-      <td>5</td>
-      <td>0</td>
-      <td>48</td>
-      <td>197</td>
-      <td>DF</td>
-      <td>0</td>
-      <td>...</td>
-      <td>443</td>
-      <td>3781184629</td>
-      <td>0</td>
-      <td>7</td>
-      <td>0</td>
-      <td>S</td>
-      <td>65535</td>
-      <td>15493</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>52:54:00:12:34:56</td>
-      <td>52:55:10:00:02:02</td>
-      <td>2048</td>
-      <td>4</td>
-      <td>5</td>
-      <td>0</td>
-      <td>48</td>
-      <td>198</td>
-      <td>DF</td>
-      <td>0</td>
-      <td>...</td>
-      <td>443</td>
-      <td>3781184629</td>
-      <td>0</td>
-      <td>7</td>
-      <td>0</td>
-      <td>S</td>
-      <td>65535</td>
-      <td>15493</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>52:54:00:12:34:56</td>
-      <td>52:55:10:00:02:02</td>
-      <td>2048</td>
-      <td>4</td>
-      <td>5</td>
-      <td>0</td>
-      <td>48</td>
-      <td>199</td>
-      <td>DF</td>
-      <td>0</td>
-      <td>...</td>
-      <td>443</td>
-      <td>2676329384</td>
-      <td>0</td>
-      <td>7</td>
-      <td>0</td>
-      <td>S</td>
-      <td>65535</td>
-      <td>16171</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>52:55:10:00:02:02</td>
-      <td>52:54:00:12:34:56</td>
-      <td>2048</td>
-      <td>4</td>
-      <td>5</td>
-      <td>0</td>
-      <td>44</td>
-      <td>3</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1034</td>
-      <td>2752001</td>
-      <td>2676329385</td>
-      <td>6</td>
-      <td>0</td>
-      <td>SA</td>
-      <td>8192</td>
-      <td>13814</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 24 columns</p>
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.info()</span><br></pre></td></tr></table></figure>
-
-<pre><code>&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;
-RangeIndex: 1752060 entries, 0 to 1752059
-Data columns (total 24 columns):
-dst         object
-src         object
-type        int64
-version     int64
-ihl         int64
-tos         int64
-len         int64
-id          int64
-flags       object
-frag        int64
-ttl         int64
-proto       int64
-chksum      int64
-sport       int64
-dport       int64
-seq         int64
-ack         int64
-dataofs     int64
-reserved    int64
-flags.1     object
-window      int64
-chksum.1    int64
-urgptr      int64
-label       int64
-dtypes: int64(20), object(4)
-memory usage: 320.8+ MB</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># DNN模型</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.utils <span class="keyword">import</span> shuffle</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.random.seed(<span class="number">1337</span>)  <span class="comment"># for reproducibility</span></span><br><span class="line"><span class="keyword">from</span> keras.preprocessing <span class="keyword">import</span> sequence</span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> np_utils</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Dropout, Activation, Embedding</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> LSTM, SimpleRNN, GRU</span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> imdb</span><br><span class="line"><span class="keyword">from</span> keras.utils.np_utils <span class="keyword">import</span> to_categorical</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> (precision_score, recall_score,f1_score, accuracy_score,mean_squared_error,mean_absolute_error)</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Normalizer</span><br><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> callbacks</span><br><span class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint, EarlyStopping, ReduceLROnPlateau, CSVLogger</span><br><span class="line"></span><br><span class="line">data = pd.read_csv(<span class="string">"./data/train.csv"</span>)</span><br><span class="line">data = shuffle(data)</span><br><span class="line"><span class="comment"># 选取了其中数值特征作为训练</span></span><br><span class="line">x = data.iloc[:,[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span>]]</span><br><span class="line">y = data.iloc[:,<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 划分数据集 7:3</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = <span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化</span></span><br><span class="line">scaler=Normalizer().fit(x_train)</span><br><span class="line">x_train=scaler.transform(x_train)</span><br><span class="line"></span><br><span class="line">scaler=Normalizer().fit(x_test)</span><br><span class="line">x_test=scaler.transform(x_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数组转换</span></span><br><span class="line">x_train=np.array(x_train)</span><br><span class="line">y_train=np.array(y_train)</span><br><span class="line">x_test=np.array(x_test)</span><br><span class="line">y_test=np.array(y_test)</span><br><span class="line"></span><br><span class="line">batch_size = <span class="number">1024</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. define the network</span></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Dense(<span class="number">128</span>,input_dim=<span class="number">18</span>,activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dense(<span class="number">64</span>))</span><br><span class="line">model.add(Dense(<span class="number">32</span>))</span><br><span class="line">model.add(Dense(<span class="number">1</span>))</span><br><span class="line">model.add(Activation(<span class="string">'sigmoid'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># try using different optimizers and different optimizer configs</span></span><br><span class="line">model.compile(loss=<span class="string">'binary_crossentropy'</span>,optimizer=<span class="string">'adam'</span>,metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">model.fit(x_train, y_train, batch_size=batch_size, nb_epoch=<span class="number">200</span>, callbacks=<span class="literal">None</span>,verbose=<span class="number">2</span>)</span><br><span class="line">loss,accuracy = model.evaluate(x_test,y_test,verbose=<span class="number">2</span>)</span><br><span class="line">print(loss,accuracy)</span><br></pre></td></tr></table></figure>
-
-<pre><code>D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\ipykernel_launcher.py:55: UserWarning: The `nb_epoch` argument in `fit` has been renamed `epochs`.
-
-
-Epoch 1/200
- - 4s - loss: 0.6592 - acc: 0.6275
-Epoch 2/200
- - 4s - loss: 0.6573 - acc: 0.6311
-Epoch 3/200
- - 4s - loss: 0.6571 - acc: 0.6313
-Epoch 4/200
- - 4s - loss: 0.6567 - acc: 0.6316
-Epoch 5/200
- - 4s - loss: 0.6566 - acc: 0.6319
-Epoch 6/200
- - 4s - loss: 0.6563 - acc: 0.6322
-Epoch 7/200
- - 4s - loss: 0.6558 - acc: 0.6328
-Epoch 8/200
- - 4s - loss: 0.6553 - acc: 0.6337
-Epoch 9/200
- - 4s - loss: 0.6542 - acc: 0.6354
-Epoch 10/200
- - 4s - loss: 0.6512 - acc: 0.6384
-Epoch 11/200
- - 4s - loss: 0.6401 - acc: 0.6442
-Epoch 12/200
- - 4s - loss: 0.6149 - acc: 0.6652
-Epoch 13/200
- - 4s - loss: 0.5915 - acc: 0.6933
-Epoch 14/200
- - 5s - loss: 0.5746 - acc: 0.7140
-Epoch 15/200
- - 4s - loss: 0.5644 - acc: 0.7247
-Epoch 16/200
- - 4s - loss: 0.5575 - acc: 0.7296
-Epoch 17/200
- - 4s - loss: 0.5538 - acc: 0.7319
-Epoch 18/200
- - 4s - loss: 0.5506 - acc: 0.7333
-Epoch 19/200
- - 4s - loss: 0.5482 - acc: 0.7356
-Epoch 20/200
- - 4s - loss: 0.5430 - acc: 0.7372
-Epoch 21/200
- - 4s - loss: 0.5399 - acc: 0.7395
-Epoch 22/200
- - 4s - loss: 0.5370 - acc: 0.7411
-Epoch 23/200
- - 4s - loss: 0.5327 - acc: 0.7432
-Epoch 24/200
- - 4s - loss: 0.5298 - acc: 0.7449
-Epoch 25/200
- - 4s - loss: 0.5289 - acc: 0.7456
-Epoch 26/200
- - 4s - loss: 0.5257 - acc: 0.7463
-Epoch 27/200
- - 4s - loss: 0.5235 - acc: 0.7478
-Epoch 28/200
- - 4s - loss: 0.5215 - acc: 0.7489
-Epoch 29/200
- - 4s - loss: 0.5174 - acc: 0.7517
-Epoch 30/200
- - 4s - loss: 0.5151 - acc: 0.7527
-Epoch 31/200
- - 4s - loss: 0.5133 - acc: 0.7539
-Epoch 32/200
- - 4s - loss: 0.5111 - acc: 0.7555
-Epoch 33/200
- - 4s - loss: 0.5078 - acc: 0.7561
-Epoch 34/200
- - 4s - loss: 0.5096 - acc: 0.7555
-Epoch 35/200
- - 4s - loss: 0.5022 - acc: 0.7599
-Epoch 36/200
- - 4s - loss: 0.5017 - acc: 0.7608
-Epoch 37/200
- - 4s - loss: 0.4988 - acc: 0.7619
-Epoch 38/200
- - 4s - loss: 0.4981 - acc: 0.7617
-Epoch 39/200
- - 4s - loss: 0.4982 - acc: 0.7629
-Epoch 40/200
- - 4s - loss: 0.4971 - acc: 0.7619
-Epoch 41/200
- - 4s - loss: 0.4942 - acc: 0.7634
-Epoch 42/200
- - 4s - loss: 0.4947 - acc: 0.7623
-Epoch 43/200
- - 4s - loss: 0.4920 - acc: 0.7627
-Epoch 44/200
- - 4s - loss: 0.4914 - acc: 0.7634
-Epoch 45/200
- - 4s - loss: 0.4896 - acc: 0.7651
-Epoch 46/200
- - 4s - loss: 0.4880 - acc: 0.7670
-Epoch 47/200
- - 4s - loss: 0.4865 - acc: 0.7667
-Epoch 48/200
- - 4s - loss: 0.4906 - acc: 0.7659
-Epoch 49/200
- - 4s - loss: 0.4893 - acc: 0.7669
-Epoch 50/200
- - 4s - loss: 0.4933 - acc: 0.7648
-Epoch 51/200
- - 4s - loss: 0.4879 - acc: 0.7680
-Epoch 52/200
- - 4s - loss: 0.4879 - acc: 0.7681
-Epoch 53/200
- - 4s - loss: 0.4865 - acc: 0.7692
-Epoch 54/200
- - 4s - loss: 0.4845 - acc: 0.7696
-Epoch 55/200
- - 4s - loss: 0.4852 - acc: 0.7691
-Epoch 56/200
- - 4s - loss: 0.4821 - acc: 0.7712
-Epoch 57/200
- - 4s - loss: 0.4844 - acc: 0.7692
-Epoch 58/200
- - 4s - loss: 0.4782 - acc: 0.7731
-Epoch 59/200
- - 4s - loss: 0.4776 - acc: 0.7738
-Epoch 60/200
- - 4s - loss: 0.4777 - acc: 0.7733
-Epoch 61/200
- - 4s - loss: 0.4772 - acc: 0.7733
-Epoch 62/200
- - 4s - loss: 0.4768 - acc: 0.7741
-Epoch 63/200
- - 4s - loss: 0.4734 - acc: 0.7757
-Epoch 64/200
- - 4s - loss: 0.4725 - acc: 0.7770
-Epoch 65/200
- - 4s - loss: 0.4707 - acc: 0.7782
-Epoch 66/200
- - 4s - loss: 0.4701 - acc: 0.7777
-Epoch 67/200
- - 4s - loss: 0.4674 - acc: 0.7793
-Epoch 68/200
- - 4s - loss: 0.4666 - acc: 0.7802
-Epoch 69/200
- - 4s - loss: 0.4652 - acc: 0.7798
-Epoch 70/200
- - 4s - loss: 0.4648 - acc: 0.7804
-Epoch 71/200
- - 4s - loss: 0.4640 - acc: 0.7814
-Epoch 72/200
- - 4s - loss: 0.4640 - acc: 0.7811
-Epoch 73/200
- - 4s - loss: 0.4605 - acc: 0.7836
-Epoch 74/200
- - 4s - loss: 0.4617 - acc: 0.7820
-Epoch 75/200
- - 4s - loss: 0.4598 - acc: 0.7834
-Epoch 76/200
- - 4s - loss: 0.4599 - acc: 0.7832
-Epoch 77/200
- - 4s - loss: 0.4575 - acc: 0.7847
-Epoch 78/200
- - 4s - loss: 0.4563 - acc: 0.7853
-Epoch 79/200
- - 4s - loss: 0.4581 - acc: 0.7836
-Epoch 80/200
- - 4s - loss: 0.4565 - acc: 0.7851
-Epoch 81/200
- - 4s - loss: 0.4549 - acc: 0.7861
-Epoch 82/200
- - 4s - loss: 0.4534 - acc: 0.7870
-Epoch 83/200
- - 4s - loss: 0.4533 - acc: 0.7876
-Epoch 84/200
- - 4s - loss: 0.4536 - acc: 0.7871
-Epoch 85/200
- - 4s - loss: 0.4522 - acc: 0.7882
-Epoch 86/200
- - 4s - loss: 0.4503 - acc: 0.7884
-Epoch 87/200
- - 4s - loss: 0.4498 - acc: 0.7897
-Epoch 88/200
- - 4s - loss: 0.4487 - acc: 0.7893
-Epoch 89/200
- - 4s - loss: 0.4489 - acc: 0.7890
-Epoch 90/200
- - 4s - loss: 0.4494 - acc: 0.7890
-Epoch 91/200
- - 4s - loss: 0.4479 - acc: 0.7899
-Epoch 92/200
- - 4s - loss: 0.4468 - acc: 0.7908
-Epoch 93/200
- - 4s - loss: 0.4476 - acc: 0.7902
-Epoch 94/200
- - 4s - loss: 0.4426 - acc: 0.7939
-Epoch 95/200
- - 4s - loss: 0.4442 - acc: 0.7930
-Epoch 96/200
- - 4s - loss: 0.4403 - acc: 0.7953
-Epoch 97/200
- - 4s - loss: 0.4436 - acc: 0.7929
-Epoch 98/200
- - 4s - loss: 0.4407 - acc: 0.7948
-Epoch 99/200
- - 4s - loss: 0.4418 - acc: 0.7950
-Epoch 100/200
- - 4s - loss: 0.4601 - acc: 0.7886
-Epoch 101/200
- - 4s - loss: 0.4545 - acc: 0.7913
-Epoch 102/200
- - 4s - loss: 0.4562 - acc: 0.7895
-Epoch 103/200
- - 4s - loss: 0.4569 - acc: 0.7879
-Epoch 104/200
- - 4s - loss: 0.4516 - acc: 0.7910
-Epoch 105/200
- - 4s - loss: 0.4516 - acc: 0.7910
-Epoch 106/200
- - 4s - loss: 0.4638 - acc: 0.7840
-Epoch 107/200
- - 4s - loss: 0.4592 - acc: 0.7868
-Epoch 108/200
- - 4s - loss: 0.4649 - acc: 0.7850
-Epoch 109/200
- - 4s - loss: 0.4640 - acc: 0.7861
-Epoch 110/200
- - 4s - loss: 0.4616 - acc: 0.7878
-Epoch 111/200
- - 4s - loss: 0.4576 - acc: 0.7889
-Epoch 112/200
- - 4s - loss: 0.4551 - acc: 0.7898
-Epoch 113/200
- - 4s - loss: 0.4532 - acc: 0.7910
-Epoch 114/200
- - 4s - loss: 0.4514 - acc: 0.7910
-Epoch 115/200
- - 4s - loss: 0.4478 - acc: 0.7934
-Epoch 116/200
- - 4s - loss: 0.4485 - acc: 0.7925
-Epoch 117/200
- - 4s - loss: 0.4453 - acc: 0.7946
-Epoch 118/200
- - 4s - loss: 0.4452 - acc: 0.7936
-Epoch 119/200
- - 4s - loss: 0.4439 - acc: 0.7945
-Epoch 120/200
- - 4s - loss: 0.4410 - acc: 0.7960
-Epoch 121/200
- - 4s - loss: 0.4427 - acc: 0.7951
-Epoch 122/200
- - 4s - loss: 0.4411 - acc: 0.7952
-Epoch 123/200
- - 4s - loss: 0.4400 - acc: 0.7955
-Epoch 124/200
- - 4s - loss: 0.4372 - acc: 0.7974
-Epoch 125/200
- - 4s - loss: 0.4378 - acc: 0.7966
-Epoch 126/200
- - 4s - loss: 0.4360 - acc: 0.7973
-Epoch 127/200
- - 4s - loss: 0.4344 - acc: 0.7985
-Epoch 128/200
- - 4s - loss: 0.4316 - acc: 0.8000
-Epoch 129/200
- - 4s - loss: 0.4344 - acc: 0.7976
-Epoch 130/200
- - 4s - loss: 0.4335 - acc: 0.7984
-Epoch 131/200
- - 4s - loss: 0.4303 - acc: 0.8008
-Epoch 132/200
- - 4s - loss: 0.4341 - acc: 0.7980
-Epoch 133/200
- - 4s - loss: 0.4331 - acc: 0.7978
-Epoch 134/200
- - 4s - loss: 0.4296 - acc: 0.8006
-Epoch 135/200
- - 4s - loss: 0.4279 - acc: 0.8015
-Epoch 136/200
- - 4s - loss: 0.4277 - acc: 0.8012
-Epoch 137/200
- - 4s - loss: 0.4296 - acc: 0.8000
-Epoch 138/200
- - 4s - loss: 0.4253 - acc: 0.8032
-Epoch 139/200
- - 4s - loss: 0.4264 - acc: 0.8026
-Epoch 140/200
- - 4s - loss: 0.4292 - acc: 0.8005
-Epoch 141/200
- - 4s - loss: 0.4341 - acc: 0.7956
-Epoch 142/200
- - 4s - loss: 0.4346 - acc: 0.7946
-Epoch 143/200
- - 4s - loss: 0.4349 - acc: 0.7942
-Epoch 144/200
- - 4s - loss: 0.4463 - acc: 0.7891
-Epoch 145/200
- - 4s - loss: 0.4489 - acc: 0.7876
-Epoch 146/200
- - 4s - loss: 0.4474 - acc: 0.7882
-Epoch 147/200
- - 4s - loss: 0.4441 - acc: 0.7905
-Epoch 148/200
- - 4s - loss: 0.4460 - acc: 0.7889
-Epoch 149/200
- - 4s - loss: 0.4426 - acc: 0.7906
-Epoch 150/200
- - 4s - loss: 0.4411 - acc: 0.7915
-Epoch 151/200
- - 4s - loss: 0.4367 - acc: 0.7946
-Epoch 152/200
- - 4s - loss: 0.4392 - acc: 0.7929
-Epoch 153/200
- - 4s - loss: 0.4391 - acc: 0.7937
-Epoch 154/200
- - 4s - loss: 0.4421 - acc: 0.7920
-Epoch 155/200
- - 4s - loss: 0.4398 - acc: 0.7931
-Epoch 156/200
- - 4s - loss: 0.4394 - acc: 0.7935
-Epoch 157/200
- - 4s - loss: 0.4386 - acc: 0.7935
-Epoch 158/200
- - 4s - loss: 0.4362 - acc: 0.7952
-Epoch 159/200
- - 4s - loss: 0.4369 - acc: 0.7948
-Epoch 160/200
- - 4s - loss: 0.4344 - acc: 0.7962
-Epoch 161/200
- - 4s - loss: 0.4319 - acc: 0.7975
-Epoch 162/200
- - 4s - loss: 0.4324 - acc: 0.7966
-Epoch 163/200
- - 4s - loss: 0.4307 - acc: 0.7981
-Epoch 164/200
- - 4s - loss: 0.4295 - acc: 0.7985
-Epoch 165/200
- - 4s - loss: 0.4280 - acc: 0.7997
-Epoch 166/200
- - 4s - loss: 0.4279 - acc: 0.8000
-Epoch 167/200
- - 4s - loss: 0.4268 - acc: 0.8000
-Epoch 168/200
- - 4s - loss: 0.4278 - acc: 0.7995
-Epoch 169/200
- - 4s - loss: 0.4244 - acc: 0.8014
-Epoch 170/200
- - 4s - loss: 0.4235 - acc: 0.8019
-Epoch 171/200
- - 4s - loss: 0.4242 - acc: 0.8007
-Epoch 172/200
- - 4s - loss: 0.4229 - acc: 0.8023
-Epoch 173/200
- - 4s - loss: 0.4238 - acc: 0.8014
-Epoch 174/200
- - 4s - loss: 0.4237 - acc: 0.8017
-Epoch 175/200
- - 4s - loss: 0.4202 - acc: 0.8036
-Epoch 176/200
- - 4s - loss: 0.4359 - acc: 0.7952
-Epoch 177/200
- - 4s - loss: 0.4371 - acc: 0.7935
-Epoch 178/200
- - 4s - loss: 0.4340 - acc: 0.7955
-Epoch 179/200
- - 4s - loss: 0.4354 - acc: 0.7955
-Epoch 180/200
- - 4s - loss: 0.4367 - acc: 0.7952
-Epoch 181/200
- - 4s - loss: 0.4339 - acc: 0.7964
-Epoch 182/200
- - 4s - loss: 0.4369 - acc: 0.7964
-Epoch 183/200
- - 4s - loss: 0.4481 - acc: 0.7963
-Epoch 184/200
- - 4s - loss: 0.4412 - acc: 0.7996
-Epoch 185/200
- - 4s - loss: 0.4403 - acc: 0.7982
-Epoch 186/200
- - 4s - loss: 0.4388 - acc: 0.7985
-Epoch 187/200
- - 4s - loss: 0.4360 - acc: 0.8002
-Epoch 188/200
- - 4s - loss: 0.4433 - acc: 0.7952
-Epoch 189/200
- - 4s - loss: 0.4400 - acc: 0.7971
-Epoch 190/200
- - 4s - loss: 0.4426 - acc: 0.7955
-Epoch 191/200
- - 4s - loss: 0.4406 - acc: 0.7968
-Epoch 192/200
- - 4s - loss: 0.4408 - acc: 0.7968
-Epoch 193/200
- - 4s - loss: 0.4396 - acc: 0.7972
-Epoch 194/200
- - 4s - loss: 0.4397 - acc: 0.7970
-Epoch 195/200
- - 4s - loss: 0.4383 - acc: 0.7981
-Epoch 196/200
- - 4s - loss: 0.4387 - acc: 0.7976
-Epoch 197/200
- - 4s - loss: 0.4368 - acc: 0.7990
-Epoch 198/200
- - 4s - loss: 0.4402 - acc: 0.7965
-Epoch 199/200
- - 4s - loss: 0.4360 - acc: 0.7991
-Epoch 200/200
- - 4s - loss: 0.4360 - acc: 0.7997
-0.43021377035252795 0.7874159560738833</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,precision_score,recall_score,f1_score,confusion_matrix</span><br><span class="line"></span><br><span class="line">model=DecisionTreeClassifier()</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">predicted=model.predict(x_test)</span><br><span class="line">accuracy=accuracy_score(y_test,predicted)</span><br><span class="line">precision=precision_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">recall=recall_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">f1=f1_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>,accuracy)</span><br><span class="line">print(<span class="string">"Precision:"</span>,precision)</span><br><span class="line">print(<span class="string">"Recall:"</span>,recall)</span><br><span class="line">print(<span class="string">"F1:"</span>,f1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Accuracy: 0.9642687274788915
-Precision: 0.9260356995707014
-Recall: 0.9901188017507626
-F1: 0.9570056658845075</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,precision_score,recall_score,f1_score,confusion_matrix</span><br><span class="line"></span><br><span class="line">model=GaussianNB()</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">predicted=model.predict(x_test)</span><br><span class="line">accuracy=accuracy_score(y_test,predicted)</span><br><span class="line">precision=precision_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">recall=recall_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">f1=f1_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>,accuracy)</span><br><span class="line">print(<span class="string">"Precision:"</span>,precision)</span><br><span class="line">print(<span class="string">"Recall:"</span>,recall)</span><br><span class="line">print(<span class="string">"F1:"</span>,f1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Accuracy: 0.6075343690665084
-Precision: 0.6645055620009555
-Recall: 0.04612331129090323
-F1: 0.08625936277745049</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,precision_score,recall_score,f1_score,confusion_matrix</span><br><span class="line"></span><br><span class="line">model=LogisticRegression()</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">predicted=model.predict(x_test)</span><br><span class="line">accuracy=accuracy_score(y_test,predicted)</span><br><span class="line">precision=precision_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">recall=recall_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">f1=f1_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>,accuracy)</span><br><span class="line">print(<span class="string">"Precision:"</span>,precision)</span><br><span class="line">print(<span class="string">"Recall:"</span>,recall)</span><br><span class="line">print(<span class="string">"F1:"</span>,f1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to &apos;lbfgs&apos; in 0.22. Specify a solver to silence this warning.
-  FutureWarning)
-
-
-Accuracy: 0.632501170051254
-Precision: 0.7340969576788603
-Recall: 0.13327301665498228
-F1: 0.2255907374295405</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,precision_score,recall_score,f1_score,confusion_matrix</span><br><span class="line"></span><br><span class="line">model=RandomForestClassifier()</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">predicted=model.predict(x_test)</span><br><span class="line">accuracy=accuracy_score(y_test,predicted)</span><br><span class="line">precision=precision_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">recall=recall_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">f1=f1_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>,accuracy)</span><br><span class="line">print(<span class="string">"Precision:"</span>,precision)</span><br><span class="line">print(<span class="string">"Recall:"</span>,recall)</span><br><span class="line">print(<span class="string">"F1:"</span>,f1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\sklearn\ensemble\forest.py:245: FutureWarning: The default value of n_estimators will change from 10 in version 0.20 to 100 in 0.22.
-  &quot;10 in version 0.20 to 100 in 0.22.&quot;, FutureWarning)
-
-
-Accuracy: 0.8054499655643452
-Precision: 0.8850908164637123
-Recall: 0.592535574208462
-F1: 0.7098516898055539</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> AdaBoostClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,precision_score,recall_score,f1_score,confusion_matrix</span><br><span class="line"></span><br><span class="line">model=AdaBoostClassifier()</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">predicted=model.predict(x_test)</span><br><span class="line">accuracy=accuracy_score(y_test,predicted)</span><br><span class="line">precision=precision_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">recall=recall_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">f1=f1_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>,accuracy)</span><br><span class="line">print(<span class="string">"Precision:"</span>,precision)</span><br><span class="line">print(<span class="string">"Recall:"</span>,recall)</span><br><span class="line">print(<span class="string">"F1:"</span>,f1)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Accuracy: 0.7218074723468374
-Precision: 0.7559626657830165
-Recall: 0.45387195179718437
-F1: 0.5672019061431679</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.random.seed(<span class="number">1337</span>)  <span class="comment"># for reproducibility</span></span><br><span class="line"><span class="keyword">from</span> keras.preprocessing <span class="keyword">import</span> sequence</span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> np_utils</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Dropout, Activation, Embedding</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> LSTM, SimpleRNN, GRU</span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> imdb</span><br><span class="line"><span class="keyword">from</span> keras.utils.np_utils <span class="keyword">import</span> to_categorical</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> (precision_score, recall_score,f1_score, accuracy_score,mean_squared_error,mean_absolute_error)</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Normalizer</span><br><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> callbacks</span><br><span class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint, EarlyStopping, ReduceLROnPlateau, CSVLogger</span><br><span class="line"></span><br><span class="line">data = pd.read_csv(<span class="string">"./data/train.csv"</span>)</span><br><span class="line">data = shuffle(data)</span><br><span class="line"><span class="comment"># 选取了其中数值特征作为训练</span></span><br><span class="line">x = data.iloc[:,[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span>]]</span><br><span class="line">y = data.iloc[:,<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 划分数据集 7:3</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = <span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化</span></span><br><span class="line">scaler=Normalizer().fit(x_train)</span><br><span class="line">x_train=scaler.transform(x_train)</span><br><span class="line"></span><br><span class="line">scaler=Normalizer().fit(x_test)</span><br><span class="line">x_test=scaler.transform(x_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数组转换</span></span><br><span class="line">x_train=np.array(x_train)</span><br><span class="line">y_train=np.array(y_train)</span><br><span class="line">x_test=np.array(x_test)</span><br><span class="line">y_test=np.array(y_test)</span><br><span class="line"><span class="comment"># reshape input to be [samples, time steps, features]</span></span><br><span class="line">x_train = np.reshape(x_train, (x_train.shape[<span class="number">0</span>], <span class="number">1</span>, x_train.shape[<span class="number">1</span>]))</span><br><span class="line">x_test = np.reshape(x_test, (x_test.shape[<span class="number">0</span>], <span class="number">1</span>, x_test.shape[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">batch_size = <span class="number">1024</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. define the network</span></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(LSTM(<span class="number">64</span>,input_dim=<span class="number">18</span>))  <span class="comment"># try using a GRU instead, for fun</span></span><br><span class="line">model.add(Dropout(<span class="number">0.1</span>))</span><br><span class="line">model.add(Dense(<span class="number">1</span>))</span><br><span class="line">model.add(Activation(<span class="string">'sigmoid'</span>))</span><br><span class="line">print(model.get_config())</span><br><span class="line"></span><br><span class="line"><span class="comment"># try using different optimizers and different optimizer configs</span></span><br><span class="line">model.compile(loss=<span class="string">'binary_crossentropy'</span>,optimizer=<span class="string">'adam'</span>,metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">model.fit(x_train, y_train, batch_size=batch_size, nb_epoch=<span class="number">50</span>,callbacks=<span class="literal">None</span>,verbose=<span class="number">2</span>)</span><br><span class="line">loss, accuracy = model.evaluate(x_test, y_test)</span><br><span class="line">print(<span class="string">"\nLoss: %.2f, Accuracy: %.2f%%"</span> % (loss, accuracy*<span class="number">100</span>))</span><br></pre></td></tr></table></figure>
-
-<pre><code>D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\ipykernel_launcher.py:49: UserWarning: The `input_dim` and `input_length` arguments in recurrent layers are deprecated. Use `input_shape` instead.
-D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\ipykernel_launcher.py:49: UserWarning: Update your `LSTM` call to the Keras 2 API: `LSTM(64, input_shape=(None, 18))`
-
-
-{&apos;name&apos;: &apos;sequential_6&apos;, &apos;layers&apos;: [{&apos;class_name&apos;: &apos;LSTM&apos;, &apos;config&apos;: {&apos;name&apos;: &apos;lstm_4&apos;, &apos;trainable&apos;: True, &apos;batch_input_shape&apos;: (None, None, 18), &apos;dtype&apos;: &apos;float32&apos;, &apos;return_sequences&apos;: False, &apos;return_state&apos;: False, &apos;go_backwards&apos;: False, &apos;stateful&apos;: False, &apos;unroll&apos;: False, &apos;units&apos;: 64, &apos;activation&apos;: &apos;tanh&apos;, &apos;recurrent_activation&apos;: &apos;hard_sigmoid&apos;, &apos;use_bias&apos;: True, &apos;kernel_initializer&apos;: {&apos;class_name&apos;: &apos;VarianceScaling&apos;, &apos;config&apos;: {&apos;scale&apos;: 1.0, &apos;mode&apos;: &apos;fan_avg&apos;, &apos;distribution&apos;: &apos;uniform&apos;, &apos;seed&apos;: None}}, &apos;recurrent_initializer&apos;: {&apos;class_name&apos;: &apos;Orthogonal&apos;, &apos;config&apos;: {&apos;gain&apos;: 1.0, &apos;seed&apos;: None}}, &apos;bias_initializer&apos;: {&apos;class_name&apos;: &apos;Zeros&apos;, &apos;config&apos;: {}}, &apos;unit_forget_bias&apos;: True, &apos;kernel_regularizer&apos;: None, &apos;recurrent_regularizer&apos;: None, &apos;bias_regularizer&apos;: None, &apos;activity_regularizer&apos;: None, &apos;kernel_constraint&apos;: None, &apos;recurrent_constraint&apos;: None, &apos;bias_constraint&apos;: None, &apos;dropout&apos;: 0.0, &apos;recurrent_dropout&apos;: 0.0, &apos;implementation&apos;: 1}}, {&apos;class_name&apos;: &apos;Dropout&apos;, &apos;config&apos;: {&apos;name&apos;: &apos;dropout_4&apos;, &apos;trainable&apos;: True, &apos;rate&apos;: 0.1, &apos;noise_shape&apos;: None, &apos;seed&apos;: None}}, {&apos;class_name&apos;: &apos;Dense&apos;, &apos;config&apos;: {&apos;name&apos;: &apos;dense_12&apos;, &apos;trainable&apos;: True, &apos;units&apos;: 1, &apos;activation&apos;: &apos;linear&apos;, &apos;use_bias&apos;: True, &apos;kernel_initializer&apos;: {&apos;class_name&apos;: &apos;VarianceScaling&apos;, &apos;config&apos;: {&apos;scale&apos;: 1.0, &apos;mode&apos;: &apos;fan_avg&apos;, &apos;distribution&apos;: &apos;uniform&apos;, &apos;seed&apos;: None}}, &apos;bias_initializer&apos;: {&apos;class_name&apos;: &apos;Zeros&apos;, &apos;config&apos;: {}}, &apos;kernel_regularizer&apos;: None, &apos;bias_regularizer&apos;: None, &apos;activity_regularizer&apos;: None, &apos;kernel_constraint&apos;: None, &apos;bias_constraint&apos;: None}}, {&apos;class_name&apos;: &apos;Activation&apos;, &apos;config&apos;: {&apos;name&apos;: &apos;activation_6&apos;, &apos;trainable&apos;: True, &apos;activation&apos;: &apos;sigmoid&apos;}}]}
-
-
-D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\ipykernel_launcher.py:57: UserWarning: The `nb_epoch` argument in `fit` has been renamed `epochs`.
-
-
-Epoch 1/50
- - 6s - loss: 0.6720 - acc: 0.5977
-Epoch 2/50
- - 5s - loss: 0.6670 - acc: 0.6082
-Epoch 3/50
- - 5s - loss: 0.6618 - acc: 0.6252
-Epoch 4/50
- - 5s - loss: 0.6599 - acc: 0.6294
-Epoch 5/50
- - 5s - loss: 0.6590 - acc: 0.6307
-Epoch 6/50
- - 5s - loss: 0.6584 - acc: 0.6316
-Epoch 7/50
- - 5s - loss: 0.6580 - acc: 0.6323
-Epoch 8/50
- - 5s - loss: 0.6576 - acc: 0.6326
-Epoch 9/50
- - 5s - loss: 0.6573 - acc: 0.6326
-Epoch 10/50
- - 5s - loss: 0.6570 - acc: 0.6327
-Epoch 11/50
- - 5s - loss: 0.6569 - acc: 0.6329
-Epoch 12/50
- - 5s - loss: 0.6566 - acc: 0.6331
-Epoch 13/50
- - 5s - loss: 0.6564 - acc: 0.6334
-Epoch 14/50
- - 5s - loss: 0.6562 - acc: 0.6334
-Epoch 15/50
- - 5s - loss: 0.6559 - acc: 0.6339
-Epoch 16/50
- - 5s - loss: 0.6556 - acc: 0.6344
-Epoch 17/50
- - 5s - loss: 0.6554 - acc: 0.6345
-Epoch 18/50
- - 5s - loss: 0.6551 - acc: 0.6349
-Epoch 19/50
- - 5s - loss: 0.6549 - acc: 0.6353
-Epoch 20/50
- - 5s - loss: 0.6544 - acc: 0.6359
-Epoch 21/50
- - 5s - loss: 0.6541 - acc: 0.6364
-Epoch 22/50
- - 5s - loss: 0.6536 - acc: 0.6372
-Epoch 23/50
- - 5s - loss: 0.6529 - acc: 0.6378
-Epoch 24/50
- - 5s - loss: 0.6522 - acc: 0.6385
-Epoch 25/50
- - 5s - loss: 0.6513 - acc: 0.6391
-Epoch 26/50
- - 5s - loss: 0.6506 - acc: 0.6393
-Epoch 27/50
- - 5s - loss: 0.6497 - acc: 0.6398
-Epoch 28/50
- - 5s - loss: 0.6488 - acc: 0.6401
-Epoch 29/50
- - 5s - loss: 0.6476 - acc: 0.6405
-Epoch 30/50
- - 5s - loss: 0.6465 - acc: 0.6406
-Epoch 31/50
- - 5s - loss: 0.6452 - acc: 0.6409
-Epoch 32/50
- - 5s - loss: 0.6442 - acc: 0.6410
-Epoch 33/50
- - 5s - loss: 0.6432 - acc: 0.6412
-Epoch 34/50
- - 5s - loss: 0.6421 - acc: 0.6415
-Epoch 35/50
- - 5s - loss: 0.6412 - acc: 0.6418
-Epoch 36/50
- - 5s - loss: 0.6399 - acc: 0.6422
-Epoch 37/50
- - 5s - loss: 0.6389 - acc: 0.6424
-Epoch 38/50
- - 5s - loss: 0.6378 - acc: 0.6428
-Epoch 39/50
- - 5s - loss: 0.6365 - acc: 0.6431
-Epoch 40/50
- - 5s - loss: 0.6353 - acc: 0.6436
-Epoch 41/50
- - 5s - loss: 0.6341 - acc: 0.6437
-Epoch 42/50
- - 5s - loss: 0.6331 - acc: 0.6444
-Epoch 43/50
- - 5s - loss: 0.6317 - acc: 0.6446
-Epoch 44/50
- - 5s - loss: 0.6305 - acc: 0.6451
-Epoch 45/50
- - 5s - loss: 0.6289 - acc: 0.6459
-Epoch 46/50
- - 5s - loss: 0.6278 - acc: 0.6465
-Epoch 47/50
- - 5s - loss: 0.6264 - acc: 0.6470
-Epoch 48/50
- - 5s - loss: 0.6252 - acc: 0.6482
-Epoch 49/50
- - 5s - loss: 0.6239 - acc: 0.6484
-Epoch 50/50
- - 5s - loss: 0.6224 - acc: 0.6497
-525618/525618 [==============================] - 19s 35us/step
-
-Loss: 0.62, Accuracy: 64.41%</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
   </entry>
   <entry>
     <title>Pandas的基本操作</title>
@@ -5774,27 +4809,992 @@ memory usage: 860.5 MB</code></pre><figure class="highlight python"><table><tr><
       </tags>
   </entry>
   <entry>
-    <title>CTF常用文件头</title>
-    <url>/2022/02/17/%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E5%A4%B4/</url>
-    <content><![CDATA[<p>JPEG (jpg)，                        　　文件头：FFD8FF　　　　　　　　　　　　　　<br>PNG (png)，                       　　 文件头：89504E47  文件尾：0000000049454E44AE426082<br>GIF (gif)，                           　　文件头：47494638<br>ZIP Archive (zip)，                     文件头：504B0304 文件尾：00000000<br>TIFF (tif)，                           　  文件头：49492A00<br>Windows Bitmap (bmp)，      　  文件头：424D<br>CAD (dwg)，                        　  文件头：41433130<br>Adobe Photoshop (psd)，          文件头：38425053<br>Rich Text Format (rtf)，             文件头：7B5C727466<br>XML (xml)，                              文件头：3C3F786D6C<br>HTML (html)，                           文件头：68746D6C3E<br>Email [thorough only] (eml)，     文件头：44656C69766572792D646174653A<br>Outlook Express (dbx)，            文件头：CFAD12FEC5FD746F<br>Outlook (pst)，                         文件头：2142444E<br>MS Word/Excel (xls.or.doc)，      文件头：D0CF11E0<br>MS Access (mdb)，                    文件头：5374616E64617264204A<br>WordPerfect (wpd)，                  文件头：FF575043<br>Adobe Acrobat (pdf)，               文件头：255044462D312E<br>Quicken (qdf)，                         文件头：AC9EBD8F<br>Windows Password (pwl)，         文件头：E3828596<br>RAR Archive (rar)，                    文件头：52617221<br>Wave (wav)，                            文件头：57415645<br>AVI (avi)，                                 文件头：41564920<br>Real Audio (ram)，                     文件头：2E7261FD<br>Real Media (rm)，                       文件头：2E524D46<br>MPEG (mpg)，                           文件头：000001BA<br>MPEG (mpg)，                           文件头：000001B3<br>Quicktime (mov)，                     文件头：6D6F6F76<br>Windows Media (asf)，               文件头：3026B2758E66CF11<br>MIDI (mid)，                              文件头：4D546864</p>
+    <title>项目记录</title>
+    <url>/2020/08/19/%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h3 id="导入原始流量数据分析包"><a href="#导入原始流量数据分析包" class="headerlink" title="导入原始流量数据分析包"></a>导入原始流量数据分析包</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">from</span> scapy.all <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看流量结构信息</span></span><br><span class="line">pkts = rdpcap(<span class="string">"./data/test.pcap"</span>)</span><br><span class="line">pkts[<span class="number">0</span>].show()</span><br></pre></td></tr></table></figure>
+
+<pre><code>###[ Ethernet ]### 
+  dst       = 52:54:00:12:34:56
+  src       = 52:55:10:00:02:02
+  type      = IPv4
+###[ IP ]### 
+     version   = 4
+     ihl       = 5
+     tos       = 0x0
+     len       = 48
+     id        = 645
+     flags     = DF
+     frag      = 0
+     ttl       = 128
+     proto     = tcp
+     chksum    = 0xb48e
+     src       = 192.168.0.67
+     dst       = 115.223.14.234
+     \options   \
+###[ TCP ]### 
+        sport     = 1040
+        dport     = https
+        seq       = 1155960802
+        ack       = 0
+        dataofs   = 7
+        reserved  = 0
+        flags     = S
+        window    = 65535
+        chksum    = 0x64d7
+        urgptr    = 0
+        options   = [(&apos;MSS&apos;, 1460), (&apos;NOP&apos;, None), (&apos;NOP&apos;, None), (&apos;SAckOK&apos;, b&apos;&apos;)]</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># [Ethernet] </span></span><br><span class="line"><span class="comment"># dst: 目标mac地址 </span></span><br><span class="line"><span class="comment"># scr：本地mac地址 </span></span><br><span class="line"><span class="comment"># type：IPv4</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [IP] </span></span><br><span class="line"><span class="comment"># version  </span></span><br><span class="line"><span class="comment"># ihl    首部长度（Internet Header Length， IHL）   </span></span><br><span class="line"><span class="comment"># tos   服务类型type of serve</span></span><br><span class="line"><span class="comment"># len   IP包长度</span></span><br><span class="line"><span class="comment"># id       </span></span><br><span class="line"><span class="comment"># flags    标志字段</span></span><br><span class="line"><span class="comment"># frag     碎片</span></span><br><span class="line"><span class="comment"># ttl      数据包在网络中的时间是否太长而应被丢弃time to live</span></span><br><span class="line"><span class="comment"># proto    协议</span></span><br><span class="line"><span class="comment"># chksum   校验和</span></span><br><span class="line"><span class="comment"># dst       目的ip</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [TCP]</span></span><br><span class="line"><span class="comment"># sport     源端口</span></span><br><span class="line"><span class="comment"># dport     目标端口</span></span><br><span class="line"><span class="comment"># seq       顺序号码</span></span><br><span class="line"><span class="comment"># ack       确认</span></span><br><span class="line"><span class="comment"># dataofs   数据偏移字段</span></span><br><span class="line"><span class="comment"># reserved  </span></span><br><span class="line"><span class="comment"># flags    标志</span></span><br><span class="line"><span class="comment"># window   窗口大小</span></span><br><span class="line"><span class="comment"># chksum   校验和</span></span><br><span class="line"><span class="comment"># urgptr   </span></span><br><span class="line"><span class="comment"># options   头部选项字段</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="原始流量数据集："><a href="#原始流量数据集：" class="headerlink" title="原始流量数据集："></a>原始流量数据集：</h3><p>train.py</p>
+<ul>
+<li>black (1500个pcap文件) </li>
+<li>white (1500个pcap文件)</li>
+</ul>
+<p>test.py (没有提供标签)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">"./data/train.csv"</span>)</span><br><span class="line">data.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(1752060, 24)</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dst</th>
+      <th>src</th>
+      <th>type</th>
+      <th>version</th>
+      <th>ihl</th>
+      <th>tos</th>
+      <th>len</th>
+      <th>id</th>
+      <th>flags</th>
+      <th>frag</th>
+      <th>...</th>
+      <th>dport</th>
+      <th>seq</th>
+      <th>ack</th>
+      <th>dataofs</th>
+      <th>reserved</th>
+      <th>flags.1</th>
+      <th>window</th>
+      <th>chksum.1</th>
+      <th>urgptr</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>52:54:00:12:34:56</td>
+      <td>52:55:10:00:02:02</td>
+      <td>2048</td>
+      <td>4</td>
+      <td>5</td>
+      <td>0</td>
+      <td>48</td>
+      <td>196</td>
+      <td>DF</td>
+      <td>0</td>
+      <td>...</td>
+      <td>443</td>
+      <td>3781184629</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>S</td>
+      <td>65535</td>
+      <td>15493</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>52:54:00:12:34:56</td>
+      <td>52:55:10:00:02:02</td>
+      <td>2048</td>
+      <td>4</td>
+      <td>5</td>
+      <td>0</td>
+      <td>48</td>
+      <td>197</td>
+      <td>DF</td>
+      <td>0</td>
+      <td>...</td>
+      <td>443</td>
+      <td>3781184629</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>S</td>
+      <td>65535</td>
+      <td>15493</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>52:54:00:12:34:56</td>
+      <td>52:55:10:00:02:02</td>
+      <td>2048</td>
+      <td>4</td>
+      <td>5</td>
+      <td>0</td>
+      <td>48</td>
+      <td>198</td>
+      <td>DF</td>
+      <td>0</td>
+      <td>...</td>
+      <td>443</td>
+      <td>3781184629</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>S</td>
+      <td>65535</td>
+      <td>15493</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>52:54:00:12:34:56</td>
+      <td>52:55:10:00:02:02</td>
+      <td>2048</td>
+      <td>4</td>
+      <td>5</td>
+      <td>0</td>
+      <td>48</td>
+      <td>199</td>
+      <td>DF</td>
+      <td>0</td>
+      <td>...</td>
+      <td>443</td>
+      <td>2676329384</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>S</td>
+      <td>65535</td>
+      <td>16171</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>52:55:10:00:02:02</td>
+      <td>52:54:00:12:34:56</td>
+      <td>2048</td>
+      <td>4</td>
+      <td>5</td>
+      <td>0</td>
+      <td>44</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1034</td>
+      <td>2752001</td>
+      <td>2676329385</td>
+      <td>6</td>
+      <td>0</td>
+      <td>SA</td>
+      <td>8192</td>
+      <td>13814</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &apos;pandas.core.frame.DataFrame&apos;&gt;
+RangeIndex: 1752060 entries, 0 to 1752059
+Data columns (total 24 columns):
+dst         object
+src         object
+type        int64
+version     int64
+ihl         int64
+tos         int64
+len         int64
+id          int64
+flags       object
+frag        int64
+ttl         int64
+proto       int64
+chksum      int64
+sport       int64
+dport       int64
+seq         int64
+ack         int64
+dataofs     int64
+reserved    int64
+flags.1     object
+window      int64
+chksum.1    int64
+urgptr      int64
+label       int64
+dtypes: int64(20), object(4)
+memory usage: 320.8+ MB</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># DNN模型</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.utils <span class="keyword">import</span> shuffle</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.random.seed(<span class="number">1337</span>)  <span class="comment"># for reproducibility</span></span><br><span class="line"><span class="keyword">from</span> keras.preprocessing <span class="keyword">import</span> sequence</span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> np_utils</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Dropout, Activation, Embedding</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> LSTM, SimpleRNN, GRU</span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> imdb</span><br><span class="line"><span class="keyword">from</span> keras.utils.np_utils <span class="keyword">import</span> to_categorical</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> (precision_score, recall_score,f1_score, accuracy_score,mean_squared_error,mean_absolute_error)</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Normalizer</span><br><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> callbacks</span><br><span class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint, EarlyStopping, ReduceLROnPlateau, CSVLogger</span><br><span class="line"></span><br><span class="line">data = pd.read_csv(<span class="string">"./data/train.csv"</span>)</span><br><span class="line">data = shuffle(data)</span><br><span class="line"><span class="comment"># 选取了其中数值特征作为训练</span></span><br><span class="line">x = data.iloc[:,[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span>]]</span><br><span class="line">y = data.iloc[:,<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 划分数据集 7:3</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = <span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化</span></span><br><span class="line">scaler=Normalizer().fit(x_train)</span><br><span class="line">x_train=scaler.transform(x_train)</span><br><span class="line"></span><br><span class="line">scaler=Normalizer().fit(x_test)</span><br><span class="line">x_test=scaler.transform(x_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数组转换</span></span><br><span class="line">x_train=np.array(x_train)</span><br><span class="line">y_train=np.array(y_train)</span><br><span class="line">x_test=np.array(x_test)</span><br><span class="line">y_test=np.array(y_test)</span><br><span class="line"></span><br><span class="line">batch_size = <span class="number">1024</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. define the network</span></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Dense(<span class="number">128</span>,input_dim=<span class="number">18</span>,activation=<span class="string">'relu'</span>))</span><br><span class="line">model.add(Dense(<span class="number">64</span>))</span><br><span class="line">model.add(Dense(<span class="number">32</span>))</span><br><span class="line">model.add(Dense(<span class="number">1</span>))</span><br><span class="line">model.add(Activation(<span class="string">'sigmoid'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># try using different optimizers and different optimizer configs</span></span><br><span class="line">model.compile(loss=<span class="string">'binary_crossentropy'</span>,optimizer=<span class="string">'adam'</span>,metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">model.fit(x_train, y_train, batch_size=batch_size, nb_epoch=<span class="number">200</span>, callbacks=<span class="literal">None</span>,verbose=<span class="number">2</span>)</span><br><span class="line">loss,accuracy = model.evaluate(x_test,y_test,verbose=<span class="number">2</span>)</span><br><span class="line">print(loss,accuracy)</span><br></pre></td></tr></table></figure>
+
+<pre><code>D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\ipykernel_launcher.py:55: UserWarning: The `nb_epoch` argument in `fit` has been renamed `epochs`.
+
+
+Epoch 1/200
+ - 4s - loss: 0.6592 - acc: 0.6275
+Epoch 2/200
+ - 4s - loss: 0.6573 - acc: 0.6311
+Epoch 3/200
+ - 4s - loss: 0.6571 - acc: 0.6313
+Epoch 4/200
+ - 4s - loss: 0.6567 - acc: 0.6316
+Epoch 5/200
+ - 4s - loss: 0.6566 - acc: 0.6319
+Epoch 6/200
+ - 4s - loss: 0.6563 - acc: 0.6322
+Epoch 7/200
+ - 4s - loss: 0.6558 - acc: 0.6328
+Epoch 8/200
+ - 4s - loss: 0.6553 - acc: 0.6337
+Epoch 9/200
+ - 4s - loss: 0.6542 - acc: 0.6354
+Epoch 10/200
+ - 4s - loss: 0.6512 - acc: 0.6384
+Epoch 11/200
+ - 4s - loss: 0.6401 - acc: 0.6442
+Epoch 12/200
+ - 4s - loss: 0.6149 - acc: 0.6652
+Epoch 13/200
+ - 4s - loss: 0.5915 - acc: 0.6933
+Epoch 14/200
+ - 5s - loss: 0.5746 - acc: 0.7140
+Epoch 15/200
+ - 4s - loss: 0.5644 - acc: 0.7247
+Epoch 16/200
+ - 4s - loss: 0.5575 - acc: 0.7296
+Epoch 17/200
+ - 4s - loss: 0.5538 - acc: 0.7319
+Epoch 18/200
+ - 4s - loss: 0.5506 - acc: 0.7333
+Epoch 19/200
+ - 4s - loss: 0.5482 - acc: 0.7356
+Epoch 20/200
+ - 4s - loss: 0.5430 - acc: 0.7372
+Epoch 21/200
+ - 4s - loss: 0.5399 - acc: 0.7395
+Epoch 22/200
+ - 4s - loss: 0.5370 - acc: 0.7411
+Epoch 23/200
+ - 4s - loss: 0.5327 - acc: 0.7432
+Epoch 24/200
+ - 4s - loss: 0.5298 - acc: 0.7449
+Epoch 25/200
+ - 4s - loss: 0.5289 - acc: 0.7456
+Epoch 26/200
+ - 4s - loss: 0.5257 - acc: 0.7463
+Epoch 27/200
+ - 4s - loss: 0.5235 - acc: 0.7478
+Epoch 28/200
+ - 4s - loss: 0.5215 - acc: 0.7489
+Epoch 29/200
+ - 4s - loss: 0.5174 - acc: 0.7517
+Epoch 30/200
+ - 4s - loss: 0.5151 - acc: 0.7527
+Epoch 31/200
+ - 4s - loss: 0.5133 - acc: 0.7539
+Epoch 32/200
+ - 4s - loss: 0.5111 - acc: 0.7555
+Epoch 33/200
+ - 4s - loss: 0.5078 - acc: 0.7561
+Epoch 34/200
+ - 4s - loss: 0.5096 - acc: 0.7555
+Epoch 35/200
+ - 4s - loss: 0.5022 - acc: 0.7599
+Epoch 36/200
+ - 4s - loss: 0.5017 - acc: 0.7608
+Epoch 37/200
+ - 4s - loss: 0.4988 - acc: 0.7619
+Epoch 38/200
+ - 4s - loss: 0.4981 - acc: 0.7617
+Epoch 39/200
+ - 4s - loss: 0.4982 - acc: 0.7629
+Epoch 40/200
+ - 4s - loss: 0.4971 - acc: 0.7619
+Epoch 41/200
+ - 4s - loss: 0.4942 - acc: 0.7634
+Epoch 42/200
+ - 4s - loss: 0.4947 - acc: 0.7623
+Epoch 43/200
+ - 4s - loss: 0.4920 - acc: 0.7627
+Epoch 44/200
+ - 4s - loss: 0.4914 - acc: 0.7634
+Epoch 45/200
+ - 4s - loss: 0.4896 - acc: 0.7651
+Epoch 46/200
+ - 4s - loss: 0.4880 - acc: 0.7670
+Epoch 47/200
+ - 4s - loss: 0.4865 - acc: 0.7667
+Epoch 48/200
+ - 4s - loss: 0.4906 - acc: 0.7659
+Epoch 49/200
+ - 4s - loss: 0.4893 - acc: 0.7669
+Epoch 50/200
+ - 4s - loss: 0.4933 - acc: 0.7648
+Epoch 51/200
+ - 4s - loss: 0.4879 - acc: 0.7680
+Epoch 52/200
+ - 4s - loss: 0.4879 - acc: 0.7681
+Epoch 53/200
+ - 4s - loss: 0.4865 - acc: 0.7692
+Epoch 54/200
+ - 4s - loss: 0.4845 - acc: 0.7696
+Epoch 55/200
+ - 4s - loss: 0.4852 - acc: 0.7691
+Epoch 56/200
+ - 4s - loss: 0.4821 - acc: 0.7712
+Epoch 57/200
+ - 4s - loss: 0.4844 - acc: 0.7692
+Epoch 58/200
+ - 4s - loss: 0.4782 - acc: 0.7731
+Epoch 59/200
+ - 4s - loss: 0.4776 - acc: 0.7738
+Epoch 60/200
+ - 4s - loss: 0.4777 - acc: 0.7733
+Epoch 61/200
+ - 4s - loss: 0.4772 - acc: 0.7733
+Epoch 62/200
+ - 4s - loss: 0.4768 - acc: 0.7741
+Epoch 63/200
+ - 4s - loss: 0.4734 - acc: 0.7757
+Epoch 64/200
+ - 4s - loss: 0.4725 - acc: 0.7770
+Epoch 65/200
+ - 4s - loss: 0.4707 - acc: 0.7782
+Epoch 66/200
+ - 4s - loss: 0.4701 - acc: 0.7777
+Epoch 67/200
+ - 4s - loss: 0.4674 - acc: 0.7793
+Epoch 68/200
+ - 4s - loss: 0.4666 - acc: 0.7802
+Epoch 69/200
+ - 4s - loss: 0.4652 - acc: 0.7798
+Epoch 70/200
+ - 4s - loss: 0.4648 - acc: 0.7804
+Epoch 71/200
+ - 4s - loss: 0.4640 - acc: 0.7814
+Epoch 72/200
+ - 4s - loss: 0.4640 - acc: 0.7811
+Epoch 73/200
+ - 4s - loss: 0.4605 - acc: 0.7836
+Epoch 74/200
+ - 4s - loss: 0.4617 - acc: 0.7820
+Epoch 75/200
+ - 4s - loss: 0.4598 - acc: 0.7834
+Epoch 76/200
+ - 4s - loss: 0.4599 - acc: 0.7832
+Epoch 77/200
+ - 4s - loss: 0.4575 - acc: 0.7847
+Epoch 78/200
+ - 4s - loss: 0.4563 - acc: 0.7853
+Epoch 79/200
+ - 4s - loss: 0.4581 - acc: 0.7836
+Epoch 80/200
+ - 4s - loss: 0.4565 - acc: 0.7851
+Epoch 81/200
+ - 4s - loss: 0.4549 - acc: 0.7861
+Epoch 82/200
+ - 4s - loss: 0.4534 - acc: 0.7870
+Epoch 83/200
+ - 4s - loss: 0.4533 - acc: 0.7876
+Epoch 84/200
+ - 4s - loss: 0.4536 - acc: 0.7871
+Epoch 85/200
+ - 4s - loss: 0.4522 - acc: 0.7882
+Epoch 86/200
+ - 4s - loss: 0.4503 - acc: 0.7884
+Epoch 87/200
+ - 4s - loss: 0.4498 - acc: 0.7897
+Epoch 88/200
+ - 4s - loss: 0.4487 - acc: 0.7893
+Epoch 89/200
+ - 4s - loss: 0.4489 - acc: 0.7890
+Epoch 90/200
+ - 4s - loss: 0.4494 - acc: 0.7890
+Epoch 91/200
+ - 4s - loss: 0.4479 - acc: 0.7899
+Epoch 92/200
+ - 4s - loss: 0.4468 - acc: 0.7908
+Epoch 93/200
+ - 4s - loss: 0.4476 - acc: 0.7902
+Epoch 94/200
+ - 4s - loss: 0.4426 - acc: 0.7939
+Epoch 95/200
+ - 4s - loss: 0.4442 - acc: 0.7930
+Epoch 96/200
+ - 4s - loss: 0.4403 - acc: 0.7953
+Epoch 97/200
+ - 4s - loss: 0.4436 - acc: 0.7929
+Epoch 98/200
+ - 4s - loss: 0.4407 - acc: 0.7948
+Epoch 99/200
+ - 4s - loss: 0.4418 - acc: 0.7950
+Epoch 100/200
+ - 4s - loss: 0.4601 - acc: 0.7886
+Epoch 101/200
+ - 4s - loss: 0.4545 - acc: 0.7913
+Epoch 102/200
+ - 4s - loss: 0.4562 - acc: 0.7895
+Epoch 103/200
+ - 4s - loss: 0.4569 - acc: 0.7879
+Epoch 104/200
+ - 4s - loss: 0.4516 - acc: 0.7910
+Epoch 105/200
+ - 4s - loss: 0.4516 - acc: 0.7910
+Epoch 106/200
+ - 4s - loss: 0.4638 - acc: 0.7840
+Epoch 107/200
+ - 4s - loss: 0.4592 - acc: 0.7868
+Epoch 108/200
+ - 4s - loss: 0.4649 - acc: 0.7850
+Epoch 109/200
+ - 4s - loss: 0.4640 - acc: 0.7861
+Epoch 110/200
+ - 4s - loss: 0.4616 - acc: 0.7878
+Epoch 111/200
+ - 4s - loss: 0.4576 - acc: 0.7889
+Epoch 112/200
+ - 4s - loss: 0.4551 - acc: 0.7898
+Epoch 113/200
+ - 4s - loss: 0.4532 - acc: 0.7910
+Epoch 114/200
+ - 4s - loss: 0.4514 - acc: 0.7910
+Epoch 115/200
+ - 4s - loss: 0.4478 - acc: 0.7934
+Epoch 116/200
+ - 4s - loss: 0.4485 - acc: 0.7925
+Epoch 117/200
+ - 4s - loss: 0.4453 - acc: 0.7946
+Epoch 118/200
+ - 4s - loss: 0.4452 - acc: 0.7936
+Epoch 119/200
+ - 4s - loss: 0.4439 - acc: 0.7945
+Epoch 120/200
+ - 4s - loss: 0.4410 - acc: 0.7960
+Epoch 121/200
+ - 4s - loss: 0.4427 - acc: 0.7951
+Epoch 122/200
+ - 4s - loss: 0.4411 - acc: 0.7952
+Epoch 123/200
+ - 4s - loss: 0.4400 - acc: 0.7955
+Epoch 124/200
+ - 4s - loss: 0.4372 - acc: 0.7974
+Epoch 125/200
+ - 4s - loss: 0.4378 - acc: 0.7966
+Epoch 126/200
+ - 4s - loss: 0.4360 - acc: 0.7973
+Epoch 127/200
+ - 4s - loss: 0.4344 - acc: 0.7985
+Epoch 128/200
+ - 4s - loss: 0.4316 - acc: 0.8000
+Epoch 129/200
+ - 4s - loss: 0.4344 - acc: 0.7976
+Epoch 130/200
+ - 4s - loss: 0.4335 - acc: 0.7984
+Epoch 131/200
+ - 4s - loss: 0.4303 - acc: 0.8008
+Epoch 132/200
+ - 4s - loss: 0.4341 - acc: 0.7980
+Epoch 133/200
+ - 4s - loss: 0.4331 - acc: 0.7978
+Epoch 134/200
+ - 4s - loss: 0.4296 - acc: 0.8006
+Epoch 135/200
+ - 4s - loss: 0.4279 - acc: 0.8015
+Epoch 136/200
+ - 4s - loss: 0.4277 - acc: 0.8012
+Epoch 137/200
+ - 4s - loss: 0.4296 - acc: 0.8000
+Epoch 138/200
+ - 4s - loss: 0.4253 - acc: 0.8032
+Epoch 139/200
+ - 4s - loss: 0.4264 - acc: 0.8026
+Epoch 140/200
+ - 4s - loss: 0.4292 - acc: 0.8005
+Epoch 141/200
+ - 4s - loss: 0.4341 - acc: 0.7956
+Epoch 142/200
+ - 4s - loss: 0.4346 - acc: 0.7946
+Epoch 143/200
+ - 4s - loss: 0.4349 - acc: 0.7942
+Epoch 144/200
+ - 4s - loss: 0.4463 - acc: 0.7891
+Epoch 145/200
+ - 4s - loss: 0.4489 - acc: 0.7876
+Epoch 146/200
+ - 4s - loss: 0.4474 - acc: 0.7882
+Epoch 147/200
+ - 4s - loss: 0.4441 - acc: 0.7905
+Epoch 148/200
+ - 4s - loss: 0.4460 - acc: 0.7889
+Epoch 149/200
+ - 4s - loss: 0.4426 - acc: 0.7906
+Epoch 150/200
+ - 4s - loss: 0.4411 - acc: 0.7915
+Epoch 151/200
+ - 4s - loss: 0.4367 - acc: 0.7946
+Epoch 152/200
+ - 4s - loss: 0.4392 - acc: 0.7929
+Epoch 153/200
+ - 4s - loss: 0.4391 - acc: 0.7937
+Epoch 154/200
+ - 4s - loss: 0.4421 - acc: 0.7920
+Epoch 155/200
+ - 4s - loss: 0.4398 - acc: 0.7931
+Epoch 156/200
+ - 4s - loss: 0.4394 - acc: 0.7935
+Epoch 157/200
+ - 4s - loss: 0.4386 - acc: 0.7935
+Epoch 158/200
+ - 4s - loss: 0.4362 - acc: 0.7952
+Epoch 159/200
+ - 4s - loss: 0.4369 - acc: 0.7948
+Epoch 160/200
+ - 4s - loss: 0.4344 - acc: 0.7962
+Epoch 161/200
+ - 4s - loss: 0.4319 - acc: 0.7975
+Epoch 162/200
+ - 4s - loss: 0.4324 - acc: 0.7966
+Epoch 163/200
+ - 4s - loss: 0.4307 - acc: 0.7981
+Epoch 164/200
+ - 4s - loss: 0.4295 - acc: 0.7985
+Epoch 165/200
+ - 4s - loss: 0.4280 - acc: 0.7997
+Epoch 166/200
+ - 4s - loss: 0.4279 - acc: 0.8000
+Epoch 167/200
+ - 4s - loss: 0.4268 - acc: 0.8000
+Epoch 168/200
+ - 4s - loss: 0.4278 - acc: 0.7995
+Epoch 169/200
+ - 4s - loss: 0.4244 - acc: 0.8014
+Epoch 170/200
+ - 4s - loss: 0.4235 - acc: 0.8019
+Epoch 171/200
+ - 4s - loss: 0.4242 - acc: 0.8007
+Epoch 172/200
+ - 4s - loss: 0.4229 - acc: 0.8023
+Epoch 173/200
+ - 4s - loss: 0.4238 - acc: 0.8014
+Epoch 174/200
+ - 4s - loss: 0.4237 - acc: 0.8017
+Epoch 175/200
+ - 4s - loss: 0.4202 - acc: 0.8036
+Epoch 176/200
+ - 4s - loss: 0.4359 - acc: 0.7952
+Epoch 177/200
+ - 4s - loss: 0.4371 - acc: 0.7935
+Epoch 178/200
+ - 4s - loss: 0.4340 - acc: 0.7955
+Epoch 179/200
+ - 4s - loss: 0.4354 - acc: 0.7955
+Epoch 180/200
+ - 4s - loss: 0.4367 - acc: 0.7952
+Epoch 181/200
+ - 4s - loss: 0.4339 - acc: 0.7964
+Epoch 182/200
+ - 4s - loss: 0.4369 - acc: 0.7964
+Epoch 183/200
+ - 4s - loss: 0.4481 - acc: 0.7963
+Epoch 184/200
+ - 4s - loss: 0.4412 - acc: 0.7996
+Epoch 185/200
+ - 4s - loss: 0.4403 - acc: 0.7982
+Epoch 186/200
+ - 4s - loss: 0.4388 - acc: 0.7985
+Epoch 187/200
+ - 4s - loss: 0.4360 - acc: 0.8002
+Epoch 188/200
+ - 4s - loss: 0.4433 - acc: 0.7952
+Epoch 189/200
+ - 4s - loss: 0.4400 - acc: 0.7971
+Epoch 190/200
+ - 4s - loss: 0.4426 - acc: 0.7955
+Epoch 191/200
+ - 4s - loss: 0.4406 - acc: 0.7968
+Epoch 192/200
+ - 4s - loss: 0.4408 - acc: 0.7968
+Epoch 193/200
+ - 4s - loss: 0.4396 - acc: 0.7972
+Epoch 194/200
+ - 4s - loss: 0.4397 - acc: 0.7970
+Epoch 195/200
+ - 4s - loss: 0.4383 - acc: 0.7981
+Epoch 196/200
+ - 4s - loss: 0.4387 - acc: 0.7976
+Epoch 197/200
+ - 4s - loss: 0.4368 - acc: 0.7990
+Epoch 198/200
+ - 4s - loss: 0.4402 - acc: 0.7965
+Epoch 199/200
+ - 4s - loss: 0.4360 - acc: 0.7991
+Epoch 200/200
+ - 4s - loss: 0.4360 - acc: 0.7997
+0.43021377035252795 0.7874159560738833</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,precision_score,recall_score,f1_score,confusion_matrix</span><br><span class="line"></span><br><span class="line">model=DecisionTreeClassifier()</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">predicted=model.predict(x_test)</span><br><span class="line">accuracy=accuracy_score(y_test,predicted)</span><br><span class="line">precision=precision_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">recall=recall_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">f1=f1_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>,accuracy)</span><br><span class="line">print(<span class="string">"Precision:"</span>,precision)</span><br><span class="line">print(<span class="string">"Recall:"</span>,recall)</span><br><span class="line">print(<span class="string">"F1:"</span>,f1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Accuracy: 0.9642687274788915
+Precision: 0.9260356995707014
+Recall: 0.9901188017507626
+F1: 0.9570056658845075</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,precision_score,recall_score,f1_score,confusion_matrix</span><br><span class="line"></span><br><span class="line">model=GaussianNB()</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">predicted=model.predict(x_test)</span><br><span class="line">accuracy=accuracy_score(y_test,predicted)</span><br><span class="line">precision=precision_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">recall=recall_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">f1=f1_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>,accuracy)</span><br><span class="line">print(<span class="string">"Precision:"</span>,precision)</span><br><span class="line">print(<span class="string">"Recall:"</span>,recall)</span><br><span class="line">print(<span class="string">"F1:"</span>,f1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Accuracy: 0.6075343690665084
+Precision: 0.6645055620009555
+Recall: 0.04612331129090323
+F1: 0.08625936277745049</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,precision_score,recall_score,f1_score,confusion_matrix</span><br><span class="line"></span><br><span class="line">model=LogisticRegression()</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">predicted=model.predict(x_test)</span><br><span class="line">accuracy=accuracy_score(y_test,predicted)</span><br><span class="line">precision=precision_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">recall=recall_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">f1=f1_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>,accuracy)</span><br><span class="line">print(<span class="string">"Precision:"</span>,precision)</span><br><span class="line">print(<span class="string">"Recall:"</span>,recall)</span><br><span class="line">print(<span class="string">"F1:"</span>,f1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\sklearn\linear_model\logistic.py:432: FutureWarning: Default solver will be changed to &apos;lbfgs&apos; in 0.22. Specify a solver to silence this warning.
+  FutureWarning)
+
+
+Accuracy: 0.632501170051254
+Precision: 0.7340969576788603
+Recall: 0.13327301665498228
+F1: 0.2255907374295405</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,precision_score,recall_score,f1_score,confusion_matrix</span><br><span class="line"></span><br><span class="line">model=RandomForestClassifier()</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">predicted=model.predict(x_test)</span><br><span class="line">accuracy=accuracy_score(y_test,predicted)</span><br><span class="line">precision=precision_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">recall=recall_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">f1=f1_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>,accuracy)</span><br><span class="line">print(<span class="string">"Precision:"</span>,precision)</span><br><span class="line">print(<span class="string">"Recall:"</span>,recall)</span><br><span class="line">print(<span class="string">"F1:"</span>,f1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\sklearn\ensemble\forest.py:245: FutureWarning: The default value of n_estimators will change from 10 in version 0.20 to 100 in 0.22.
+  &quot;10 in version 0.20 to 100 in 0.22.&quot;, FutureWarning)
+
+
+Accuracy: 0.8054499655643452
+Precision: 0.8850908164637123
+Recall: 0.592535574208462
+F1: 0.7098516898055539</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> AdaBoostClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score,precision_score,recall_score,f1_score,confusion_matrix</span><br><span class="line"></span><br><span class="line">model=AdaBoostClassifier()</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line">predicted=model.predict(x_test)</span><br><span class="line">accuracy=accuracy_score(y_test,predicted)</span><br><span class="line">precision=precision_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">recall=recall_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">f1=f1_score(y_test,predicted,average=<span class="string">'binary'</span>)</span><br><span class="line">print(<span class="string">"Accuracy:"</span>,accuracy)</span><br><span class="line">print(<span class="string">"Precision:"</span>,precision)</span><br><span class="line">print(<span class="string">"Recall:"</span>,recall)</span><br><span class="line">print(<span class="string">"F1:"</span>,f1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Accuracy: 0.7218074723468374
+Precision: 0.7559626657830165
+Recall: 0.45387195179718437
+F1: 0.5672019061431679</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">np.random.seed(<span class="number">1337</span>)  <span class="comment"># for reproducibility</span></span><br><span class="line"><span class="keyword">from</span> keras.preprocessing <span class="keyword">import</span> sequence</span><br><span class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> np_utils</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Dropout, Activation, Embedding</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> LSTM, SimpleRNN, GRU</span><br><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> imdb</span><br><span class="line"><span class="keyword">from</span> keras.utils.np_utils <span class="keyword">import</span> to_categorical</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> (precision_score, recall_score,f1_score, accuracy_score,mean_squared_error,mean_absolute_error)</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Normalizer</span><br><span class="line"><span class="keyword">import</span> h5py</span><br><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> callbacks</span><br><span class="line"><span class="keyword">from</span> keras.callbacks <span class="keyword">import</span> ModelCheckpoint, EarlyStopping, ReduceLROnPlateau, CSVLogger</span><br><span class="line"></span><br><span class="line">data = pd.read_csv(<span class="string">"./data/train.csv"</span>)</span><br><span class="line">data = shuffle(data)</span><br><span class="line"><span class="comment"># 选取了其中数值特征作为训练</span></span><br><span class="line">x = data.iloc[:,[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">20</span>,<span class="number">21</span>,<span class="number">22</span>]]</span><br><span class="line">y = data.iloc[:,<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 划分数据集 7:3</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = <span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化</span></span><br><span class="line">scaler=Normalizer().fit(x_train)</span><br><span class="line">x_train=scaler.transform(x_train)</span><br><span class="line"></span><br><span class="line">scaler=Normalizer().fit(x_test)</span><br><span class="line">x_test=scaler.transform(x_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数组转换</span></span><br><span class="line">x_train=np.array(x_train)</span><br><span class="line">y_train=np.array(y_train)</span><br><span class="line">x_test=np.array(x_test)</span><br><span class="line">y_test=np.array(y_test)</span><br><span class="line"><span class="comment"># reshape input to be [samples, time steps, features]</span></span><br><span class="line">x_train = np.reshape(x_train, (x_train.shape[<span class="number">0</span>], <span class="number">1</span>, x_train.shape[<span class="number">1</span>]))</span><br><span class="line">x_test = np.reshape(x_test, (x_test.shape[<span class="number">0</span>], <span class="number">1</span>, x_test.shape[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">batch_size = <span class="number">1024</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. define the network</span></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(LSTM(<span class="number">64</span>,input_dim=<span class="number">18</span>))  <span class="comment"># try using a GRU instead, for fun</span></span><br><span class="line">model.add(Dropout(<span class="number">0.1</span>))</span><br><span class="line">model.add(Dense(<span class="number">1</span>))</span><br><span class="line">model.add(Activation(<span class="string">'sigmoid'</span>))</span><br><span class="line">print(model.get_config())</span><br><span class="line"></span><br><span class="line"><span class="comment"># try using different optimizers and different optimizer configs</span></span><br><span class="line">model.compile(loss=<span class="string">'binary_crossentropy'</span>,optimizer=<span class="string">'adam'</span>,metrics=[<span class="string">'accuracy'</span>])</span><br><span class="line">model.fit(x_train, y_train, batch_size=batch_size, nb_epoch=<span class="number">50</span>,callbacks=<span class="literal">None</span>,verbose=<span class="number">2</span>)</span><br><span class="line">loss, accuracy = model.evaluate(x_test, y_test)</span><br><span class="line">print(<span class="string">"\nLoss: %.2f, Accuracy: %.2f%%"</span> % (loss, accuracy*<span class="number">100</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\ipykernel_launcher.py:49: UserWarning: The `input_dim` and `input_length` arguments in recurrent layers are deprecated. Use `input_shape` instead.
+D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\ipykernel_launcher.py:49: UserWarning: Update your `LSTM` call to the Keras 2 API: `LSTM(64, input_shape=(None, 18))`
+
+
+{&apos;name&apos;: &apos;sequential_6&apos;, &apos;layers&apos;: [{&apos;class_name&apos;: &apos;LSTM&apos;, &apos;config&apos;: {&apos;name&apos;: &apos;lstm_4&apos;, &apos;trainable&apos;: True, &apos;batch_input_shape&apos;: (None, None, 18), &apos;dtype&apos;: &apos;float32&apos;, &apos;return_sequences&apos;: False, &apos;return_state&apos;: False, &apos;go_backwards&apos;: False, &apos;stateful&apos;: False, &apos;unroll&apos;: False, &apos;units&apos;: 64, &apos;activation&apos;: &apos;tanh&apos;, &apos;recurrent_activation&apos;: &apos;hard_sigmoid&apos;, &apos;use_bias&apos;: True, &apos;kernel_initializer&apos;: {&apos;class_name&apos;: &apos;VarianceScaling&apos;, &apos;config&apos;: {&apos;scale&apos;: 1.0, &apos;mode&apos;: &apos;fan_avg&apos;, &apos;distribution&apos;: &apos;uniform&apos;, &apos;seed&apos;: None}}, &apos;recurrent_initializer&apos;: {&apos;class_name&apos;: &apos;Orthogonal&apos;, &apos;config&apos;: {&apos;gain&apos;: 1.0, &apos;seed&apos;: None}}, &apos;bias_initializer&apos;: {&apos;class_name&apos;: &apos;Zeros&apos;, &apos;config&apos;: {}}, &apos;unit_forget_bias&apos;: True, &apos;kernel_regularizer&apos;: None, &apos;recurrent_regularizer&apos;: None, &apos;bias_regularizer&apos;: None, &apos;activity_regularizer&apos;: None, &apos;kernel_constraint&apos;: None, &apos;recurrent_constraint&apos;: None, &apos;bias_constraint&apos;: None, &apos;dropout&apos;: 0.0, &apos;recurrent_dropout&apos;: 0.0, &apos;implementation&apos;: 1}}, {&apos;class_name&apos;: &apos;Dropout&apos;, &apos;config&apos;: {&apos;name&apos;: &apos;dropout_4&apos;, &apos;trainable&apos;: True, &apos;rate&apos;: 0.1, &apos;noise_shape&apos;: None, &apos;seed&apos;: None}}, {&apos;class_name&apos;: &apos;Dense&apos;, &apos;config&apos;: {&apos;name&apos;: &apos;dense_12&apos;, &apos;trainable&apos;: True, &apos;units&apos;: 1, &apos;activation&apos;: &apos;linear&apos;, &apos;use_bias&apos;: True, &apos;kernel_initializer&apos;: {&apos;class_name&apos;: &apos;VarianceScaling&apos;, &apos;config&apos;: {&apos;scale&apos;: 1.0, &apos;mode&apos;: &apos;fan_avg&apos;, &apos;distribution&apos;: &apos;uniform&apos;, &apos;seed&apos;: None}}, &apos;bias_initializer&apos;: {&apos;class_name&apos;: &apos;Zeros&apos;, &apos;config&apos;: {}}, &apos;kernel_regularizer&apos;: None, &apos;bias_regularizer&apos;: None, &apos;activity_regularizer&apos;: None, &apos;kernel_constraint&apos;: None, &apos;bias_constraint&apos;: None}}, {&apos;class_name&apos;: &apos;Activation&apos;, &apos;config&apos;: {&apos;name&apos;: &apos;activation_6&apos;, &apos;trainable&apos;: True, &apos;activation&apos;: &apos;sigmoid&apos;}}]}
+
+
+D:\anaconda3\envs\tensorflow-gpu\lib\site-packages\ipykernel_launcher.py:57: UserWarning: The `nb_epoch` argument in `fit` has been renamed `epochs`.
+
+
+Epoch 1/50
+ - 6s - loss: 0.6720 - acc: 0.5977
+Epoch 2/50
+ - 5s - loss: 0.6670 - acc: 0.6082
+Epoch 3/50
+ - 5s - loss: 0.6618 - acc: 0.6252
+Epoch 4/50
+ - 5s - loss: 0.6599 - acc: 0.6294
+Epoch 5/50
+ - 5s - loss: 0.6590 - acc: 0.6307
+Epoch 6/50
+ - 5s - loss: 0.6584 - acc: 0.6316
+Epoch 7/50
+ - 5s - loss: 0.6580 - acc: 0.6323
+Epoch 8/50
+ - 5s - loss: 0.6576 - acc: 0.6326
+Epoch 9/50
+ - 5s - loss: 0.6573 - acc: 0.6326
+Epoch 10/50
+ - 5s - loss: 0.6570 - acc: 0.6327
+Epoch 11/50
+ - 5s - loss: 0.6569 - acc: 0.6329
+Epoch 12/50
+ - 5s - loss: 0.6566 - acc: 0.6331
+Epoch 13/50
+ - 5s - loss: 0.6564 - acc: 0.6334
+Epoch 14/50
+ - 5s - loss: 0.6562 - acc: 0.6334
+Epoch 15/50
+ - 5s - loss: 0.6559 - acc: 0.6339
+Epoch 16/50
+ - 5s - loss: 0.6556 - acc: 0.6344
+Epoch 17/50
+ - 5s - loss: 0.6554 - acc: 0.6345
+Epoch 18/50
+ - 5s - loss: 0.6551 - acc: 0.6349
+Epoch 19/50
+ - 5s - loss: 0.6549 - acc: 0.6353
+Epoch 20/50
+ - 5s - loss: 0.6544 - acc: 0.6359
+Epoch 21/50
+ - 5s - loss: 0.6541 - acc: 0.6364
+Epoch 22/50
+ - 5s - loss: 0.6536 - acc: 0.6372
+Epoch 23/50
+ - 5s - loss: 0.6529 - acc: 0.6378
+Epoch 24/50
+ - 5s - loss: 0.6522 - acc: 0.6385
+Epoch 25/50
+ - 5s - loss: 0.6513 - acc: 0.6391
+Epoch 26/50
+ - 5s - loss: 0.6506 - acc: 0.6393
+Epoch 27/50
+ - 5s - loss: 0.6497 - acc: 0.6398
+Epoch 28/50
+ - 5s - loss: 0.6488 - acc: 0.6401
+Epoch 29/50
+ - 5s - loss: 0.6476 - acc: 0.6405
+Epoch 30/50
+ - 5s - loss: 0.6465 - acc: 0.6406
+Epoch 31/50
+ - 5s - loss: 0.6452 - acc: 0.6409
+Epoch 32/50
+ - 5s - loss: 0.6442 - acc: 0.6410
+Epoch 33/50
+ - 5s - loss: 0.6432 - acc: 0.6412
+Epoch 34/50
+ - 5s - loss: 0.6421 - acc: 0.6415
+Epoch 35/50
+ - 5s - loss: 0.6412 - acc: 0.6418
+Epoch 36/50
+ - 5s - loss: 0.6399 - acc: 0.6422
+Epoch 37/50
+ - 5s - loss: 0.6389 - acc: 0.6424
+Epoch 38/50
+ - 5s - loss: 0.6378 - acc: 0.6428
+Epoch 39/50
+ - 5s - loss: 0.6365 - acc: 0.6431
+Epoch 40/50
+ - 5s - loss: 0.6353 - acc: 0.6436
+Epoch 41/50
+ - 5s - loss: 0.6341 - acc: 0.6437
+Epoch 42/50
+ - 5s - loss: 0.6331 - acc: 0.6444
+Epoch 43/50
+ - 5s - loss: 0.6317 - acc: 0.6446
+Epoch 44/50
+ - 5s - loss: 0.6305 - acc: 0.6451
+Epoch 45/50
+ - 5s - loss: 0.6289 - acc: 0.6459
+Epoch 46/50
+ - 5s - loss: 0.6278 - acc: 0.6465
+Epoch 47/50
+ - 5s - loss: 0.6264 - acc: 0.6470
+Epoch 48/50
+ - 5s - loss: 0.6252 - acc: 0.6482
+Epoch 49/50
+ - 5s - loss: 0.6239 - acc: 0.6484
+Epoch 50/50
+ - 5s - loss: 0.6224 - acc: 0.6497
+525618/525618 [==============================] - 19s 35us/step
+
+Loss: 0.62, Accuracy: 64.41%</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>CTF</tag>
-      </tags>
   </entry>
   <entry>
-    <title>CTF在线工具合集</title>
-    <url>/2024/11/19/CTF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<p>1、在线RSA加密/解密工具：<a href="https://tool.ip138.com/rsa/" target="_blank" rel="noopener">https://tool.ip138.com/rsa/</a></p>
+    <title>计算机网络面试知识点总结</title>
+    <url>/2020/08/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<h1 id="一-OSI与TCP-IP各层的结构、功能与协议"><a href="#一-OSI与TCP-IP各层的结构、功能与协议" class="headerlink" title="一 OSI与TCP/IP各层的结构、功能与协议"></a>一 OSI与TCP/IP各层的结构、功能与协议</h1><h2 id="五层协议的体系结构"><a href="#五层协议的体系结构" class="headerlink" title="五层协议的体系结构"></a>五层协议的体系结构</h2><p>中和了OSI的七层结构和TCP/IP的四层结构。</p>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb25bueipj30hl09kmxl.jpg" alt="undefined"></p>
+<a id="more"></a>
+<h3 id="1-应用层"><a href="#1-应用层" class="headerlink" title="1 应用层"></a>1 应用层</h3><p>功能：通过应用进程间的交互来完成特定网络应用。<br>应用层协议定义的是应用进程（<strong>进程：主机中正在运行的程序</strong>）间的通信和交互的规则。对于不同的网络应用需要不同的应用层协议，在互联网中应用层协议很多，如域名系统 DNS，支持万维网应用的 HTTP 协议，支持电子邮件的 SMTP 协议等等。应用层交互的数据单元称为<strong>报文</strong>。</p>
+<h4 id="域名系统（Domain-Name-System，DNS）"><a href="#域名系统（Domain-Name-System，DNS）" class="headerlink" title="域名系统（Domain Name System，DNS）"></a>域名系统（Domain Name System，DNS）</h4><p>将<strong>域名和IP地址相互映射</strong>的一个分布式数据库。</p>
+<h4 id="超文本传输协议（HTTP，HyperText-Transfer-Protocol"><a href="#超文本传输协议（HTTP，HyperText-Transfer-Protocol" class="headerlink" title="超文本传输协议（HTTP，HyperText Transfer Protocol)"></a>超文本传输协议（HTTP，HyperText Transfer Protocol)</h4><p>互联网上应用最为广泛的一种网络协议。所有的 WWW（万维网） 文件都必须遵守这个标准。设计 HTTP 最初的目的是为了提供一种发布和接收 HTML 页面的方法。</p>
+<h3 id="2-运输层"><a href="#2-运输层" class="headerlink" title="2 运输层"></a>2 运输层</h3><h4 id="两种协议"><a href="#两种协议" class="headerlink" title="两种协议"></a>两种协议</h4><ol>
+<li>传输控制协议 （TCP, Transmisson Control Protocol）–提供面向连接的，可靠的数据传输服务。</li>
+<li>用户数据协议 UDP（User Datagram Protocol）–提供无连接的，尽最大努力的数据传输服务（不保证数据传输的可靠性）。</li>
+</ol>
+<h4 id="UDP的主要特点"><a href="#UDP的主要特点" class="headerlink" title="UDP的主要特点"></a>UDP的主要特点</h4><ol>
+<li>面向无连接；</li>
+<li>尽最大努力交付，不保证可靠交付，主机不需保持复杂链接状态；</li>
+<li>面向报文；</li>
+<li>没有拥塞控制，出现拥塞情况时发送速率不会降低（实时应用如直播，视频会议）；</li>
+<li>支持一对一、一对多、多对多、多对一的交互通信；</li>
+<li>首部开销小，8个字节，TCP首部20个字节。</li>
+</ol>
+<h4 id="TCP的主要特点"><a href="#TCP的主要特点" class="headerlink" title="TCP的主要特点"></a>TCP的主要特点</h4><ol>
+<li>面向连接（就好像打电话一样，通话前需要先拨号建立连接，通话结束后要挂机释放连接）；</li>
+<li>每一条 TCP 连接只能有两个端点，只能是点对点（一对一）；</li>
+<li>TCP 提供可靠交付的服务。通过TCP连接传送的数据，无差错、不丢失、不重复、并且按序到达；</li>
+<li>TCP 提供全双工通信。TCP 允许通信双方的应用进程在任何时候都能发送数据。TCP 连接的两端都设有发送缓存和接收缓存，用来临时存放双方通信的数据；</li>
+<li>面向字节流。TCP 中的“流”（Stream）指的是流入进程或从进程流出的字节序列。“面向字节流”的含义是：虽然应用程序和 TCP 的交互是一次一个数据块（大小不等），但 TCP 把应用程序交下来的数据仅仅看成是一连串的无结构的字节流。</li>
+</ol>
+<h3 id="3-网络层"><a href="#3-网络层" class="headerlink" title="3 网络层"></a>3 网络层</h3><p>网络层负责为分组交换网上的不同主机提供通信服务。 在发送数据时，<strong>网络层把运输层产生的报文段或用户数据报封装成分组和包进行传送</strong>。在 TCP/IP 体系结构中，由于网络层使用 IP 协议，因此分组也叫 IP 数据报 ，简称数据报。</p>
+<p>网络层的另一个任务就是选择合适的路由，使源主机运输层所传下来的分株，能通过网络层中的路由器找到目的主机。</p>
+<p>互联网是由大量的异构（heterogeneous）网络通过路由器（router）相互连接起来的。互联网使用的网络层协议是无连接的网际协议（Intert Prococol）和许多路由选择协议，因此互联网的网络层也叫做网际层或IP层。</p>
+<h3 id="4-数据链路层"><a href="#4-数据链路层" class="headerlink" title="4 数据链路层"></a>4 数据链路层</h3><p>数据链路层。两台主机之间数据传输的链路上的协议。 在两个相邻节点之间传送数据时，数据链路层将网络层交下来的 <strong>IP 数据报组装程帧</strong>，在两个相邻节点间的链路上传送帧。每一帧包括数据和必要的控制信息（如同步信息，地址信息，差错控制等）。<br>在接收数据时，控制信息使接收端能够知道一个帧从哪个比特开始和到哪个比特结束。这样，数据链路层在收到一个帧后，就可从中提出数据部分，上交给网络层。<br>控制信息还使接收端能够检测到所收到的帧中有无差错。如果发现差错，数据链路层就简单地丢弃这个出了差错的帧，以避免继续在网络中传送下去白白浪费网络资源。如果需要改正数据在链路层传输时出现差错（这就是说，数据链路层不仅要检错，而且还要纠错），那么就要采用可靠性传输协议来纠正出现的差错。</p>
+<h3 id="5-物理层"><a href="#5-物理层" class="headerlink" title="5 物理层"></a>5 物理层</h3><p>传送数据单位是比特。<br>物理层的作用是<strong>实现相邻计算机节点之间比特流的透明传送</strong>，尽可能屏蔽掉具体传输介质和物理设备的差异。 使其上面的数据链路层不必考虑网络的具体传输介质是什么。“透明传送比特流”表示经实际电路传送后的比特流没有发生变化，对传送的比特流来说，这个电路好像是看不见的。</p>
+<p>在互联网使用的各种协议中最重要和最著名的就是 TCP/IP 两个协议。现在经常提到的TCP/IP并不一定单指TCP和IP这两个具体的协议，而往往表示互联网所使用的整个TCP/IP协议族。</p>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb3m8azlbg30v41830yk.gif" alt="undefined"></p>
+<h1 id="二-TCP-三次握手和四次挥手"><a href="#二-TCP-三次握手和四次挥手" class="headerlink" title="二 TCP 三次握手和四次挥手"></a>二 TCP 三次握手和四次挥手</h1><p>为了准确无误地把数据送达目标处，TCP协议采用了三次握手。</p>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb4euupowj30o00c7mxg.jpg" alt="undefined"></p>
+<ul>
+<li>客户端–发送带有 SYN 标志的数据包–一次握手–服务端</li>
+<li>服务端–发送带有 SYN/ACK 标志的数据包–二次握手–客户端</li>
+<li>客户端–发送带有带有 ACK 标志的数据包–三次握手–服务端</li>
+</ul>
+<h2 id="为什么要三次握手"><a href="#为什么要三次握手" class="headerlink" title="为什么要三次握手"></a>为什么要三次握手</h2><p>三次握手的目的是建立可靠的通信信道，双方确认自己与对方的发送与接收是正常的。<br>第一次握手：Client 什么都不能确认；Server 确认了对方发送正常<br>第二次握手：Client 确认了：自己发送、接收正常，对方发送、接收正常；Server 确认了：自己接收正常，对方发送正常<br>第三次握手：Client 确认了：自己发送、接收正常，对方发送、接收正常；Server 确认了：自己发送、接收正常，对方发送接收正常<br>所以三次握手就能确认双发收发功能都正常，缺一不可。</p>
+<h2 id="为什么要传回-SYN"><a href="#为什么要传回-SYN" class="headerlink" title="为什么要传回 SYN"></a>为什么要传回 SYN</h2><p>接收端传回发送端所发送的 SYN 是为了告诉发送端，我接收到的信息确实就是你所发送的信号了。</p>
+<h2 id="传了-SYN-为啥还要传-ACK"><a href="#传了-SYN-为啥还要传-ACK" class="headerlink" title="传了 SYN,为啥还要传 ACK"></a>传了 SYN,为啥还要传 ACK</h2><p>双方通信无误必须是两者互相发送信息都无误。传了 SYN，证明发送方到接收方的通道没有问题，但是接收方到发送方的通道还需要 ACK 信号来进行验证。</p>
+<blockquote>
+<p>SYN 是 TCP/IP 建立连接时使用的握手信号。在客户机和服务器之间建立正常的 TCP 网络连接时，客户机首先发出一个 SYN 消息，服务器使用 SYN-ACK 应答表示接收到了这个消息，最后客户机再以 ACK(Acknowledgement[汉译：确认字符 ,在数据通信传输中，接收站发给发送站的一种传输控制字符。它表示确认发来的数据已经接受无误。]）消息响应。这样在客户机和服务器之间才能建立起可靠的TCP连接，数据才可以在客户机和服务器之间传递。</p>
+</blockquote>
+<h2 id="断开-TCP-连接需要“四次挥手”"><a href="#断开-TCP-连接需要“四次挥手”" class="headerlink" title="断开 TCP 连接需要“四次挥手”"></a>断开 TCP 连接需要“四次挥手”</h2><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb4tkp2v6j30dw09g3ye.jpg" alt="undefined"></p>
+<ul>
+<li>客户端-发送一个 FIN，用来关闭客户端到服务器的数据传送</li>
+<li>服务器-收到这个 FIN，它发回一个 ACK，确认序号为收到的序号加1 。和 SYN 一样，一个 FIN 将占用一个序号</li>
+<li>服务器-关闭与客户端的连接，发送一个FIN给客户端</li>
+<li>客户端-发回 ACK 报文确认，并将确认序号设置为收到序号加1</li>
+</ul>
+<h3 id="为什么要四次挥手"><a href="#为什么要四次挥手" class="headerlink" title="为什么要四次挥手"></a>为什么要四次挥手</h3><p>任何一方都可以在数据传送结束后发出连接释放的通知，待对方确认后进入<strong>半关闭状态</strong>。当另一方也没有数据再发送的时候，则发出连接释放通知，对方确认后就完全关闭了TCP连接。<br>举个例子：A 和 B 打电话，通话即将结束后，A 说“我没啥要说的了”，B回答“我知道了”，但是 B 可能还会有要说的话，A 不能要求 B 跟着自己的节奏结束通话，于是 B 可能又巴拉巴拉说了一通，最后 B 说“我说完了”，A 回答“知道了”，这样通话才算结束。</p>
+<h1 id="三-TCP、UDP-协议的区别"><a href="#三-TCP、UDP-协议的区别" class="headerlink" title="三 TCP、UDP 协议的区别"></a>三 TCP、UDP 协议的区别</h1><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb4yheti2j30nw064aa1.jpg" alt="undefined"></p>
+<p>UDP 在传送数据之前不需要先建立连接，远地主机在收到 UDP 报文后，不需要给出任何确认。虽然 UDP 不提供可靠交付，但在某些情况下 UDP 确是一种最有效的工作方式（一般用于即时通信），比如： QQ 语音、 QQ 视频 、直播等等<br>TCP 提供面向连接的服务。在传送数据之前必须先建立连接，数据传送结束后要释放连接。 TCP 不提供广播或多播服务。由于 TCP 要提供可靠的，面向连接的运输服务（TCP的可靠体现在TCP在传递数据之前，会有三次握手来建立连接，而且在数据传递时，有确认、窗口、重传、拥塞控制机制，在数据传完后，还会断开连接用来节约系统资源），这一难以避免增加了许多开销，如确认，流量控制，计时器以及连接管理等。这不仅使协议数据单元的首部增大很多，还要占用许多处理机资源。TCP 一般用于文件传输、发送和接收邮件、远程登录等场景。</p>
+<h1 id="四-TCP-协议如何保证可靠传输"><a href="#四-TCP-协议如何保证可靠传输" class="headerlink" title="四 TCP 协议如何保证可靠传输"></a>四 TCP 协议如何保证可靠传输</h1><ol>
+<li>应用数据被分割成 TCP 认为最适合发送的数据块。</li>
+<li>TCP 给发送的每一个包进行编号，接收方对数据包进行排序，把有序数据传送给应用层。</li>
+<li><strong>校验和</strong>： TCP 将保持它首部和数据的检验和。这是一个端到端的检验和，目的是检测数据在传输过程中的任何变化。如果收到段的检验和有差错，TCP 将丢弃这个报文段和不确认收到此报文段。</li>
+<li>TCP 的接收端会丢弃重复的数据。</li>
+<li><strong>流量控制</strong>： TCP 连接的每一方都有固定大小的缓冲空间，TCP的接收端只允许发送端发送接收端缓冲区能接纳的数据。当接收方来不及处理发送方的数据，能提示发送方降低发送的速率，防止包丢失。TCP 使用的流量控制协议是可变大小的滑动窗口协议。 （<strong>TCP 利用滑动窗口实现流量控制</strong>）</li>
+<li><strong>拥塞控制</strong>： 当网络拥塞时，减少数据的发送。</li>
+<li><strong>停止等待协议</strong>: 也是为了实现可靠传输的，它的基本原理就是每发完一个分组就停止发送，等待对方确认。在收到确认后再发下一个分组。</li>
+<li><strong>超时重传</strong>： 当 TCP 发出一个段后，它启动一个定时器，等待目的端确认收到这个报文段。如果不能及时收到一个确认，将重发这个报文段。</li>
+</ol>
+<h2 id="停止等待协议"><a href="#停止等待协议" class="headerlink" title="停止等待协议"></a>停止等待协议</h2><ul>
+<li>停止等待协议是为了实现可靠传输的，它的基本原理就是每发完一个分组就停止发送，等待对方确认。在收到确认后再发下一个分组；</li>
+<li>在停止等待协议中，若接收方收到重复分组，就丢弃该分组，但同时还要发送确认；</li>
+</ul>
+<h3 id="1-无差错情况"><a href="#1-无差错情况" class="headerlink" title="1) 无差错情况"></a>1) 无差错情况</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb8qpnmwtj30ea0d5dft.jpg" alt="undefined"></p>
+<p>发送方发送分组,接收方在规定时间内收到,并且回复确认.发送方再次发送。</p>
+<h3 id="2-出现差错情况（超时重传）"><a href="#2-出现差错情况（超时重传）" class="headerlink" title="2) 出现差错情况（超时重传）:"></a>2) 出现差错情况（超时重传）:</h3><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb8rkehhmj30qh0dcq37.jpg" alt="undefined"></p>
+<p>停止等待协议中超时重传是指只要超过一段时间仍然没有收到确认，就重传前面发送过的分组（认为刚才发送过的分组丢失了）。因此每发送完一个分组需要设置一个超时计时器，其重转时间应比数据在分组传输的平均往返时间更长一些。这种自动重传方式常称为自动重传请求 ARQ 。另外在停止等待协议中若收到重复分组，就丢弃该分组，但同时还要发送确认。连续 ARQ 协议 可提高信道利用率。发送维持一个发送窗口，凡位于发送窗口内的分组可连续发送出去，而不需要等待对方确认。接收方一般采用累积确认，对按序到达的最后一个分组发送确认，表明到这个分组位置的所有分组都已经正确收到了。</p>
+<h3 id="3-确认丢失和确认迟到"><a href="#3-确认丢失和确认迟到" class="headerlink" title="3) 确认丢失和确认迟到"></a>3) 确认丢失和确认迟到</h3><ul>
+<li><strong>确认丢失</strong>：确认消息在传输过程丢失</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb8ujp3tbj30pi0ct3ys.jpg" alt="undefined"></p>
+<ol>
+<li>丢弃这个重复的M1消息，不向上层交付。</li>
+<li>向A发送确认消息。（不会认为已经发送过了，就不再发送。A能重传，就证明B的确认消息丢失）。</li>
+</ol>
+<ul>
+<li><strong>确认迟到</strong> ：确认消息在传输过程中迟到</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb8x0vymuj30oz0cigly.jpg" alt="undefined"></p>
+<p>A发送M1消息，B收到并发送确认。在超时时间内没有收到确认消息，A重传M1消息，B仍然收到并继续发送确认消息（B收到了2份M1）。此时A收到了B第二次发送的确认消息。接着发送其他数据。过了一会，A收到了B第一次发送的对M1的确认消息（A也收到了2份确认消息）。处理如下：</p>
+<ol>
+<li>A收到重复的确认后，直接丢弃。</li>
+<li>B收到重复的M1后，也直接丢弃重复的M1。</li>
+</ol>
+<h2 id="自动重传请求-ARQ-协议"><a href="#自动重传请求-ARQ-协议" class="headerlink" title="自动重传请求 ARQ 协议"></a>自动重传请求 ARQ 协议</h2><p>停止等待协议中超时重传是指只要超过一段时间仍然没有收到确认，就重传前面发送过的分组（认为刚才发送过的分组丢失了）。因此每发送完一个分组需要设置一个超时计时器，其重转时间应比数据在分组传输的平均往返时间更长一些。这种自动重传方式常称为自动重传请求ARQ。</p>
+<p>优点： 简单<br>缺点： 信道利用率低</p>
+<h2 id="连续ARQ协议"><a href="#连续ARQ协议" class="headerlink" title="连续ARQ协议"></a>连续ARQ协议</h2><p>连续 ARQ 协议可提高信道利用率。发送方维持一个发送窗口，凡位于发送窗口内的分组可以连续发送出去，而不需要等待对方确认。接收方一般采用累计确认，对按序到达的最后一个分组发送确认，表明到这个分组为止的所有分组都已经正确收到了。</p>
+<p>优点： 信道利用率高，容易实现，即使确认丢失，也不必重传。<br>缺点： 不能向发送方反映出接收方已经正确收到的所有分组的信息。 比如：发送方发送了 5条 消息，中间第三条丢失（3号），这时接收方只能对前两个发送确认。发送方无法知道后三个分组的下落，而只好把后三个全部重传一次。这也叫 Go-Back-N（回退 N），表示需要退回来重传已经发送过的 N 个消息。</p>
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><ul>
+<li>TCP 利用滑动窗口实现流量控制的机制。</li>
+<li>滑动窗口（Sliding window）是一种流量控制技术。早期的网络通信中，通信双方不会考虑网络的拥挤情况直接发送数据。由于大家不知道网络拥塞状况，同时发送数据，导致中间节点阻塞掉包，谁也发不了数据，所以就有了滑动窗口机制来解决此问题。</li>
+<li>TCP 中采用滑动窗口来进行传输控制，滑动窗口的大小意味着接收方还有多大的缓冲区可以用于接收数据。发送方可以通过滑动窗口的大小来确定应该发送多少字节的数据。当滑动窗口为 0 时，发送方一般不能再发送数据报，但有两种情况除外，一种情况是可以发送紧急数据，例如，允许用户终止在远端机上的运行进程。另一种情况是发送方可以发送一个 1 字节的数据报来通知接收方重新声明它希望接收的下一字节及发送方的滑动窗口大小。</li>
+</ul>
+<h2 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h2><ul>
+<li>TCP 利用滑动窗口实现流量控制。</li>
+<li>流量控制是为了控制发送方发送速率，保证接收方来得及接收。</li>
+<li>接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，从而影响发送方的发送速率。将窗口字段设置为 0，则发送方不能发送数据。</li>
+</ul>
+<h2 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h2><p>在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分，网络的性能就要变坏。这种情况就叫拥塞。拥塞控制就是为了防止过多的数据注入到网络中，这样就可以使网络中的路由器或链路不致过载。拥塞控制所要做的都有一个前提，就是网络能够承受现有的网络负荷。拥塞控制是一个全局性的过程，涉及到所有的主机，所有的路由器，以及与降低网络传输性能有关的所有因素。相反，流量控制往往是点对点通信量的控制，是个端到端的问题。流量控制所要做到的就是抑制发送端发送数据的速率，以便使接收端来得及接收。<br>为了进行拥塞控制，TCP 发送方要维持一个 拥塞窗口(cwnd) 的状态变量。拥塞控制窗口的大小取决于网络的拥塞程度，并且动态变化。发送方让自己的发送窗口取为拥塞窗口和接收方的接受窗口中较小的一个。<br>TCP的拥塞控制采用了四种算法，即 慢开始 、 拥塞避免 、快重传 和 快恢复。在网络层也可以使路由器采用适当的分组丢弃策略（如主动队列管理 AQM），以减少网络拥塞的发生。</p>
+<ul>
+<li>慢开始： 慢开始算法的思路是当主机开始发送数据时，如果立即把大量数据字节注入到网络，那么可能会引起网络阻塞，因为现在还不知道网络的符合情况。经验表明，较好的方法是先探测一下，即由小到大逐渐增大发送窗口，也就是由小到大逐渐增大拥塞窗口数值。cwnd初始值为1，每经过一个传播轮次，cwnd加倍。</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb95g7r02j30t60fkmz6.jpg" alt="undefined"></p>
+<ul>
+<li><p>拥塞避免： 拥塞避免算法的思路是让拥塞窗口cwnd缓慢增大，即每经过一个往返时间RTT就把发送方的cwnd加1.</p>
+</li>
+<li><p>快重传与快恢复：<br>在 TCP/IP 中，快速重传和恢复（fast retransmit and recovery，FRR）是一种拥塞控制算法，它能快速恢复丢失的数据包。没有 FRR，如果数据包丢失了，TCP 将会使用定时器来要求传输暂停。在暂停的这段时间内，没有新的或复制的数据包被发送。有了 FRR，如果接收机接收到一个不按顺序的数据段，它会立即给发送机发送一个重复确认。如果发送机接收到三个重复确认，它会假定确认件指出的数据段丢失了，并立即重传这些丢失的数据段。有了 FRR，就不会因为重传时要求的暂停被耽误。  当有单独的数据包丢失时，快速重传和恢复（FRR）能最有效地工作。当有多个数据信息包在某一段很短的时间内丢失时，它则不能很有效地工作。</p>
+</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb96ohq96j30wm0i0gmn.jpg" alt="undefined"></p>
+<h1 id="五-在浏览器中输入url地址-gt-gt-显示主页的过程（面试常客）"><a href="#五-在浏览器中输入url地址-gt-gt-显示主页的过程（面试常客）" class="headerlink" title="五 在浏览器中输入url地址 -&gt;&gt; 显示主页的过程（面试常客）"></a>五 在浏览器中输入url地址 -&gt;&gt; 显示主页的过程（面试常客）</h1><blockquote>
+<p>打开一个网页，整个过程会使用哪些协议</p>
+</blockquote>
+<p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb97hdzhuj30g40csjrp.jpg" alt="undefined"></p>
+<h1 id="六-状态码"><a href="#六-状态码" class="headerlink" title="六 状态码"></a>六 状态码</h1><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb9jd08ylj30ip06274m.jpg" alt="undefined"></p>
+<h1 id="七-各种协议与HTTP协议之间的关系"><a href="#七-各种协议与HTTP协议之间的关系" class="headerlink" title="七 各种协议与HTTP协议之间的关系"></a>七 各种协议与HTTP协议之间的关系</h1><p><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghb9kz8docj30nd0x575m.jpg" alt="undefined"></p>
+<h1 id="八-HTTP长连接、短连接"><a href="#八-HTTP长连接、短连接" class="headerlink" title="八 HTTP长连接、短连接"></a>八 HTTP长连接、短连接</h1><p><strong>在HTTP/1.0中默认使用短连接</strong>。也就是说，客户端和服务器每进行一次HTTP操作，就建立一次连接，任务结束就中断连接。当客户端浏览器访问的某个HTML或其他类型的Web页中包含有其他的Web资源（如JavaScript文件、图像文件、CSS文件等），每遇到这样一个Web资源，浏览器就会重新建立一个HTTP会话。<br>而从<strong>HTTP/1.1起，默认使用长连接</strong>，用以保持连接特性。使用长连接的HTTP协议，会在响应头加入这行代码：</p>
+<p><code>Connection:keep-alive</code></p>
+<p>复制代码在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，客户端再次访问这个服务器时，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现长连接需要客户端和服务端都支持长连接。<br><strong>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接。</strong><br><a href="https://www.cnblogs.com/gotodsp/p/6366163.html" target="_blank" rel="noopener">—— 《HTTP长连接、短连接究竟是什么？》</a></p>
+<h2 id="HTTP与HTTPS的区别"><a href="#HTTP与HTTPS的区别" class="headerlink" title="HTTP与HTTPS的区别"></a>HTTP与HTTPS的区别</h2><p>超文本传输协议HTTP协议被用于在Web浏览器和网站服务器之间传递信息，HTTP协议以<strong>明文方式</strong>发送内容，不提供任何方式的数据加密，如果攻击者截取了Web浏览器和网站服务器之间的传输报文，就可以直接读懂其中的信息，因此，HTTP协议不适合传输一些敏感信息，比如：信用卡号、密码等支付信息。</p>
+<p>　　为了解决HTTP协议的这一缺陷，需要使用另一种协议：安全套接字层超文本传输协议HTTPS，为了数据传输的安全，<strong>HTTPS在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密</strong>。</p>
+<h3 id="1-HTTP和HTTPS的基本概念"><a href="#1-HTTP和HTTPS的基本概念" class="headerlink" title="1 HTTP和HTTPS的基本概念"></a>1 HTTP和HTTPS的基本概念</h3><p>　　HTTP：是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。</p>
+<p>　　HTTPS：是以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。</p>
+<p>　　HTTPS协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性。</p>
+<h3 id="2-HTTP与HTTPS有什么区别？"><a href="#2-HTTP与HTTPS有什么区别？" class="headerlink" title="2 HTTP与HTTPS有什么区别？"></a>2 HTTP与HTTPS有什么区别？</h3><p>　　HTTP协议传输的数据都是未加密的，也就是明文的，因此使用HTTP协议传输隐私信息非常不安全，为了保证这些隐私数据能加密传输，于是网景公司设计了SSL（Secure Sockets Layer）协议用于对HTTP协议传输的数据进行加密，从而就诞生了HTTPS。简单来说，HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全。</p>
+<p>　　HTTPS和HTTP的区别主要如下：</p>
+<p>　　1、https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。</p>
+<p>　　2、http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。</p>
+<p>　　3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
+<p>　　4、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+<h3 id="3-HTTPS的工作原理"><a href="#3-HTTPS的工作原理" class="headerlink" title="3 HTTPS的工作原理"></a>3 HTTPS的工作原理</h3><p>　　我们都知道HTTPS能够加密信息，以免敏感信息被第三方获取，所以很多银行网站或电子邮箱等等安全级别较高的服务都会采用HTTPS协议。<br><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghba3dc5odj30go03rmy4.jpg" alt="undefined"></p>
+<p>客户端在使用HTTPS方式与Web服务器通信时有以下几个步骤，如图所示。</p>
+<p>　　（1）客户使用https的URL访问Web服务器，要求与Web服务器建立SSL连接。</p>
+<p>　　（2）Web服务器收到客户端请求后，会将网站的证书信息（证书中包含公钥）传送一份给客户端。</p>
+<p>　　（3）客户端的浏览器与Web服务器开始协商SSL连接的安全等级，也就是信息加密的等级。</p>
+<p>　　（4）客户端的浏览器根据双方同意的安全等级，建立会话密钥，然后利用网站的公钥将会话密钥加密，并传送给网站。</p>
+<p>　　（5）Web服务器利用自己的私钥解密出会话密钥。</p>
+<p>　　（6）Web服务器利用会话密钥加密与客户端之间的通信。<br><img src="http://ww1.sinaimg.cn/large/005PNXlEgy1ghba4ow5mfg30a50bf3yd.gif" alt="undefined"></p>
+<h1 id="九-cookie-和session-的区别"><a href="#九-cookie-和session-的区别" class="headerlink" title="九 cookie 和session 的区别"></a>九 cookie 和session 的区别</h1><p>二者的定义：</p>
+<p>当你在浏览网站的时候，WEB 服务器会先送一小小资料放在你的计算机上，Cookie 会帮你在网站上所打的文字或是一些选择，都纪录下来。当下次你再光临同一个网站，WEB 服务器会先看看有没有它上次留下的 Cookie 资料，有的话，就会依据 Cookie里的内容来判断使用者，送出特定的网页内容给你。 Cookie 的使用很普遍，许多有提供个人化服务的网站，都是利用 Cookie来辨认使用者，以方便送出使用者量身定做的内容，像是 Web 接口的免费 email 网站，都要用到 Cookie。</p>
+<p>具体来说cookie机制采用的是在<strong>客户端保持状态</strong>的方案，而session机制采用的是在<strong>服务器端保持状态</strong>的方案。</p>
+<p>同时我们也看到，由于采用服务器端保持状态的方案在客户端也需要保存一个标识，所以<strong>session机制可能需要借助于cookie机制</strong>来达到保存标识的目的，但实际上它还有其他选择。</p>
+<p>cookie机制。正统的cookie分发是通过扩展HTTP协议来实现的，服务器通过在HTTP的响应头中加上一行特殊的指示以提示浏览器按照指示生成相应的cookie。然而纯粹的客户端脚本如JavaScript或者VBScript也可以生成cookie。而cookie的使用是由浏览器按照一定的原则在后台自动发送给服务器的。浏览器检查所有存储的cookie，如果某个cookie所声明的作用范围大于等于将要请求的资源所在的位置，则把该cookie附在请求资源的HTTP请求头上发送给服务器。</p>
+<p>cookie的内容主要包括：名字，值，过期时间，路径和域。路径与域一起构成cookie的作用范围。若不设置过期时间，则表示这个cookie的生命期为浏览器会话期间，关闭浏览器窗口，cookie就消失。这种生命期为浏览器会话期的cookie被称为会话cookie。会话cookie一般不存储在硬盘上而是保存在内存里，当然这种行为并不是规范规定的。若设置了过期时间，浏览器就会把cookie保存到硬盘上，关闭后再次打开浏览器，这些cookie仍然有效直到超过设定的过期时间。存储在硬盘上的cookie可以在不同的浏览器进程间共享，比如两个IE窗口。而对于保存在内存里的cookie，不同的浏览器有不同的处理方式</p>
+<p>session机制。session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。</p>
+<p>cookie 和session 的区别：</p>
+<p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。</p>
+<p>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗<br>   考虑到安全应当使用session。</p>
+<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能<br>   考虑到减轻服务器性能方面，应当使用COOKIE。</p>
+<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+<p>5、建议：<br>   将登陆信息等重要信息存放为SESSION<br>   其他信息如果需要保留，可以放在COOKIE中</p>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><h2 id="计算机网络常见问题回顾"><a href="#计算机网络常见问题回顾" class="headerlink" title="计算机网络常见问题回顾"></a>计算机网络常见问题回顾</h2><ul>
+<li>①TCP三次握手和四次挥手、</li>
+<li>②在浏览器中输入url地址-&gt;&gt;显示主页的过程</li>
+<li>③HTTP和HTTPS的区别</li>
+<li>④TCP、UDP协议的区别</li>
+<li>⑤常见的状态码。<h2 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h2>《图解HTTP》<h2 id="开源文档推荐"><a href="#开源文档推荐" class="headerlink" title="开源文档推荐"></a>开源文档推荐</h2>Java-Guide：一份涵盖大部分Java程序员所需要掌握的核心知识，正在一步一步慢慢完善，期待您的参与。</li>
+</ul>
+<p>Github地址：<a href="https://github.com/Snailclimb/JavaGuide" target="_blank" rel="noopener">github.com/Snailclimb/…</a></p>
+<p>作者：JavaGuide<br>链接：<a href="https://juejin.im/post/6844903662838349838" target="_blank" rel="noopener">https://juejin.im/post/6844903662838349838</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 ]]></content>
       <categories>
-        <category>CTF</category>
+        <category>面试</category>
       </categories>
       <tags>
-        <tag>CTF</tag>
+        <tag>计算机网络</tag>
       </tags>
   </entry>
 </search>
