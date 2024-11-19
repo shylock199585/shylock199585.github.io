@@ -6,10 +6,31 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2022-02-17T01:23:54.030Z</updated>
+  <updated>2024-11-19T01:27:42.864Z</updated>
   <id>http://yoursite.com/</id>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CTF在线工具合集</title>
+    <link href="http://yoursite.com/2024/11/19/CTF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/"/>
+    <id>http://yoursite.com/2024/11/19/CTF%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/</id>
+    <published>2024-11-19T01:24:11.275Z</published>
+    <updated>2024-11-19T01:27:42.864Z</updated>
+    
+    <summary type="html">
+    
+      收集一些CTF在线工具
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://yoursite.com/categories/CTF/"/>
+    
+    
+      <category term="CTF" scheme="http://yoursite.com/tags/CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>CTF常用文件头</title>
